@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct Cells 
+public struct Cell 
 {
     public enum Type
     {
