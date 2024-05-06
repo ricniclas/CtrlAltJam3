@@ -17,6 +17,14 @@ public class Game : MonoBehaviour
         board = GetComponentInChildren<Board>();
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            Flag();
+        }
+    }
+
     private void Start()
     {
         NewGame();     
@@ -99,7 +107,7 @@ public class Game : MonoBehaviour
                     cell.type = Cell.Type.Number;
                 }
 
-                cell.revealed = true;
+                //cell.revealed = true;
                 state[x,y] = cell;  
             }
           
@@ -124,17 +132,48 @@ public class Game : MonoBehaviour
                 int x = cellX + adjacentX;
                 int y = cellY + adjacentY;
 
-                if(x<0 || x>= width || y<0 || y >= height)
+                /*if(x<0 || x>= width || y<0 || y >= height)
                 {
                     continue;
-                }
+                }*/
 
-                if (state[x,y].type == Cell.Type.Mine)
+                if (GetCell(x,y).type == Cell.Type.Mine)
                 {
                     count++;
                 }
             }
         }
         return count;
+    }
+
+    private  void Flag()
+    {
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
+        Cell cell = GetCell(cellPosition.x, cellPosition.y);
+
+        if(cell.type == Cell.Type.Invalid || cell.revealed)
+        {
+            return;
+        }
+
+        cell.flagged =!cell.flagged;
+        state[cellPosition.x, cellPosition.y] = cell;
+        board.Draw(state);
+    }
+
+    private Cell GetCell(int x, int y)
+    {
+        if (IsValid(x, y)) { 
+            return state[x,y];
+        }
+        else {
+            return new Cell();
+        }
+    }
+
+    private bool IsValid(int x, int y)
+    {
+        return x>=0 && x < width && y>= 0 && y<height;
     }
 }
