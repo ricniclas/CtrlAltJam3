@@ -35,7 +35,7 @@ public class Board : MonoBehaviour
             for (int y =0; y< height; y++)
             {
                 Cell cell = state[x, y];
-                //tilemap.SetTile(cell.position, GetTile(cell));
+                tilemap.SetTile(cell.position, GetTile(cell));
             }
         }
     }
