@@ -56,11 +56,11 @@ public class Game : MonoBehaviour
 
     private void GenerateMines()
     {
-        int celllmit = width * height;
+        int mineLimit = width * height;
 
-        if (MineCount > celllmit)
+        if (MineCount > mineLimit)
         {
-            MineCount = celllmit;
+            MineCount = mineLimit;
         }
 
         for (int i=0; i < MineCount; i++)
