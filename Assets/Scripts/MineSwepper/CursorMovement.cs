@@ -13,9 +13,20 @@ public class CursorMovement : MonoBehaviour
 
     private PlayerInputs controls;
 
-    public static Game Instance;
+    [SerializeField]
+    private Game gameManager;
 
-    Game gameManager;
+
+   
+    private void Update()
+    {
+
+        if (Input.GetMouseButton(1))
+        {
+            //gameManager.Flag();
+        }
+        
+    }
     private void Awake()
     {
         controls = new PlayerInputs();
@@ -34,7 +45,7 @@ public class CursorMovement : MonoBehaviour
     private void Start()
     {
         controls.Main.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
-
+        gameManager = GetComponentInParent<Game>();
     }
 
     private void Move(Vector2 direction)
@@ -55,12 +66,15 @@ public class CursorMovement : MonoBehaviour
         return true;
     }
 
-
     void OnFlag(InputValue value)
     {
         Debug.Log("foi");
         gameManager.Flag();
     }
 
+    void OnBom(InputValue value)
+    { 
+    
+    }
 
- }
+}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Game : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class Game : MonoBehaviour
     private Cell[,] state;
 
     public int MineCount;
+    public static Game Instance;
+    public GameObject targetObject;
 
-     public static Game Instance;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class Game : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-            Flag();
+            //Flag();
         }
     }
 
@@ -151,11 +153,11 @@ public class Game : MonoBehaviour
 
     public  void Flag()
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldPosition = targetObject.transform.position;
         Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
 
-        if(cell.type == Cell.Type.Invalid || cell.revealed)
+        if (cell.type == Cell.Type.Invalid || cell.revealed)
         {
             return;
         }
@@ -179,4 +181,10 @@ public class Game : MonoBehaviour
     {
         return x>=0 && x < width && y>= 0 && y<height;
     }
+
+    /*void OnFlag(InputValue value)
+    {
+        Debug.Log("foi");
+        Flag();
+    }*/
 }
