@@ -40,6 +40,11 @@ namespace CtrlAltJam3
 
         }
 
+        void IMinigame.ResetInputs()
+        {
+            currentDirectionInput = Vector2.zero;
+        }
+
         void IMinigame.ReceiveConsequence()
         {
             

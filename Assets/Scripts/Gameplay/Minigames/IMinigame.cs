@@ -9,6 +9,7 @@ namespace CtrlAltJam3
         void PauseGame();
         void InvokeConsequence();
         void ReceiveConsequence();
+        void ResetInputs();
         InputPackage GetInputPackage();
     }
 }
