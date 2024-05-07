@@ -12,9 +12,12 @@ public class Game : MonoBehaviour
 
     public int MineCount;
 
+     public static Game Instance;
+
     private void Awake()
     {
         board = GetComponentInChildren<Board>();
+        Instance = this;
     }
 
     private void Update()
@@ -146,7 +149,7 @@ public class Game : MonoBehaviour
         return count;
     }
 
-    private  void Flag()
+    public  void Flag()
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
