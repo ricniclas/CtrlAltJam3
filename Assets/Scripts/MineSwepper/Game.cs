@@ -26,7 +26,11 @@ public class Game : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            Reveal();
+            //Reveal();
+            GenerateCells();
+            GenerateMines();
+            GenerateNumbers();
+
         }
     }
 
@@ -61,7 +65,7 @@ public class Game : MonoBehaviour
 
     private void GenerateMines()
     {
-        int mineLimit = width * height;
+        int mineLimit = width * height -1;
 
         if (MineCount > mineLimit)
         {
@@ -195,6 +199,40 @@ public class Game : MonoBehaviour
         board.Draw(state);
     }
 
+    public void CheckWinCondition()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Cell cell = state[x, y];
+                if (cell.type != Cell.Type.Mine && !cell.revealed)
+                {
+                    return;
+                }
+            }
+
+           
+        }
+
+        Debug.Log("Winner!");
+        gameover = true;
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                Cell cell = state[x, y];
+
+                if (cell.type == Cell.Type.Mine)
+                {
+                    cell.flagged |= true;
+                    state[x, y] = cell;
+                }
+            }
+        }
+    }
+    
 
     private void Flood(Cell cell)
     {
@@ -217,7 +255,7 @@ public class Game : MonoBehaviour
     {
         Debug.Log("Game Over!");
         gameover = true;
-
+      
         cell.revealed = true;
         cell.exploded = true;
 
@@ -234,6 +272,8 @@ public class Game : MonoBehaviour
                     cell.revealed |= true;
                     state[x, y] = cell;   
                 }
+
+
             }
         }
 
