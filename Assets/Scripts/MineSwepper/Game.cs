@@ -14,7 +14,7 @@ public class Game : MonoBehaviour
     public int MineCount;
     public static Game Instance;
     public GameObject targetObject;
-
+    private bool gameover;
 
     private void Awake()
     {
@@ -178,12 +178,20 @@ public class Game : MonoBehaviour
             
             return;
         }
-        if(cell.type == Cell.Type.Empty)
+        switch (cell.type)
         {
-            Flood(cell);
+            case Cell.Type.Mine:
+                Explode(cell);
+                break;
+        case Cell.Type.Empty:
+                Flood(cell); 
+                break;
+        default:
+            cell.revealed = true;
+            state[cellPosition.x, cellPosition.y] = cell;
+            break;
         }
-        cell.revealed = true;
-        state[cellPosition.x, cellPosition.y] = cell;
+        
         board.Draw(state);
     }
 
@@ -203,6 +211,32 @@ public class Game : MonoBehaviour
             Flood(GetCell(cell.position.x , cell.position.y -1));
             Flood(GetCell(cell.position.x, cell.position.y  +1));
         }
+    }
+
+    private void Explode(Cell cell)
+    {
+        Debug.Log("Game Over!");
+        gameover = true;
+
+        cell.revealed = true;
+        cell.exploded = true;
+
+        state[cell.position.x, cell.position.y] = cell;
+
+        for(int x=0; x<width; x++)
+        {
+            for (int y=0; y<height; y++)
+            {
+                cell = state[x, y];
+
+                if(cell.type == Cell.Type.Mine)
+                {
+                    cell.revealed |= true;
+                    state[x, y] = cell;   
+                }
+            }
+        }
+
     }
 
     private Cell GetCell(int x, int y)
