@@ -12,6 +12,7 @@ public class CursorMovement : MonoBehaviour
     private Tilemap collisionTilemap;
 
     private PlayerInputs controls;
+    public bool teste;
 
     [SerializeField]
     private Game gameManager;
@@ -20,7 +21,7 @@ public class CursorMovement : MonoBehaviour
    
     private void Update()
     {
-
+     
         if (Input.GetMouseButton(1))
         {
             //gameManager.Flag();
@@ -72,9 +73,11 @@ public class CursorMovement : MonoBehaviour
         gameManager.Flag();
     }
 
-    void OnBom(InputValue value)
-    { 
-    
+    void OnReveal(InputValue value)
+    {
+        Debug.Log("foi");
+       
+        gameManager.Reveal();
     }
 
 }

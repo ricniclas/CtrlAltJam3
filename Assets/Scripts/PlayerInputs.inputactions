@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Bomb",
+                    "name": "Reveal",
                     "type": "Button",
                     "id": "6b7049b7-e9c2-4e27-b4db-49c1dbf412e2",
                     "expectedControlType": "Button",
@@ -232,17 +232,6 @@
                 },
                 {
                     "name": "",
-                    "id": "886e731e-7071-4ae4-95c0-e61739dad6fd",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Touch",
-                    "action": "Flag",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ee3d0cd2-254e-47a7-a8cb-bc94d9658c54",
                     "path": "<Joystick>/trigger",
                     "interactions": "",
@@ -277,11 +266,11 @@
                 {
                     "name": "",
                     "id": "f4c84338-ccd9-437f-a073-965fa3133f07",
-                    "path": "",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Bomb",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Reveal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

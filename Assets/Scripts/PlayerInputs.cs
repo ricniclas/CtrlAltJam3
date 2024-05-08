@@ -55,7 +55,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Bomb"",
+                    ""name"": ""Reveal"",
                     ""type"": ""Button"",
                     ""id"": ""6b7049b7-e9c2-4e27-b4db-49c1dbf412e2"",
                     ""expectedControlType"": ""Button"",
@@ -254,17 +254,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Flag"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
                     ""path"": ""<Joystick>/trigger"",
                     ""interactions"": """",
@@ -299,11 +288,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f4c84338-ccd9-437f-a073-965fa3133f07"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Bomb"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Reveal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -894,7 +883,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Main_Move = m_Main.FindAction("Move", throwIfNotFound: true);
         m_Main_Look = m_Main.FindAction("Look", throwIfNotFound: true);
         m_Main_Flag = m_Main.FindAction("Flag", throwIfNotFound: true);
-        m_Main_Bomb = m_Main.FindAction("Bomb", throwIfNotFound: true);
+        m_Main_Reveal = m_Main.FindAction("Reveal", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -971,7 +960,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Move;
     private readonly InputAction m_Main_Look;
     private readonly InputAction m_Main_Flag;
-    private readonly InputAction m_Main_Bomb;
+    private readonly InputAction m_Main_Reveal;
     public struct MainActions
     {
         private @PlayerInputs m_Wrapper;
@@ -979,7 +968,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Main_Move;
         public InputAction @Look => m_Wrapper.m_Main_Look;
         public InputAction @Flag => m_Wrapper.m_Main_Flag;
-        public InputAction @Bomb => m_Wrapper.m_Main_Bomb;
+        public InputAction @Reveal => m_Wrapper.m_Main_Reveal;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -998,9 +987,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Flag.started += instance.OnFlag;
             @Flag.performed += instance.OnFlag;
             @Flag.canceled += instance.OnFlag;
-            @Bomb.started += instance.OnBomb;
-            @Bomb.performed += instance.OnBomb;
-            @Bomb.canceled += instance.OnBomb;
+            @Reveal.started += instance.OnReveal;
+            @Reveal.performed += instance.OnReveal;
+            @Reveal.canceled += instance.OnReveal;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -1014,9 +1003,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Flag.started -= instance.OnFlag;
             @Flag.performed -= instance.OnFlag;
             @Flag.canceled -= instance.OnFlag;
-            @Bomb.started -= instance.OnBomb;
-            @Bomb.performed -= instance.OnBomb;
-            @Bomb.canceled -= instance.OnBomb;
+            @Reveal.started -= instance.OnReveal;
+            @Reveal.performed -= instance.OnReveal;
+            @Reveal.canceled -= instance.OnReveal;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -1202,7 +1191,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFlag(InputAction.CallbackContext context);
-        void OnBomb(InputAction.CallbackContext context);
+        void OnReveal(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

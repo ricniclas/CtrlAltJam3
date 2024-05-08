@@ -24,9 +24,9 @@ public class Game : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0))
         {
-            //Flag();
+            Reveal();
         }
     }
 
@@ -165,6 +165,44 @@ public class Game : MonoBehaviour
         cell.flagged =!cell.flagged;
         state[cellPosition.x, cellPosition.y] = cell;
         board.Draw(state);
+    }
+
+    public void Reveal()
+    {
+        Vector3 worldPosition = targetObject.transform.position;
+        Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
+        Cell cell = GetCell(cellPosition.x, cellPosition.y);
+
+        if(cell.type == Cell.Type.Invalid || cell.revealed || cell.flagged)
+        {
+            
+            return;
+        }
+        if(cell.type == Cell.Type.Empty)
+        {
+            Flood(cell);
+        }
+        cell.revealed = true;
+        state[cellPosition.x, cellPosition.y] = cell;
+        board.Draw(state);
+    }
+
+
+    private void Flood(Cell cell)
+    {
+        if (cell.revealed) return;
+        if (cell.type == Cell.Type.Mine || cell.type == Cell.Type.Invalid) return;
+        
+        cell.revealed = true;
+        state[cell.position.x, cell.position.y] = cell;
+
+        if(cell.type == Cell.Type.Empty)
+        {
+            Flood(GetCell(cell.position.x -1, cell .position.y));
+            Flood(GetCell(cell.position.x + 1, cell.position.y));
+            Flood(GetCell(cell.position.x , cell.position.y -1));
+            Flood(GetCell(cell.position.x, cell.position.y  +1));
+        }
     }
 
     private Cell GetCell(int x, int y)
