@@ -394,6 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187335861}
   - component: {fileID: 1187335860}
+  - component: {fileID: 1187335862}
   m_Layer: 0
   m_Name: GhostBoard
   m_TagString: Untagged
@@ -429,6 +430,21 @@ Transform:
   - {fileID: 1994720356}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1187335862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187335859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ada32b9742ff54988e4cba60f8e9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile: {fileID: 11400000, guid: b98e9f004823ea9409da93a47f79dba0, type: 2}
+  tetrisBoard: {fileID: 1282930688}
+  trackedPiece: {fileID: 1282930689}
 --- !u!1 &1209104958
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,11 +617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1858fd5f7059b2d4eb1aada29f10c08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tetrisBoard: {fileID: 0}
-  data:
-    tetromino: 0
-    tile: {fileID: 0}
-  position: {x: 0, y: 0, z: 0}
+  stepDelay: 1
+  lockDelay: 0.5
 --- !u!1 &1899137932
 GameObject:
   m_ObjectHideFlags: 0
