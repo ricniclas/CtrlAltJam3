@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
 {
     public int width = 16;
     public int height = 16;
+    public bool firstTry;
 
     private Board board;
     private Cell[,] state;
@@ -26,10 +27,7 @@ public class Game : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            //Reveal();
-            GenerateCells();
-            GenerateMines();
-            GenerateNumbers();
+            NewGame();
 
         }
     }
@@ -43,9 +41,16 @@ public class Game : MonoBehaviour
     {
         state = new Cell[width, height];
         GenerateCells();
-        GenerateMines();
-        GenerateNumbers();  
+        firstTry = true;
         Camera.main.transform.position = new Vector3(width/2f, height/2f, -10f);
+        board.Draw(state);
+    }
+
+    public void FirstMove()
+    {
+        firstTry = false;
+        GenerateMines();
+        GenerateNumbers();
         board.Draw(state);
     }
 
@@ -62,21 +67,32 @@ public class Game : MonoBehaviour
             }
         }
     }
-
-    private void GenerateMines()
+    public Cell.Type CellType()
     {
-        int mineLimit = width * height -1;
+        Vector3 worldPosition = targetObject.transform.position;
+        Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
+        Cell cell = GetCell(cellPosition.x, cellPosition.y);
+
+        Debug.Log(cellPosition);
+        return cell.type;
+    }
+    public void GenerateMines()
+    {
+        Vector3 worldPosition = targetObject.transform.position;
+        Vector3Int cursorPosition = board.tilemap.WorldToCell(worldPosition);
+
+        int mineLimit = width * height;
 
         if (MineCount > mineLimit)
         {
-            MineCount = mineLimit;
+            MineCount = mineLimit -1;
         }
 
         for (int i=0; i < MineCount; i++)
         {
             int x = Random.Range(0, width);
             int y = Random.Range(0, height);
-            while (state[x,y].type == Cell.Type.Mine)
+            while (state[x, y].type == Cell.Type.Mine || (x == cursorPosition.x && y == cursorPosition.y))
             {
                 x++;
                 if (x >= width)
@@ -90,13 +106,13 @@ public class Game : MonoBehaviour
                     }
                 }
             }
-
-            state[x,y].type=Cell.Type.Mine;
+            
+            state[x, y].type = Cell.Type.Mine;
             //state[x,y].revealed = true;
         }
     } 
 
-    private void GenerateNumbers()
+    public void GenerateNumbers()
     {
         for (int x = 0; x<width; x++)
         {
@@ -152,6 +168,7 @@ public class Game : MonoBehaviour
                 }
             }
         }
+        Debug.Log("count:" + count);
         return count;
     }
 
@@ -176,6 +193,8 @@ public class Game : MonoBehaviour
         Vector3 worldPosition = targetObject.transform.position;
         Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
+
+       
 
         if(cell.type == Cell.Type.Invalid || cell.revealed || cell.flagged)
         {

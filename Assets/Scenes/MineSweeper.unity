@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 16
   height: 16
-  MineCount: 32
+  MineCount: 514
   targetObject: {fileID: 1470597514}
 --- !u!156049354 &1251422495
 Grid:
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 1626049667}
   collisionTilemap: {fileID: 0}
+  teste: 0
   gameManager: {fileID: 0}
 --- !u!114 &1470597518
 MonoBehaviour:

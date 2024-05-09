@@ -16,17 +16,16 @@ public class CursorMovement : MonoBehaviour
 
     [SerializeField]
     private Game gameManager;
-
-
    
+
     private void Update()
     {
-     
-        if (Input.GetMouseButton(1))
-        {
-            //gameManager.Flag();
-        }
-        
+
+
+       
+
+
+
     }
     private void Awake()
     {
@@ -47,6 +46,8 @@ public class CursorMovement : MonoBehaviour
     {
         controls.Main.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
         gameManager = GetComponentInParent<Game>();
+        gameManager.CellType();
+        //firstTry=true;  
     }
 
     private void Move(Vector2 direction)
@@ -54,6 +55,7 @@ public class CursorMovement : MonoBehaviour
         if (CanMove(direction))
         {
             transform.position += (Vector3)direction;
+            gameManager.CellType();
         }
     }
 
@@ -76,8 +78,17 @@ public class CursorMovement : MonoBehaviour
     void OnReveal(InputValue value)
     {
         Debug.Log("foi");
-       
+
+        if (gameManager.firstTry)
+        {
+            gameManager.FirstMove();
+            //gameManager.firstTry = false;
+        }
         gameManager.Reveal();
+
+
+        //gameManager.GenerateMines();
+        //gameManager.GenerateMines();
     }
 
 }
