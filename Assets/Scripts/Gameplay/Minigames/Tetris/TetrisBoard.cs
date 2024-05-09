@@ -15,6 +15,7 @@ namespace CtrlAltJam3
         public Vector2Int boardSize = new Vector2Int(10, 20);
 
         private InputPackage inputPackage => new InputPackage(this);
+        public int currentMaxHeight;
 
 
         public RectInt boardBounds
@@ -32,6 +33,7 @@ namespace CtrlAltJam3
         {
             tilemap = GetComponentInChildren<Tilemap>();
             activePiece = GetComponentInChildren<Piece>();
+            currentMaxHeight = 0;
             for (int i = 0; i < tetrominoes.Length; i++)
             {
                 tetrominoes[i].Initialize();
@@ -117,12 +119,37 @@ namespace CtrlAltJam3
                     row++;
                 }
             }
+            currentMaxHeight = CalculateMaxHeight();
         }
 
 
         #endregion
 
         #region Private Methods
+
+        private int CalculateMaxHeight()
+        {
+            RectInt bounds = boardBounds;
+            int maxHeightIndex = bounds.yMin;
+            for (int col = bounds.xMin; col < bounds.xMax; col++)
+            {
+                for (int row = bounds.yMax; row >= bounds.yMin; row--)
+                {
+                    Vector3Int position = new Vector3Int(col, row, 0);
+                    if (tilemap.HasTile(position))
+                    {
+                        Debug.Log("Current Position Checked - Row: " + row + " - Col: " + col + " - Max Height: " + maxHeightIndex);
+                        if (maxHeightIndex < row) 
+                        {
+                            maxHeightIndex = row;
+                        }
+                        break;
+                    }
+                }
+            }
+            return maxHeightIndex + (bounds.size.y/2) +1;
+        }
+
         private bool IsLineFull(int row)
         {
             RectInt bounds = boardBounds;
@@ -165,6 +192,7 @@ namespace CtrlAltJam3
         private void GameOver()
         {
             tilemap.ClearAllTiles();
+            currentMaxHeight = 0;
         }
 
         #endregion

@@ -48,8 +48,8 @@ namespace CtrlAltJam3
         #region Input Callbacks
 
         public void Directions(InputAction.CallbackContext context) 
-        { 
-            inputEvents.directionsEvent.Invoke(context.ReadValue<Vector2>()); 
+        {
+            inputEvents.directionsEvent.Invoke(context.ReadValue<Vector2>());
         }
         public void Game1(InputAction.CallbackContext context)
         { 
