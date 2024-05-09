@@ -16,6 +16,8 @@ public class Game : MonoBehaviour
     public static Game Instance;
     public GameObject targetObject;
     private bool gameover;
+    public float ham;
+    public float burguer;
 
     private void Awake()
     {
@@ -41,9 +43,25 @@ public class Game : MonoBehaviour
     {
         state = new Cell[width, height];
         GenerateCells();
+        CursorPosition();
         firstTry = true;
         Camera.main.transform.position = new Vector3(width/2f, height/2f, -10f);
+
+        
+        
         board.Draw(state);
+    }
+
+    private void CursorPosition()
+    {
+        /*if (width > height)
+        {
+            targetObject.transform.position = new Vector3(width / ham, height / burguer);
+        }
+        else
+        {
+            targetObject.transform.position = new Vector3(width / ham, height / ham);
+        }*/
     }
 
     public void FirstMove()
@@ -69,8 +87,8 @@ public class Game : MonoBehaviour
     }
     public Cell.Type CellType()
     {
-        Vector3 worldPosition = targetObject.transform.position;
-        Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
+        //Vector3 worldPosition = targetObject.transform.position;
+        Vector3Int cellPosition = board.tilemap.WorldToCell(targetObject.transform.position);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
 
         Debug.Log(cellPosition);
@@ -78,8 +96,8 @@ public class Game : MonoBehaviour
     }
     public void GenerateMines()
     {
-        Vector3 worldPosition = targetObject.transform.position;
-        Vector3Int cursorPosition = board.tilemap.WorldToCell(worldPosition);
+        //Vector3 worldPosition = targetObject.transform.position;
+        Vector3Int cursorPosition = board.tilemap.WorldToCell(targetObject.transform.position);
 
         int mineLimit = width * height;
 
