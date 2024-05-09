@@ -21,41 +21,11 @@ namespace CtrlAltJam3
 
         private void Update()
         {
-            tetrisBoard.Clear(this);
             lockTime += Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                Move(Vector2Int.left);
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                Move(Vector2Int.right);
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Move(Vector2Int.down);
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                HardDrop();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Rotate(-1);
-            }
-
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                Rotate(1);
-            }
-
             if(Time.time >= stepTime)
             {
                 Step();
             }
-            tetrisBoard.Set(this);
 
         }
 
@@ -87,8 +57,10 @@ namespace CtrlAltJam3
 
         #region Private Methods
 
-        private bool Move(Vector2Int translation)
+        public bool Move(Vector2Int translation)
         {
+            tetrisBoard.Clear(this);
+
             Vector3Int newPosition = position;
             newPosition.x += translation.x;
             newPosition.y += translation.y;
@@ -98,12 +70,15 @@ namespace CtrlAltJam3
             {
                 position = newPosition;
                 lockTime = 0f;
+                tetrisBoard.Set(this);
+
             }
             return valid;
         }
 
-        private void Rotate(int direction)
+        public void Rotate(int direction)
         {
+            tetrisBoard.Clear(this);
             int originalRotation = rotationIndex;
             rotationIndex = Wrap(rotationIndex + direction,0,4);
             ApplyRotationMatrix(direction);
@@ -113,6 +88,7 @@ namespace CtrlAltJam3
             {
                 rotationIndex = originalRotation;
                 ApplyRotationMatrix(-direction);
+                tetrisBoard.Set(this);
             }
         }
 
@@ -152,7 +128,7 @@ namespace CtrlAltJam3
             }
         }
 
-        private void HardDrop()
+        public void HardDrop()
         {
             while(Move(Vector2Int.down))
             {

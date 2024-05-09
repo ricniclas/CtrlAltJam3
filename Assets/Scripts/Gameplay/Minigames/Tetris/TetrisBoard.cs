@@ -6,13 +6,16 @@ using UnityEngine.UIElements;
 
 namespace CtrlAltJam3
 {
-    public class TetrisBoard : MonoBehaviour
+    public class TetrisBoard : MonoBehaviour, IMinigame, IInputReceiver
     {
         public TetrominoData[] tetrominoes;
         public Piece activePiece { get; private set; }
         public Tilemap tilemap { get; private set; }
         public Vector3Int spawnPosition;
         public Vector2Int boardSize = new Vector2Int(10, 20);
+
+        private InputPackage inputPackage => new InputPackage(this);
+
 
         public RectInt boardBounds
         {
@@ -162,6 +165,76 @@ namespace CtrlAltJam3
         private void GameOver()
         {
             tilemap.ClearAllTiles();
+        }
+
+        #endregion
+
+        #region Input Receiver Interface
+
+        void IInputReceiver.Directions(Vector2 direction)
+        {
+            Vector2Int intDirection = Vector2Int.RoundToInt(direction);
+            if (intDirection == Vector2Int.down ||  intDirection == Vector2Int.left || intDirection == Vector2Int.right)
+            {
+                activePiece.Move(intDirection);
+            }
+        }
+
+        void IInputReceiver.Game1()
+        {
+        }
+
+        void IInputReceiver.Game2()
+        {
+        }
+
+        void IInputReceiver.Game3()
+        {
+        }
+
+        void IInputReceiver.Game4()
+        {
+        }
+
+        void IInputReceiver.Confirm()
+        {
+            activePiece.Rotate(1);
+        }
+
+        void IInputReceiver.Cancel()
+        {
+            activePiece.HardDrop();
+        }
+
+        InputPackage IInputReceiver.GetInputPackage()
+        {
+            return inputPackage;
+        }
+
+        #endregion
+
+        #region Minigame Interface
+
+
+        void IMinigame.PauseGame()
+        {
+        }
+
+        void IMinigame.InvokeConsequence()
+        {
+        }
+
+        void IMinigame.ReceiveConsequence()
+        {
+        }
+
+        void IMinigame.ResetInputs()
+        {
+        }
+
+        InputPackage IMinigame.GetInputPackage()
+        {
+            return inputPackage;
         }
         #endregion
     }
