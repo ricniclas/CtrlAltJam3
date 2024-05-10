@@ -83,7 +83,7 @@ namespace CtrlAltJam3
         {
             tetrisBoard.Clear(this);
             int originalRotation = rotationIndex;
-            rotationIndex = Wrap(rotationIndex + direction,0,4);
+            rotationIndex = MathUtils.Wrap(rotationIndex + direction,0,4);
             ApplyRotationMatrix(direction);
 
 
@@ -119,18 +119,6 @@ namespace CtrlAltJam3
             }
         }
 
-        private int Wrap(int input, int min, int max)
-        {
-            if (input < min)
-            {
-                return max - (min - input) % (max - min);
-            }
-            else
-            {
-                return min + (input - min) % (max - min);
-            }
-        }
-
         public void HardDrop()
         {
             while(Move(Vector2Int.down))
@@ -163,7 +151,7 @@ namespace CtrlAltJam3
                 wallKickIndex--;
             }
 
-            return Wrap(wallKickIndex, 0, data.wallKicks.GetLength(0));
+            return MathUtils.Wrap(wallKickIndex, 0, data.wallKicks.GetLength(0));
         }
 
         private void Step()
