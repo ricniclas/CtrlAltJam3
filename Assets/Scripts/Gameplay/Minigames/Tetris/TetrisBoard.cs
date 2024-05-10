@@ -273,7 +273,7 @@ namespace CtrlAltJam3
 
         void IInputReceiver.Cancel()
         {
-            activePiece.HardDrop();
+            activePiece.Rotate(-1);
         }
 
         InputPackage IInputReceiver.GetInputPackage()
