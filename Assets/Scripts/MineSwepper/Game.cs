@@ -16,8 +16,7 @@ public class Game : MonoBehaviour
     public static Game Instance;
     public GameObject targetObject;
     private bool gameover;
-    public float ham;
-    public float burguer;
+
 
     private void Awake()
     {
@@ -91,7 +90,7 @@ public class Game : MonoBehaviour
         Vector3Int cellPosition = board.tilemap.WorldToCell(targetObject.transform.position);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
 
-        Debug.Log(cellPosition);
+        //Debug.Log(cell.type);
         return cell.type;
     }
     public void GenerateMines()
@@ -225,7 +224,8 @@ public class Game : MonoBehaviour
                 Explode(cell);
                 break;
         case Cell.Type.Empty:
-                Flood(cell); 
+                Flood(cell);
+                CheckWinCondition();
                 break;
         default:
             cell.revealed = true;
@@ -263,7 +263,7 @@ public class Game : MonoBehaviour
 
                 if (cell.type == Cell.Type.Mine)
                 {
-                    cell.flagged |= true;
+                    cell.flagged = true;
                     state[x, y] = cell;
                 }
             }
@@ -306,7 +306,7 @@ public class Game : MonoBehaviour
 
                 if(cell.type == Cell.Type.Mine)
                 {
-                    cell.revealed |= true;
+                    cell.revealed = true;
                     state[x, y] = cell;   
                 }
 

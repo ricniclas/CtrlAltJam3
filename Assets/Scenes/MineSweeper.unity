@@ -294,10 +294,8 @@ MonoBehaviour:
   width: 10
   height: 10
   firstTry: 0
-  MineCount: 256
+  MineCount: 1
   targetObject: {fileID: 1470597514}
-  ham: 1.55
-  burguer: 2
 --- !u!156049354 &1251422495
 Grid:
   m_ObjectHideFlags: 0
