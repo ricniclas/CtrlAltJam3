@@ -11,12 +11,14 @@ namespace CtrlAltJam3
         public TetrominoData[] tetrominoes;
         public Piece activePiece { get; private set; }
         public Tilemap tilemap { get; private set; }
+        [SerializeField] private PreviewBoard previewBoard;
+
         public Vector3Int spawnPosition;
         public Vector2Int boardSize = new Vector2Int(10, 20);
+        public int currentMaxHeight;
+        public Queue<int> pieceStack = new Queue<int>();
 
         private InputPackage inputPackage => new InputPackage(this);
-        public int currentMaxHeight;
-
 
         public RectInt boardBounds
         {
@@ -50,13 +52,18 @@ namespace CtrlAltJam3
 
         public void SpawnPiece()
         {
-            int random = Random.Range(0, tetrominoes.Length);
-            TetrominoData data = tetrominoes[random];
+            while(pieceStack.Count < 2)
+            {
+                pieceStack.Enqueue(Random.Range(0, tetrominoes.Length));
+            }
+            TetrominoData data = tetrominoes[pieceStack.Dequeue()];
             activePiece.Initialize(this,spawnPosition,data);
 
             if (IsValidPosition(activePiece, spawnPosition))
             {
                 Set(activePiece);
+                TetrominoData previewTetronimo = tetrominoes[pieceStack.Peek()];
+                previewBoard.Set(previewTetronimo);
             }
             else
             {
@@ -138,7 +145,6 @@ namespace CtrlAltJam3
                     Vector3Int position = new Vector3Int(col, row, 0);
                     if (tilemap.HasTile(position))
                     {
-                        Debug.Log("Current Position Checked - Row: " + row + " - Col: " + col + " - Max Height: " + maxHeightIndex);
                         if (maxHeightIndex < row) 
                         {
                             maxHeightIndex = row;
