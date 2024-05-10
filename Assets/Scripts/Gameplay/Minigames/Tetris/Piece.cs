@@ -71,7 +71,10 @@ namespace CtrlAltJam3
                 position = newPosition;
                 lockTime = 0f;
                 tetrisBoard.Set(this);
-
+                if(translation.y != 0)
+                {
+                    stepTime = Time.time + stepDelay;
+                }
             }
             return valid;
         }

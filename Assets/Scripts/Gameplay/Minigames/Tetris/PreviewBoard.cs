@@ -18,7 +18,6 @@ namespace CtrlAltJam3
 
         public void Set(TetrominoData data)
         {
-            Debug.Log("Setted piece: " + data.tetromino);
             tilemap.ClearAllTiles();
             previewPiece.Initialize(Vector3Int.zero, data);
             for (int i = 0; i < previewPiece.cells.Length; i++)

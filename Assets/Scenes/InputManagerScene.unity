@@ -671,6 +671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TetrisMinigame
       objectReference: {fileID: 0}
+    - target: {fileID: 6330654350757188271, guid: fa4be4dd71f843648a21eb493f7f8695, type: 3}
+      propertyPath: inputHoldTime
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

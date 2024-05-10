@@ -20,6 +20,11 @@ namespace CtrlAltJam3
 
         private InputPackage inputPackage => new InputPackage(this);
 
+
+        [SerializeField] private float inputHoldTime;
+        private float currentInputHoldTime;
+
+        private Vector2Int currentInput = Vector2Int.zero;
         public RectInt boardBounds
         {
             get
@@ -45,6 +50,27 @@ namespace CtrlAltJam3
         private void Start()
         {
             SpawnPiece();
+        }
+
+        private void Update()
+        {
+            if (currentInput != Vector2Int.zero)
+                currentInputHoldTime += Time.deltaTime;
+            
+            if(currentInputHoldTime >= inputHoldTime)
+            {
+                currentInputHoldTime = currentInput == Vector2Int.down? inputHoldTime/1.5f : 0;
+
+                if (currentInput == Vector2Int.down || currentInput == Vector2Int.left || currentInput == Vector2Int.right)
+                {
+                    activePiece.Move(currentInput);
+                }
+                else if(currentInput == Vector2Int.up)
+                {
+                    activePiece.HardDrop();
+                }
+
+            }
         }
         #endregion
 
@@ -208,10 +234,20 @@ namespace CtrlAltJam3
         void IInputReceiver.Directions(Vector2 direction)
         {
             Vector2Int intDirection = Vector2Int.RoundToInt(direction);
-            if (intDirection == Vector2Int.down ||  intDirection == Vector2Int.left || intDirection == Vector2Int.right)
+            if(currentInput != intDirection)
             {
-                activePiece.Move(intDirection);
+                currentInput = intDirection;
+                currentInputHoldTime = 0;
+                if (intDirection == Vector2Int.down || intDirection == Vector2Int.left || intDirection == Vector2Int.right)
+                {
+                    activePiece.Move(intDirection);
+                }
+                else if (currentInput == Vector2Int.up)
+                {
+                    activePiece.HardDrop();
+                }
             }
+
         }
 
         void IInputReceiver.Game1()
@@ -264,6 +300,8 @@ namespace CtrlAltJam3
 
         void IMinigame.ResetInputs()
         {
+            currentInput = Vector2Int.zero; 
+            currentInputHoldTime = 0;
         }
 
         InputPackage IMinigame.GetInputPackage()
