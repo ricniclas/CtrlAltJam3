@@ -63,11 +63,7 @@ namespace CtrlAltJam3
 
                 if (currentInput == Vector2Int.down || currentInput == Vector2Int.left || currentInput == Vector2Int.right)
                 {
-                    activePiece.Move(currentInput);
-                }
-                else if(currentInput == Vector2Int.up)
-                {
-                    activePiece.HardDrop();
+                    activePiece.QueueMovement(currentInput);
                 }
 
             }
@@ -236,17 +232,11 @@ namespace CtrlAltJam3
             Vector2Int intDirection = Vector2Int.RoundToInt(direction);
             if(currentInput != intDirection)
             {
-                Debug.Log("Tetris Input: " + intDirection);
-
                 currentInput = intDirection;
                 currentInputHoldTime = 0;
-                if (intDirection == Vector2Int.down || intDirection == Vector2Int.left || intDirection == Vector2Int.right)
+                if (currentInput != Vector2Int.zero)
                 {
-                    activePiece.Move(intDirection);
-                }
-                else if (currentInput == Vector2Int.up)
-                {
-                    activePiece.HardDrop();
+                    activePiece.QueueMovement(intDirection);
                 }
             }
 
@@ -270,12 +260,12 @@ namespace CtrlAltJam3
 
         void IInputReceiver.Confirm()
         {
-            activePiece.Rotate(1);
+            activePiece.QueueRotation(1);
         }
 
         void IInputReceiver.Cancel()
         {
-            activePiece.Rotate(-1);
+            activePiece.QueueRotation(-1);
         }
 
         InputPackage IInputReceiver.GetInputPackage()

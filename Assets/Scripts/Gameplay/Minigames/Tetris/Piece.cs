@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
 
@@ -17,15 +18,34 @@ namespace CtrlAltJam3
         private float stepTime;
         private float lockTime;
 
+        private Queue<Vector2Int> directionInputs = new Queue<Vector2Int>();
+        private Queue<int> rotationInputs = new Queue<int>();
+
+
         #region MonoBehaviour Callbacks
 
         private void Update()
         {
             lockTime += Time.deltaTime;
-            if(Time.time >= stepTime)
+            tetrisBoard.Clear(this);
+
+            if (directionInputs.Count > 0)
+            {
+                Vector2Int direction = directionInputs.Dequeue();
+                if (direction == Vector2Int.up)
+                    HardDrop();
+                else
+                    Move(direction);
+            }
+            if (rotationInputs.Count > 0)
+            {
+                Rotate(rotationInputs.Dequeue());
+            }
+            if (Time.time >= stepTime)
             {
                 Step();
             }
+            tetrisBoard.Set(this);
 
         }
 
@@ -57,10 +77,8 @@ namespace CtrlAltJam3
 
         #region Private Methods
 
-        public bool Move(Vector2Int translation)
+        private bool Move(Vector2Int translation)
         {
-            tetrisBoard.Clear(this);
-
             Vector3Int newPosition = position;
             newPosition.x += translation.x;
             newPosition.y += translation.y;
@@ -70,7 +88,6 @@ namespace CtrlAltJam3
             {
                 position = newPosition;
                 lockTime = 0f;
-                tetrisBoard.Set(this);
                 if(translation.y != 0)
                 {
                     stepTime = Time.time + stepDelay;
@@ -79,9 +96,8 @@ namespace CtrlAltJam3
             return valid;
         }
 
-        public void Rotate(int direction)
+        private void Rotate(int direction)
         {
-            tetrisBoard.Clear(this);
             int originalRotation = rotationIndex;
             rotationIndex = MathUtils.Wrap(rotationIndex + direction,0,4);
             ApplyRotationMatrix(direction);
@@ -91,7 +107,6 @@ namespace CtrlAltJam3
             {
                 rotationIndex = originalRotation;
                 ApplyRotationMatrix(-direction);
-                tetrisBoard.Set(this);
             }
         }
 
@@ -170,6 +185,18 @@ namespace CtrlAltJam3
             tetrisBoard.Set(this);
             tetrisBoard.ClearLines();
             tetrisBoard.SpawnPiece();
+        }
+        #endregion
+
+        #region Public Methods
+        public void QueueMovement(Vector2Int movement)
+        {
+            directionInputs.Enqueue(movement);
+        }
+
+        public void QueueRotation(int direction)
+        {
+            rotationInputs.Enqueue(direction);
         }
         #endregion
 
