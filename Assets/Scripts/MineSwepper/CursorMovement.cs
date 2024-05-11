@@ -4,91 +4,67 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class CursorMovement : MonoBehaviour
+namespace CtrlAltJam3
 {
-    [SerializeField]
-    private Tilemap tile;
-    [SerializeField]
-    private Tilemap collisionTilemap;
-
-    private PlayerInputs controls;
-    public bool teste;
-
-    [SerializeField]
-    private Game gameManager;
-   
-
-    private void Update()
+    public class CursorMovement : MonoBehaviour
     {
+        [SerializeField]
+        private Tilemap tile;
+        [SerializeField]
+        private Tilemap collisionTilemap;
+
+        public bool teste;
+
+        public Game gameManager { set; private get; }
 
 
-       
-
-
-
-    }
-    private void Awake()
-    {
-        controls = new PlayerInputs();
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
-
-    private void Start()
-    {
-        controls.Main.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
-        gameManager = GetComponentInParent<Game>();
-        gameManager.CellType();
-        //firstTry=true;  
-    }
-
-    private void Move(Vector2 direction)
-    {
-        if (CanMove(direction))
+        private void Start()
         {
-            transform.position += (Vector3)direction;
-            gameManager.CellType();
+            gameManager = GetComponentInParent<Game>();
+            //gameManager.CellType();
+            //firstTry=true;  
         }
-    }
 
-    private bool CanMove(Vector2 direction)
-    {
-        Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction);
-        if (!tile.HasTile(gridPosition)/*||collisionTilemap.HasTile(gridPosition)*/)
+        public void Move(Vector2 direction)
         {
-           return false;
+            if (CanMove(direction))
+            {
+                transform.position += (Vector3)direction;
+                gameManager.CellType();
+            }
         }
-        return true;
-    }
 
-    void OnFlag(InputValue value)
-    {
-        Debug.Log("foi");
-        gameManager.Flag();
-    }
-
-    void OnReveal(InputValue value)
-    {
-        Debug.Log("foi");
-
-        if (gameManager.firstTry)
+        private bool CanMove(Vector2 direction)
         {
-            gameManager.FirstMove();
-            //gameManager.firstTry = false;
+            Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction);
+            if (!tile.HasTile(gridPosition)/*||collisionTilemap.HasTile(gridPosition)*/)
+            {
+                return false;
+            }
+            return true;
         }
-        gameManager.Reveal();
+
+        public void OnFlag()
+        {
+            gameManager.Flag();
+        }
+
+        public void OnReveal()
+        {
+            Debug.Log("foi");
+
+            if (gameManager.firstTry)
+            {
+                gameManager.FirstMove();
+                //gameManager.firstTry = false;
+            }
+            gameManager.Reveal();
 
 
-        //gameManager.GenerateMines();
-        //gameManager.GenerateMines();
+            //gameManager.GenerateMines();
+            //gameManager.GenerateMines();
+        }
+
     }
 
 }
