@@ -35,5 +35,23 @@ namespace CtrlAltJam3
                 Destroy(gameObject);
             }
         }
+
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+
+            if (other.CompareTag("Player") || other.CompareTag("Shield"))
+            {
+                Debug.Log("Jogador entrou no trigger.");
+
+                Destroy(this.gameObject);
+            }
+            if (other.CompareTag("Player"))
+            {
+                HealthManager.Instance.TakeDamage(15f);
+            }
+
+        }
+
     }
 }
