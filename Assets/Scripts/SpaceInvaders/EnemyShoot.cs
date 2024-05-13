@@ -26,10 +26,12 @@ namespace CtrlAltJam3
             //if(distance < 10)
             //{
 
+            //timer += Time.deltaTime;
+
             timer += Time.deltaTime;
             if (timer > 2)
             {
-                timer = 0;
+                timer = 0; 
                 Shoot();
             }
             //}
@@ -38,7 +40,14 @@ namespace CtrlAltJam3
 
         void Shoot()
         {
-            Instantiate(shoot, shootPosition.position, Quaternion.identity);
+            //Instantiate(shoot, shootPosition.position, Quaternion.identity);
+            GameObject bullet = ObjectPool.instance.GetNormalShootPool();
+            if (bullet != null)
+            {
+                bullet.transform.position = shootPosition.position;
+
+                bullet.SetActive(true);
+            }
         }
     }
 }

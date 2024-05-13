@@ -13,7 +13,7 @@ namespace CtrlAltJam3
         private float timer;
 
         // Start is called before the first frame update
-        void Start()
+        void OnEnable()
         {
             rb = GetComponent<Rigidbody2D>();
 
@@ -21,8 +21,8 @@ namespace CtrlAltJam3
             Vector3 direction = player.transform.position - transform.position;
             rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
 
-            float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+            //float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+            //transform.rotation = Quaternion.Euler(0, 0, rot + 90);
         }
 
         // Update is called once per frame
@@ -32,7 +32,8 @@ namespace CtrlAltJam3
 
             if (timer > 10)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 
@@ -44,7 +45,8 @@ namespace CtrlAltJam3
             {
                 Debug.Log("Jogador entrou no trigger.");
 
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
+                gameObject.SetActive(false);
             }
             if (other.CompareTag("Player"))
             {
