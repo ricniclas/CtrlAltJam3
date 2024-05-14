@@ -12,11 +12,13 @@ namespace CtrlAltJam3
         [SerializeField] private Button optionsButton;
         [SerializeField] private Button exitButton;
 
-        [SerializeField] private GameObject optionsGameObject;
+        [SerializeField] private OptionsMenu optionsGameObject;
+
 
         private void Start()
         {
-            optionsGameObject.SetActive(false);
+            optionsGameObject.gameObject.SetActive(false);
+            startGameButton.Select();
         }
 
         private void OnEnable()
@@ -35,7 +37,8 @@ namespace CtrlAltJam3
 
         private void OpenOptions()
         {
-            optionsGameObject.SetActive(true);
+            optionsGameObject.gameObject.SetActive(true);
+            optionsGameObject.GetCloseButtonEvent().AddListener(() => optionsButton.Select());
         }
 
         private void StartGame()

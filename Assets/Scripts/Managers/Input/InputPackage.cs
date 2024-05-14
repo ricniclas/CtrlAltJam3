@@ -14,6 +14,7 @@ namespace CtrlAltJam3
         public UnityAction game4Event { get; private set; }
         public UnityAction confirmEvent { get; private set; }
         public UnityAction cancelEvent { get; private set; }
+        public UnityAction pauseEvent { get; private set; }
 
         public InputPackage(IInputReceiver inputReceiver)
         {
@@ -22,6 +23,7 @@ namespace CtrlAltJam3
             game2Event = inputReceiver.Game2;
             game3Event = inputReceiver.Game3;
             game4Event = inputReceiver.Game4;
+            pauseEvent = inputReceiver.Pause;
             confirmEvent = inputReceiver.Confirm;
             cancelEvent = inputReceiver.Cancel;
         }

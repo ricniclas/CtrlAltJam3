@@ -33,13 +33,16 @@ namespace CtrlAltJam3
             if (instance == null)
             {
                 instance = this;
+                DontDestroyOnLoad(this);
                 masterBus = RuntimeManager.GetBus(Constants.FMOD_BUS_MASTER);
                 musBus = RuntimeManager.GetBus(Constants.FMOD_BUS_MUS);
                 sfxBus = RuntimeManager.GetBus(Constants.FMOD_BUS_SFX);
                 SetStoredVolume();
             }
             else
+            {
                 Destroy(gameObject);
+            }
         }
         #endregion
 

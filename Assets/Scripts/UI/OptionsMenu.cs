@@ -7,20 +7,25 @@ using UnityEngine.UI;
 
 namespace CtrlAltJam3
 {
-    public class OptionsMenu : MonoBehaviour
+    public class OptionsMenu : MonoBehaviour, IInputReceiver
     {
         [SerializeField] private Slider masterSlider;
         [SerializeField] private Slider musSlider;
         [SerializeField] private Slider sfxSlider;
 
         [SerializeField] private Button closeButton;
-        public UnityEvent closeButtonEvent;
-        
+        private UnityEvent closeButtonEvent;
+        private InputPackage inputPackage => new InputPackage(this);
+
+
+        private void Awake()
+        {
+            closeButtonEvent = new UnityEvent();
+        }
 
         private void Start()
         {
             SetSlidersValue();
-
         }
 
         private void OnEnable()
@@ -29,6 +34,8 @@ namespace CtrlAltJam3
             musSlider.onValueChanged.AddListener(SetMusVolume);
             sfxSlider.onValueChanged.AddListener(SetSFXVolume);
             closeButton.onClick.AddListener(CloseOptions);
+            masterSlider.Select();
+            InputManager.instance.AddInputPackageEvents(inputPackage, true);
         }
 
         private void OnDisable()
@@ -40,6 +47,14 @@ namespace CtrlAltJam3
 
         }
 
+        #region Public Methods
+        public UnityEvent GetCloseButtonEvent()
+        {
+            return closeButtonEvent;
+        }
+        #endregion
+
+        #region Private Methods
         private void SetMasterVolume(float volume)
         {
             AudioManager.instance.SetVolume(VolumeGroup.MASTER, volume);
@@ -67,5 +82,56 @@ namespace CtrlAltJam3
             gameObject.SetActive(false);
             closeButtonEvent.Invoke();
         }
+
+
+
+        #endregion
+
+        #region InputReceiver Interface
+        void IInputReceiver.Directions(Vector2 direction)
+        {
+            
+        }
+
+        void IInputReceiver.Game1()
+        {
+            
+        }
+
+        void IInputReceiver.Game2()
+        {
+            
+        }
+
+        void IInputReceiver.Game3()
+        {
+            
+        }
+
+        void IInputReceiver.Game4()
+        {
+            
+        }
+
+        void IInputReceiver.Confirm()
+        {
+            
+        }
+
+        void IInputReceiver.Cancel()
+        {
+            CloseOptions();
+        }
+
+        void IInputReceiver.Pause()
+        {
+            CloseOptions();
+        }
+
+        InputPackage IInputReceiver.GetInputPackage()
+        {
+            return inputPackage;
+        }
+        #endregion
     }
 }

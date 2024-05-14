@@ -13,6 +13,7 @@ namespace CtrlAltJam3
         void Game4();
         void Confirm();
         void Cancel();
+        void Pause();
         InputPackage GetInputPackage();
     }
 }
