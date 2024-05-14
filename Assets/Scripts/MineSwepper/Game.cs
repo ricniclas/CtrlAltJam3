@@ -388,6 +388,11 @@ namespace CtrlAltJam3
             
         }
 
+        void IInputReceiver.Pause()
+        {
+
+        }
+
         void IInputReceiver.Confirm()
         {
             cursorMovement.OnReveal();
