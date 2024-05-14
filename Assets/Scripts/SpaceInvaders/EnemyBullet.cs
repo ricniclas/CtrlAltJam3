@@ -13,7 +13,7 @@ namespace CtrlAltJam3
         private float timer;
 
         // Start is called before the first frame update
-        void OnEnable()
+        void Start()
         {
             rb = GetComponent<Rigidbody2D>();
 

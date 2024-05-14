@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviour
     [Header("NormalShoot")]
     public int amountToPoolnormalShot = 3;
     public static ObjectPool instance;
-    public List<GameObject> normalShootpol = new List<GameObject>();
+    public Queue<GameObject> pool = new Queue<GameObject>();
     [SerializeField] public GameObject normalShootprefab;
 
 
@@ -23,27 +23,37 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < amountToPoolnormalShot; i++)
         {
-            GameObject obj = Instantiate(normalShootprefab);
-            obj.SetActive(false);
-            normalShootpol.Add(obj);
-            obj.transform.parent = transform;
+            var newObj = NewObjct();
+            newObj.SetActive(false);
+            pool.Enqueue(newObj);
+
         }
+
+        Debug.Log(pool);
 
 
     }
 
+    GameObject NewObjct()
+    {
+        return Instantiate(normalShootprefab);
+    }
     public GameObject GetNormalShootPool()
     {
 
 
-        for (int i = 0; i < normalShootpol.Count; i++)
+        if (pool.Count > 0)
         {
-            if (!normalShootpol[i].activeInHierarchy)
-            {
-                return normalShootpol[i];
-            }
+            var obj = pool.Dequeue();
+            obj.SetActive(true);
+            return obj;
         }
-        return null;
+        else
+        {
+            //var newObj = NewObjct();
+            //newObj.SetActive(true);
+            return null;
+        }
     }
 
 
