@@ -31,7 +31,7 @@ namespace CtrlAltJam3
 
         void OnMove(InputValue value)
         {
-            Debug.Log("Foi" + moveInput);
+           
             moveInput = value.Get<Vector2>();
 
         }

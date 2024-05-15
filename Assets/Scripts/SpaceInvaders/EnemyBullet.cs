@@ -37,7 +37,7 @@ namespace CtrlAltJam3
 
             if (other.CompareTag("Player") || other.CompareTag("Shield"))
             {
-                Debug.Log("Jogador entrou no trigger.");
+                
 
                 //Destroy(this.gameObject);
                 //gameObject.SetActive(false);
