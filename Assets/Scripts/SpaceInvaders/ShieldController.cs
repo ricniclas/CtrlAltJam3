@@ -11,7 +11,7 @@ namespace CtrlAltJam3
         private Vector2 moveInput;
         private Rigidbody2D rb;
         public float rotationSpeed = 100f;
-        float rotationAmount;
+
         // Start is called before the first frame update
 
         void Start()
@@ -22,14 +22,10 @@ namespace CtrlAltJam3
         // Update is called once per frame
         void Update()
         {
-            
+            float rotationAmount = -moveInput.x * rotationSpeed * Time.deltaTime;
 
-            
-           rotationAmount = -moveInput.x * rotationSpeed * Time.deltaTime;
-
-            
             //Debug.Log(rotationAmount);
-           
+            transform.Rotate(0, 0, rotationAmount);
         }
 
 
