@@ -56,7 +56,19 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 162694333178846634}
+        m_TargetAssemblyTypeName: CtrlAltJam3.InputManager, Assembly-CSharp
+        m_MethodName: ControlChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -187,7 +199,7 @@ MonoBehaviour:
     m_ActionId: 7473753c-5a98-4c65-8c14-5fb00779f89d
     m_ActionName: GameNavigation/Pause[/Keyboard/escape,/Keyboard/enter,/DualSenseGamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: GameNavigation
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

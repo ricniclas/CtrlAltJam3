@@ -1287,6 +1287,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 4526341884063474526, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: button1
+      value: 
+      objectReference: {fileID: 21300000, guid: 6746cda3ca261a74daccefdc852c5576, type: 3}
+    - target: {fileID: 4526341884063474526, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: button2
+      value: 
+      objectReference: {fileID: 21300000, guid: 339c598d8d933e34bad5eda10091729b, type: 3}
+    - target: {fileID: 4526341884063474526, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: button3
+      value: 
+      objectReference: {fileID: 21300000, guid: 106ab51840fbda64babf2e4aaabcf0f9, type: 3}
+    - target: {fileID: 4526341884063474526, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: button4
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c10a8c43836dc04e8bee3822fe1edfa, type: 3}
+    - target: {fileID: 4526341884063474526, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: buttonCancel
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c14fa9b2ef777b48aba139951d2bc41, type: 3}
+    - target: {fileID: 4526341884063474526, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: buttonConfirm
+      value: 
+      objectReference: {fileID: 21300000, guid: 43efc2f8ad310824bae65b79d6409569, type: 3}
+    - target: {fileID: 7424907541718425341, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424907541718425341, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424907541718425341, guid: d43a89f1825b9b743965ebaaae19a63b, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
