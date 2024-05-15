@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &124506558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 124506557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 1.08, z: 0}
+  m_LocalPosition: {x: 0.72, y: 3.12, z: 0}
   m_LocalScale: {x: 1, y: 0.2666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 1105181454835218943, guid: 5d853bf9b58b8d941aeb939c277b23af, type: 3}
   player: {fileID: 0}
-  shootPosition: {fileID: 140781780}
+  shootPosition: {fileID: 0}
   timer: 0
   isMoving: 0
 --- !u!212 &405440336
@@ -1272,7 +1272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &919777331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,7 +1351,7 @@ Transform:
   m_GameObject: {fileID: 919777330}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.72, y: 0.21, z: 0}
+  m_LocalPosition: {x: -3.68, y: 1.58, z: 0}
   m_LocalScale: {x: 1, y: 0.2666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shoot: {fileID: 1105181454835218943, guid: 5d853bf9b58b8d941aeb939c277b23af, type: 3}
   player: {fileID: 0}
-  shootPosition: {fileID: 731467131}
+  shootPosition: {fileID: 0}
   timer: 0
   isMoving: 0
 --- !u!212 &1071396246
@@ -1792,7 +1792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1547110423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,7 +1871,7 @@ Transform:
   m_GameObject: {fileID: 1547110422}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.177, y: 0.33099997, z: 0}
+  m_LocalPosition: {x: 5.9, y: 1.66, z: 0}
   m_LocalScale: {x: 1, y: 0.2666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babf76e851f029848a76e72f1127501f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountToPoolnormalShot: 6
+  amountToPoolnormalShot: 16
   normalShootprefab: {fileID: 1105181454835218943, guid: 5d853bf9b58b8d941aeb939c277b23af, type: 3}
 --- !u!4 &1904855421
 Transform:

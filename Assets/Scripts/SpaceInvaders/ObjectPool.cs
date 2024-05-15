@@ -41,21 +41,23 @@ public class ObjectPool : MonoBehaviour
     public GameObject GetNormalShootPool()
     {
 
-
-        if (pool.Count > 0)
+        int initialCount = pool.Count;
+        for (int i = 0; i < initialCount; i++)
         {
-            var obj = pool.Dequeue();
-            obj.SetActive(true);
-            return obj;
+            GameObject obj = pool.Dequeue();
+            if (!obj.activeInHierarchy)
+            {
+                return obj;
+            }
+            pool.Enqueue(obj);
         }
-        else
-        {
-            //var newObj = NewObjct();
-            //newObj.SetActive(true);
-            return null;
-        }
+        return null;
     }
-
+    public void ReturnToPool(GameObject obj)
+    {
+        obj.SetActive(false);
+        pool.Enqueue(obj);
+    }
 
     // Update is called once per frame
     void Update()

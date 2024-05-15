@@ -13,7 +13,7 @@ namespace CtrlAltJam3
         private float timer;
 
         // Start is called before the first frame update
-        void Start()
+        void OnEnable()
         {
             rb = GetComponent<Rigidbody2D>();
 
@@ -28,13 +28,7 @@ namespace CtrlAltJam3
         // Update is called once per frame
         void Update()
         {
-            timer += Time.deltaTime;
-
-            if (timer > 10)
-            {
-                //Destroy(gameObject);
-                gameObject.SetActive(false);
-            }
+           
         }
 
 
@@ -46,7 +40,8 @@ namespace CtrlAltJam3
                 Debug.Log("Jogador entrou no trigger.");
 
                 //Destroy(this.gameObject);
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                ObjectPool.instance.ReturnToPool(gameObject);
             }
             if (other.CompareTag("Player"))
             {
