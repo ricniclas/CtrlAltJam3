@@ -14,6 +14,7 @@ namespace CtrlAltJam3
         public Game4Event game4Event;
         public ConfirmEvent confirmEvent;
         public CancelEvent cancelEvent;
+        public PauseEvent pauseEvent;
 
 
         #region Public Methods
@@ -27,6 +28,7 @@ namespace CtrlAltJam3
             game4Event = new Game4Event();
             confirmEvent = new ConfirmEvent();
             cancelEvent = new CancelEvent();
+            pauseEvent = new PauseEvent();
         }
 
         public void AddInputPackage(InputPackage inputPackage, bool clearEvents)
@@ -58,7 +60,7 @@ namespace CtrlAltJam3
         #endregion
 
         #region Private Methods
-        private void ClearEvents(bool clearGameSelectionListeners, bool clearGameplayListeners)
+        public void ClearEvents(bool clearGameSelectionListeners, bool clearGameplayListeners)
         {
             if (clearGameSelectionListeners)
             {
@@ -66,6 +68,7 @@ namespace CtrlAltJam3
                 game2Event.RemoveAllListeners();
                 game3Event.RemoveAllListeners();
                 game4Event.RemoveAllListeners();
+                pauseEvent.RemoveAllListeners();
             }
             if (clearGameplayListeners)
             {
@@ -81,6 +84,7 @@ namespace CtrlAltJam3
             game2Event.AddListener(inputPackage.game2Event);
             game3Event.AddListener(inputPackage.game3Event);
             game4Event.AddListener(inputPackage.game4Event);
+            pauseEvent.AddListener(inputPackage.pauseEvent);
         }
 
         private void AddGameplayListeners(InputPackage inputPackage)
@@ -99,5 +103,6 @@ namespace CtrlAltJam3
     [System.Serializable] public class Game4Event : UnityEvent { }
     [System.Serializable] public class ConfirmEvent : UnityEvent { }
     [System.Serializable] public class CancelEvent : UnityEvent { }
+    [System.Serializable] public class PauseEvent : UnityEvent { }
 }
 

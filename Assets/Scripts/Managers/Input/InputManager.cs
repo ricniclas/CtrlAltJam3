@@ -16,6 +16,7 @@ namespace CtrlAltJam3
             if(instance == null)
             {
                 instance = this;
+                DontDestroyOnLoad(this);
             }
             else
             {
@@ -43,6 +44,10 @@ namespace CtrlAltJam3
             inputEvents.AddInputPackage(inputPackage, clearEvents);
         }
 
+        public void ClearEvents(bool GameSelectionEvents, bool GameplayEvents)
+        {
+            inputEvents.ClearEvents(GameSelectionEvents, GameplayEvents);
+        }
         #endregion
 
         #region Input Callbacks
@@ -91,6 +96,14 @@ namespace CtrlAltJam3
             if (context.started)
             {
                 inputEvents.cancelEvent.Invoke();
+            }
+        }
+
+        public void Pause(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                inputEvents.pauseEvent.Invoke();
             }
         }
 

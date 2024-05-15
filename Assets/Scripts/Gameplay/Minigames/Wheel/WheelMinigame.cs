@@ -170,6 +170,11 @@ namespace CtrlAltJam3
         {
         }
 
+        void IInputReceiver.Pause()
+        {
+
+        }
+
         InputPackage IInputReceiver.GetInputPackage()
         {
             return inputPackage;
