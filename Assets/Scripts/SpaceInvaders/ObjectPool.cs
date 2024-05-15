@@ -21,6 +21,7 @@ public class ObjectPool : MonoBehaviour
     }
     void Start()
     {
+
         for (int i = 0; i < amountToPoolnormalShot; i++)
         {
             var newObj = NewObjct();
@@ -28,8 +29,7 @@ public class ObjectPool : MonoBehaviour
             pool.Enqueue(newObj);
 
         }
-
-        Debug.Log(pool);
+        
 
 
     }
@@ -59,9 +59,15 @@ public class ObjectPool : MonoBehaviour
         pool.Enqueue(obj);
     }
 
-    // Update is called once per frame
-    void Update()
+    void CreatePool()
     {
+        for (int i = 0; i < amountToPoolnormalShot; i++)
+        {
+            var newObj = NewObjct();
+            newObj.SetActive(false);
+            pool.Enqueue(newObj);
 
+        }
     }
+
 }

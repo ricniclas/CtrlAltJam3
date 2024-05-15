@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CtrlAltJam3
 {
-    public class EnemyShoot : MonoBehaviour
+    public class DroneController : MonoBehaviour
     {
 
         public GameObject shoot;
@@ -13,12 +13,17 @@ namespace CtrlAltJam3
         public Transform shootPosition;
         public float timer;
         public bool isMoving;
-      
+
+        [SerializeField] private List<Transform> waypoints;
+        [SerializeField] private float moveSpeed = 5f;
+        public int _currentWaypoint;
+
 
         // Start is called before the first frame update
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player");
+
             //StartCoroutine(Fire(timer));
         }
 
@@ -37,7 +42,7 @@ namespace CtrlAltJam3
             //timer += Time.deltaTime;
 
                
-            if (isMoving)
+            /*if (!isMoving)
             {
                 timer += Time.deltaTime;
                 if (timer > 2)
@@ -45,10 +50,10 @@ namespace CtrlAltJam3
                     timer = 0;
 
 
-                    Shoot();
+                    //Shoot();
                 }
 
-            }
+            }*/
 
 
             //}
@@ -73,11 +78,45 @@ namespace CtrlAltJam3
 
         private IEnumerator Fire(float spawnR)
         {
-            while (this.gameObject != null)
-            {
-                Shoot();
-                yield return new WaitForSeconds(spawnR);
-            }
+            isMoving = false;
+            Shoot();
+            yield return new WaitForSeconds(spawnR);
+            isMoving = true;
+
         }
+
+
+        private void FixedUpdate()
+        {
+            HandleMovement();
+        }
+
+        private void HandleMovement()
+        {
+            if (isMoving)
+            {
+               
+                transform.position = Vector3.MoveTowards(transform.position, waypoints[_currentWaypoint].transform.position,
+                (moveSpeed * Time.deltaTime));
+
+                if (Vector3.Distance(waypoints[_currentWaypoint].transform.position, transform.position) <= 0)
+                {
+
+                    //_currentWaypoint++;
+                    _currentWaypoint = Random.Range(0, waypoints.Count);
+                    StartCoroutine(Fire(timer));
+                }
+
+           
+                
+                if (_currentWaypoint != waypoints.Count) return;
+                waypoints.Reverse();
+                _currentWaypoint = 0;
+                
+
+            }
+            
+        }
+
     }
 }

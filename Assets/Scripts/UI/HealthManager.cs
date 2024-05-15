@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -6,6 +7,11 @@ public class HealthManager : MonoBehaviour
     public UnityEngine.UI.Image healthBar;
     public float healthAmount = 100f;
     public static HealthManager Instance;
+    
+    public int nextDrone;
+    public List<GameObject> dronesToActived;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +20,7 @@ public class HealthManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+        
     }
 
     // Update is called once per frame
@@ -38,8 +45,11 @@ public class HealthManager : MonoBehaviour
     {
         healthAmount -= damage;
         healthBar.fillAmount = healthAmount / 100f;
-
         Debug.Log(healthBar.fillAmount);
+        
+
+        ActivateNextDrone();
+
     }
 
 
@@ -50,6 +60,14 @@ public class HealthManager : MonoBehaviour
         healthBar.fillAmount = healthAmount / 100f;
       
     }
-
+    public void ActivateNextDrone()
+    {
+        
+        if (nextDrone < dronesToActived.Count)
+        {
+            dronesToActived[nextDrone].SetActive(true);
+            nextDrone++;
+        }
+    }
 
 }

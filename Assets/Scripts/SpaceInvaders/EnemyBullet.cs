@@ -11,7 +11,7 @@ namespace CtrlAltJam3
         [SerializeField] private Rigidbody2D rb;
         public float force;
         private float timer;
-
+        private DroneController droneController;
         // Start is called before the first frame update
         void OnEnable()
         {
