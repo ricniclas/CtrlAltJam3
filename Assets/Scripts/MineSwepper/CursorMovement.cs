@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -13,6 +14,7 @@ public class CursorMovement : MonoBehaviour
 
     private PlayerInputs controls;
     public bool teste;
+    public float cellSize;
 
     [SerializeField]
     private Game gameManager;
@@ -54,14 +56,14 @@ public class CursorMovement : MonoBehaviour
     {
         if (CanMove(direction))
         {
-            transform.position += (Vector3)direction;
+            transform.position += (Vector3)direction * cellSize;
             gameManager.CellType();
         }
     }
 
     private bool CanMove(Vector2 direction)
     {
-        Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction);
+        Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction * cellSize);
         if (!tile.HasTile(gridPosition)/*||collisionTilemap.HasTile(gridPosition)*/)
         {
            return false;
