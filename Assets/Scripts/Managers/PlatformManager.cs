@@ -42,7 +42,6 @@ namespace CtrlAltJam3
 
         public void SwitchSprites(string device)
         {
-            Debug.Log("Device: " + device);
             switch (device)
             {
                 case "Keyboard":

@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace CtrlAltJam3
 {
-    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(SpriteButtonAnimation))]
     public class DeviceSpecificSprite : MonoBehaviour
     {
         public ButtonType buttonType;
-        private SpriteRenderer spriteRenderer;
+        private SpriteButtonAnimation spriteRenderer;
 
 
         private void Awake()
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer = GetComponent<SpriteButtonAnimation>();
         }
 
         private void OnEnable()
@@ -32,22 +32,22 @@ namespace CtrlAltJam3
             switch (buttonType)
             {
                 case ButtonType.Game1:
-                    spriteRenderer.sprite = PlatformManager.instance.button1;
+                    spriteRenderer.SetSprite(PlatformManager.instance.button1);
                     break;
                 case ButtonType.Game2:
-                    spriteRenderer.sprite = PlatformManager.instance.button2;
+                    spriteRenderer.SetSprite(PlatformManager.instance.button2);
                     break;
                 case ButtonType.Game3:
-                    spriteRenderer.sprite = PlatformManager.instance.button3;
+                    spriteRenderer.SetSprite(PlatformManager.instance.button3);
                     break;
                 case ButtonType.Game4:
-                    spriteRenderer.sprite = PlatformManager.instance.button4;
+                    spriteRenderer.SetSprite(PlatformManager.instance.button4);
                     break;
                 case ButtonType.Confirm:
-                    spriteRenderer.sprite = PlatformManager.instance.buttonConfirm;
+                    spriteRenderer.SetSprite(PlatformManager.instance.buttonConfirm);
                     break;
                 case ButtonType.Cancel:
-                    spriteRenderer.sprite = PlatformManager.instance.buttonCancel;
+                    spriteRenderer.SetSprite(PlatformManager.instance.buttonCancel);
                     break;
             }
         }

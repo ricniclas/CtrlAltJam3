@@ -26,6 +26,7 @@ namespace CtrlAltJam3
 
         [SerializeField] private CursorMovement cursorMovement;
         [SerializeField] private GameObject selectedGameObject;
+        [SerializeField] private SpriteButtonAnimation inputButtonSprite;
 
 
         private void Awake()
@@ -443,6 +444,7 @@ namespace CtrlAltJam3
         void IMinigame.Selected()
         {
             selectedGameObject.SetActive(true);
+            inputButtonSprite.AnimateClick();
         }
 
         void IMinigame.Unselected()
