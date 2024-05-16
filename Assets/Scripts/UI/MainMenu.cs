@@ -43,7 +43,7 @@ namespace CtrlAltJam3
 
         private void StartGame()
         {
-            SceneManager.LoadScene("Gameplay");
+            SceneManager.LoadScene("Monitors");
         }
 
         private void CloseGame()
