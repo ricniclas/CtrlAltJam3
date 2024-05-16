@@ -15,7 +15,8 @@ public class CursorMovement : MonoBehaviour
     private PlayerInputs controls;
     public bool teste;
     public float cellSize;
-
+    public float cellSizey;
+  
     [SerializeField]
     private Game gameManager;
    
@@ -49,6 +50,7 @@ public class CursorMovement : MonoBehaviour
         controls.Main.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
         gameManager = GetComponentInParent<Game>();
         gameManager.CellType();
+       
         //firstTry=true;  
     }
 
@@ -56,14 +58,15 @@ public class CursorMovement : MonoBehaviour
     {
         if (CanMove(direction))
         {
-            transform.position += (Vector3)direction * cellSize;
+            Vector3 movement = new Vector3(direction.x * cellSize, direction.y * cellSizey, 0);
+            transform.position += movement;
             gameManager.CellType();
         }
     }
 
     private bool CanMove(Vector2 direction)
     {
-        Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction * cellSize);
+        Vector3Int gridPosition = tile.WorldToCell(transform.position + new Vector3(direction.x * cellSize, direction.y * cellSizey, 0));
         if (!tile.HasTile(gridPosition)/*||collisionTilemap.HasTile(gridPosition)*/)
         {
            return false;
