@@ -107,6 +107,11 @@ namespace CtrlAltJam3
             }
         }
 
+        public void ControlChanged(PlayerInput playerInput)
+        {
+            PlatformManager.instance.SwitchSprites(playerInput.currentControlScheme);
+        }
+
         #endregion
     }
 }
