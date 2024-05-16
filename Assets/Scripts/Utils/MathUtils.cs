@@ -1,4 +1,6 @@
 
+using static UnityEngine.EventSystems.EventTrigger;
+
 namespace CtrlAltJam3
 {
     public class MathUtils
@@ -13,6 +15,24 @@ namespace CtrlAltJam3
             {
                 return minInclusive + (input - minInclusive) % (maxExclusive - minInclusive);
             }
+        }
+
+        public static float ConverterPorcentageToDegrees(float value)
+        {
+            float toConvertValue = 0f;
+            switch (value)
+            {
+                case <= 0:
+                    toConvertValue = 0f;
+                    break;
+                case >= 100:
+                    toConvertValue = 100f;
+                    break;
+                default:
+                    toConvertValue = value;
+                    break;
+            }
+            return (toConvertValue * 360f) / 100f;
         }
     }
 }
