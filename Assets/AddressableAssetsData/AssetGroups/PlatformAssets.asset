@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: PlatformAssets
+  m_EditorClassIdentifier: 
+  m_GroupName: PlatformAssets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 41b261e1b50778c469714989433f1943
+  m_SerializeEntries:
+  - m_GUID: 6746cda3ca261a74daccefdc852c5576
+    m_Address: Assets/Sprites/Platforms/PC/PC_1.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PC
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 339c598d8d933e34bad5eda10091729b
+    m_Address: Assets/Sprites/Platforms/PC/PC_2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PC
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 106ab51840fbda64babf2e4aaabcf0f9
+    m_Address: Assets/Sprites/Platforms/PC/PC_3.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PC
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c10a8c43836dc04e8bee3822fe1edfa
+    m_Address: Assets/Sprites/Platforms/PC/PC_4.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PC
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c14fa9b2ef777b48aba139951d2bc41
+    m_Address: Assets/Sprites/Platforms/PC/PC_Esc.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PC
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43efc2f8ad310824bae65b79d6409569
+    m_Address: Assets/Sprites/Platforms/PC/PC_Space.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PC
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81487d05c48216f459a524fd6f174c40
+    m_Address: Assets/Sprites/Platforms/PS/PS_Circle.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PS
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66ff0a4f4fcaa3d44b92e47f1ab724f3
+    m_Address: Assets/Sprites/Platforms/PS/PS_L1.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PS
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 895658f1fdc4f5b47a330bfc79cd8a64
+    m_Address: Assets/Sprites/Platforms/PS/PS_L2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PS
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 048a34e40c263d549a4c2b38bc5df33d
+    m_Address: Assets/Sprites/Platforms/PS/PS_R1.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PS
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 003b00dd8b0c0734d923a5037beb360e
+    m_Address: Assets/Sprites/Platforms/PS/PS_R2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PS
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b35c0410d842a284590c9ec09b624951
+    m_Address: Assets/Sprites/Platforms/PS/PS_X.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Platform
+    - PS
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ee67e0990f60751429f2eea0631950b6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d1cad37db07bc704ba48866151b37c0a, type: 2}
+    - {fileID: 11400000, guid: 0ba8d0be8aa45aa4f8966c4182ed15ef, type: 2}

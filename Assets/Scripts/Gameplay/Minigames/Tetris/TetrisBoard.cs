@@ -268,6 +268,10 @@ namespace CtrlAltJam3
             activePiece.QueueRotation(-1);
         }
 
+        void IInputReceiver.Pause()
+        {
+
+        }
         InputPackage IInputReceiver.GetInputPackage()
         {
             return inputPackage;

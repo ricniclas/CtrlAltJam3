@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LocalizationTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LocalizationTable
+  m_TableCollectionNameGuidString: 103cd90a1b6559b43a3423599ff51437
+  m_Entries:
+  - m_Id: 72353566720
+    m_Key: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 251790086144
+    m_Key: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 558330793984
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29330354458624
+    m_Key: Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30478490652672
+    m_Key: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30593481691136
+    m_Key: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30748025016320
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31403594731520
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3654258022253592600
+  references:
+    version: 2
+    RefIds:
+    - rid: 3654258022253592600
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1715736487249
