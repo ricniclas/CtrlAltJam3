@@ -10,6 +10,8 @@ namespace CtrlAltJam3
         void InvokeConsequence();
         void ReceiveConsequence();
         void ResetInputs();
+        void Selected();
+        void Unselected();
         InputPackage GetInputPackage();
     }
 }

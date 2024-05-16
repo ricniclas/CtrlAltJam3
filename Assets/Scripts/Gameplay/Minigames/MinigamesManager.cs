@@ -9,6 +9,7 @@ namespace CtrlAltJam3
     {
         [SerializeField] private GameObject[] minigamesGameObject;
         [SerializeField] private OptionsMenu optionsMenu;
+        [SerializeField] private LightsController lightsController;
         private List<IMinigame> minigames;
         private InputPackage inputPackage => new InputPackage(this);
         private int currentGame = 0;
@@ -26,7 +27,7 @@ namespace CtrlAltJam3
             }
             InputManager.instance.AddGameplayEvents(minigames[0].GetInputPackage(), true);
             optionsMenu.gameObject.SetActive(false);
-
+            minigames[0].Selected();
         }
 
         #endregion
@@ -34,20 +35,28 @@ namespace CtrlAltJam3
 
         private void SwitchGame(int currentGame)
         {
-            for (int i = 0; i < minigames.Count; i++)
+            if(this.currentGame != currentGame)
             {
-                minigames[i].ResetInputs();
+                for (int i = 0; i < minigames.Count; i++)
+                {
+                    if (i != currentGame)
+                    {
+                        minigames[i].ResetInputs();
+                        minigames[i].Unselected();
+                    }
+                }
+                try
+                {
+                    InputManager.instance.AddGameplayEvents(minigames[currentGame].GetInputPackage(), true);
+                    this.currentGame = currentGame;
+                    minigames[currentGame].Selected();
+                    lightsController.ActivateLight(currentGame);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"No game assigned to index {currentGame}");
+                }
             }
-            try
-            {
-                this.currentGame = currentGame;
-                InputManager.instance.AddGameplayEvents(minigames[currentGame].GetInputPackage(), true);
-            }
-            catch(Exception e) 
-            {
-                Debug.LogError($"No game assigned to index {currentGame}");
-            }
-
         }
 
         private void ResumeGame()

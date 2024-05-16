@@ -21,6 +21,9 @@ namespace CtrlAltJam3
 
         private Vector2Int currentInput = Vector2Int.zero;
 
+        [SerializeField] private GameObject selectedGameObject;
+
+
         #region MonoBehaviour Callbacks
         private void Start()
         {
@@ -30,6 +33,8 @@ namespace CtrlAltJam3
                 wheelsTargetRotation[i] = wheelSprites[i].transform.eulerAngles.z;
                 rotationQueue[i] = new Queue<float>();
             }
+            selectedGameObject.SetActive(false);
+
         }
 
         private void Update()
@@ -86,7 +91,7 @@ namespace CtrlAltJam3
                 float newRotation = wheelsTargetRotation[currentWheelIndex] + (120 * nextRotation);
                 wheelsTargetRotation[currentWheelIndex] = newRotation;
                 Transform targetWheel = wheelSprites[currentWheelIndex].transform;
-                targetWheel.transform.DORotate(new Vector3(0, 0, newRotation), 0.3f).
+                targetWheel.transform.DOLocalRotate(new Vector3(0, 0, newRotation), 0.3f).
                     OnComplete(() =>
                     {
                         StartRotation();
@@ -123,7 +128,15 @@ namespace CtrlAltJam3
             return inputPackage;
         }
 
+        void IMinigame.Selected()
+        {
+            selectedGameObject.SetActive(true);
+        }
 
+        void IMinigame.Unselected()
+        {
+            selectedGameObject.SetActive(false);
+        }
         #endregion
 
         #region Input Receiver Interface
@@ -137,11 +150,11 @@ namespace CtrlAltJam3
 
                 if ( intDirection == Vector2Int.left || intDirection == Vector2Int.right)
                 {
-                    ChangeWheelIndex(intDirection.x);
+                    ChangeWheelValue(intDirection.x);
                 }
                 else if (intDirection == Vector2Int.down || currentInput == Vector2Int.up)
                 {
-                    ChangeWheelValue(intDirection.y);
+                    ChangeWheelIndex(intDirection.y);
                 }
             }
         }

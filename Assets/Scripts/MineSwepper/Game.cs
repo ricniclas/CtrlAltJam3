@@ -25,6 +25,7 @@ namespace CtrlAltJam3
         private InputPackage inputPackage => new InputPackage(this);
 
         [SerializeField] private CursorMovement cursorMovement;
+        [SerializeField] private GameObject selectedGameObject;
 
 
         private void Awake()
@@ -32,6 +33,7 @@ namespace CtrlAltJam3
             board = GetComponentInChildren<Board>();
             Instance = this;
             cursorMovement.gameManager = this;
+
         }
 
         private void Update()
@@ -55,6 +57,8 @@ namespace CtrlAltJam3
         private void Start()
         {
             NewGame();
+            selectedGameObject.SetActive(false);
+
         }
 
         private void NewGame()
@@ -434,6 +438,16 @@ namespace CtrlAltJam3
         InputPackage IMinigame.GetInputPackage()
         {
             return inputPackage;
+        }
+
+        void IMinigame.Selected()
+        {
+            selectedGameObject.SetActive(true);
+        }
+
+        void IMinigame.Unselected()
+        {
+            selectedGameObject.SetActive(false);
         }
         #endregion
 
