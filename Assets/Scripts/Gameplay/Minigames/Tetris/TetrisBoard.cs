@@ -24,6 +24,9 @@ namespace CtrlAltJam3
         [SerializeField] private float inputHoldTime;
         private float currentInputHoldTime;
 
+        [SerializeField] private GameObject selectedGameObject;
+        [SerializeField] private SpriteButtonAnimation inputButtonSprite;
+
         private Vector2Int currentInput = Vector2Int.zero;
         public RectInt boardBounds
         {
@@ -50,6 +53,7 @@ namespace CtrlAltJam3
         private void Start()
         {
             SpawnPiece();
+            selectedGameObject.SetActive(false);
         }
 
         private void Update()
@@ -303,6 +307,17 @@ namespace CtrlAltJam3
         InputPackage IMinigame.GetInputPackage()
         {
             return inputPackage;
+        }
+
+        void IMinigame.Selected()
+        {
+            selectedGameObject.SetActive(true);
+            inputButtonSprite.AnimateClick();
+        }
+
+        void IMinigame.Unselected()
+        {
+            selectedGameObject.SetActive(false);
         }
         #endregion
     }

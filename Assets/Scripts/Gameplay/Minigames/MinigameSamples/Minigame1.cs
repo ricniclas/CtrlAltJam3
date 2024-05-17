@@ -49,6 +49,16 @@ namespace CtrlAltJam3
         {
             
         }
+
+        void IMinigame.Selected()
+        {
+
+        }
+
+        void IMinigame.Unselected()
+        {
+
+        }
         #endregion
 
         #region InputReceiver Interface

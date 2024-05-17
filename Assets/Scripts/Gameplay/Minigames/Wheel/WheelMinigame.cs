@@ -10,16 +10,18 @@ namespace CtrlAltJam3
     {
         public int[] wheelPositions = new int[3];
         private int currentWheelIndex = 0;
-        [SerializeField] private GameObject[] wheelSprites = new GameObject[3];
+        [SerializeField] private WheelAnimation[] wheelSprites;
         private float[] wheelsTargetRotation = new float[3];
         private Queue<float>[] rotationQueue = new Queue<float>[3];
-
         private InputPackage inputPackage => new InputPackage(this);
 
         [SerializeField] private float inputHoldTime;
         private float currentInputHoldTime;
-
         private Vector2Int currentInput = Vector2Int.zero;
+
+        [SerializeField] private GameObject selectedGameObject;
+        [SerializeField] private SpriteButtonAnimation inputButtonSprite;
+
 
         #region MonoBehaviour Callbacks
         private void Start()
@@ -30,6 +32,8 @@ namespace CtrlAltJam3
                 wheelsTargetRotation[i] = wheelSprites[i].transform.eulerAngles.z;
                 rotationQueue[i] = new Queue<float>();
             }
+            selectedGameObject.SetActive(false);
+
         }
 
         private void Update()
@@ -43,10 +47,11 @@ namespace CtrlAltJam3
 
                 if (currentInput == Vector2Int.left || currentInput == Vector2Int.right)
                 {
-                    ChangeWheelIndex(currentInput.x);                }
+                    ChangeWheelValue(currentInput.x);
+                }
                 else if (currentInput == Vector2Int.down || currentInput == Vector2Int.up)
                 {
-                    ChangeWheelValue(currentInput.y);
+                    ChangeWheelIndex(currentInput.y);
                 }
 
             }
@@ -57,6 +62,7 @@ namespace CtrlAltJam3
         private void ChangeWheelIndex(int change)
         {
             currentWheelIndex = MathUtils.Wrap(currentWheelIndex + change, 0, 3);
+            SelectWheelAnimation(currentWheelIndex);
         }
         private void ChangeWheelValue(int change)
         {
@@ -74,7 +80,26 @@ namespace CtrlAltJam3
             if (!DOTween.IsTweening(wheelSprites[currentWheelIndex]))
             {
             }
+        }
 
+        private void SelectWheelAnimation(int index)
+        {
+            if(index < 0)
+            {
+                for (int i = 0; i < wheelSprites.Length; i++)
+                {
+                    wheelSprites[i].Unselect();
+                }
+            }
+            else
+            {
+                for (int i = 0; i < wheelSprites.Length; i++)
+                {
+                    if (i != index)
+                        wheelSprites[i].Unselect();
+                }
+                wheelSprites[index].Select();
+            }
 
         }
 
@@ -86,7 +111,7 @@ namespace CtrlAltJam3
                 float newRotation = wheelsTargetRotation[currentWheelIndex] + (120 * nextRotation);
                 wheelsTargetRotation[currentWheelIndex] = newRotation;
                 Transform targetWheel = wheelSprites[currentWheelIndex].transform;
-                targetWheel.transform.DORotate(new Vector3(0, 0, newRotation), 0.3f).
+                targetWheel.transform.DOLocalRotate(new Vector3(0, 0, newRotation), 0.3f).
                     OnComplete(() =>
                     {
                         StartRotation();
@@ -123,7 +148,18 @@ namespace CtrlAltJam3
             return inputPackage;
         }
 
+        void IMinigame.Selected()
+        {
+            selectedGameObject.SetActive(true);
+            SelectWheelAnimation(currentWheelIndex);
+        }
 
+        void IMinigame.Unselected()
+        {
+            selectedGameObject.SetActive(false);
+            SelectWheelAnimation(-1);
+
+        }
         #endregion
 
         #region Input Receiver Interface
@@ -137,11 +173,11 @@ namespace CtrlAltJam3
 
                 if ( intDirection == Vector2Int.left || intDirection == Vector2Int.right)
                 {
-                    ChangeWheelIndex(intDirection.x);
+                    ChangeWheelValue(intDirection.x);
                 }
                 else if (intDirection == Vector2Int.down || currentInput == Vector2Int.up)
                 {
-                    ChangeWheelValue(intDirection.y);
+                    ChangeWheelIndex(intDirection.y);
                 }
             }
         }
