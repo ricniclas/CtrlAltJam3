@@ -20,13 +20,16 @@ namespace CtrlAltJam3
 
         [SerializeField] private GameObject deactivateWaitpoint;
         private InputPackage inputPackage => new InputPackage(this);
+        private MinigamesManager minigamesManager;
 
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
+        [SerializeField] private PlayerCollision playerCollision;
         // Start is called before the first frame update
         void Start()
         {
             selectedGameObject.SetActive(false);
+            playerCollision.dronesMinigame = this;
             activeDrones = new DroneController[maxDrones];
             waitPoints = new GameObject[waitPointsParent.transform.childCount];
 
@@ -42,24 +45,11 @@ namespace CtrlAltJam3
             AlertLevelUpdated(2);
         }
 
-        // Update is called once per frame
-        void Update()
+
+        public void TakeDamage()
         {
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                TakeDamage(20);
-            }
-
-            if (Input.GetKeyUp(KeyCode.B))
-            {
-                Heal(5);
-            }
-
-        }
-
-        public void TakeDamage(float damage)
-        {
-            ActivateNextDrone();
+            //ActivateNextDrone();
+            minigamesManager.healthUpdateEvent.Invoke(10, LifeBarAction.TAKE);
         }
 
 
@@ -120,6 +110,15 @@ namespace CtrlAltJam3
         {
         }
 
+        void IMinigame.ApplyDamage()
+        {
+
+        }
+        void IMinigame.ApplyHeal()
+        {
+
+        }
+
         void IMinigame.ResetInputs()
         {
             player.Move(Vector2.zero);
@@ -176,6 +175,11 @@ namespace CtrlAltJam3
 
         void IInputReceiver.Pause()
         {
+        }
+
+        void IMinigame.SetMinigameManager(MinigamesManager manager)
+        {
+            minigamesManager = manager;
         }
 
         InputPackage IInputReceiver.GetInputPackage()

@@ -21,7 +21,7 @@ namespace CtrlAltJam3
 
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
-
+        private MinigamesManager minigamesManager;
 
         #region MonoBehaviour Callbacks
         private void Start()
@@ -152,13 +152,27 @@ namespace CtrlAltJam3
         {
             selectedGameObject.SetActive(true);
             SelectWheelAnimation(currentWheelIndex);
+            inputButtonSprite.AnimateClick();
+        }
+
+        void IMinigame.ApplyDamage()
+        {
+
+        }
+        void IMinigame.ApplyHeal()
+        {
+
         }
 
         void IMinigame.Unselected()
         {
             selectedGameObject.SetActive(false);
             SelectWheelAnimation(-1);
+        }
 
+        void IMinigame.SetMinigameManager(MinigamesManager manager)
+        {
+            minigamesManager = manager;
         }
         #endregion
 

@@ -27,6 +27,7 @@ namespace CtrlAltJam3
         [SerializeField] private CursorMovement cursorMovement;
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
+        private MinigamesManager minigamesManager;
 
 
         private void Awake()
@@ -430,6 +431,15 @@ namespace CtrlAltJam3
 
         }
 
+        void IMinigame.ApplyDamage()
+        {
+
+        }
+        void IMinigame.ApplyHeal()
+        {
+
+        }
+
         void IMinigame.ResetInputs()
         {
 
@@ -449,6 +459,10 @@ namespace CtrlAltJam3
         void IMinigame.Unselected()
         {
             selectedGameObject.SetActive(false);
+        }
+        void IMinigame.SetMinigameManager(MinigamesManager manager)
+        {
+            minigamesManager = manager;
         }
         #endregion
 

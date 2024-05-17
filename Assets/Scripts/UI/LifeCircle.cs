@@ -19,7 +19,7 @@ namespace CtrlAltJam3
         void Start()
         {
             material = this.GetComponent<SpriteRenderer>().material;
-            updateLifeBar(0f, LifeBarAction.TAKE);
+            //updateLifeBar(0f, LifeBarAction.TAKE);
         }
 
         public void updateLifeBar(float value, LifeBarAction action)
@@ -27,7 +27,7 @@ namespace CtrlAltJam3
             switch (action)
             {
                 case LifeBarAction.TAKE:
-                    setArcOne(MathUtils.ConverterPorcentageToDegrees(value));
+                    setArcOne(MathUtils.ConverterPorcentageToDegrees(Mathf.Abs(value - 100)));
                     break;
                 case LifeBarAction.ADD:
                     break;

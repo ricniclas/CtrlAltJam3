@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CtrlAltJam3
 {
@@ -10,11 +11,13 @@ namespace CtrlAltJam3
         [SerializeField] private GameObject[] minigamesGameObject;
         [SerializeField] private OptionsMenu optionsMenu;
         [SerializeField] private LightsController lightsController;
+        [SerializeField] private LifeCiclesManagers lifeManager;
         [SerializeField] private int initialMinigame = 3;
         private List<IMinigame> minigames;
         private InputPackage inputPackage => new InputPackage(this);
         private int currentGame = 0;
 
+        public UnityEvent<float, LifeBarAction> healthUpdateEvent = new UnityEvent<float, LifeBarAction>();
 
         #region Monobehaviour Callbacks
 
@@ -25,6 +28,7 @@ namespace CtrlAltJam3
             for(int i = 0; i < minigamesGameObject.Length; i++)
             {
                 minigames.Add(minigamesGameObject[i].GetComponent<IMinigame>());
+                minigames[i].SetMinigameManager(this);
             }
             InputManager.instance.AddGameplayEvents(minigames[initialMinigame].GetInputPackage(), true);
             optionsMenu.gameObject.SetActive(false);
@@ -33,7 +37,19 @@ namespace CtrlAltJam3
             currentGame = initialMinigame;
         }
 
+        private void OnEnable()
+        {
+            healthUpdateEvent.AddListener(UpdateHealth);
+        }
+
+        private void OnDisable()
+        {
+            healthUpdateEvent.RemoveListener(UpdateHealth);
+        }
+
         #endregion
+
+
         #region Private Methods
 
         private void SwitchGame(int currentGame)
@@ -67,6 +83,11 @@ namespace CtrlAltJam3
             InputManager.instance.AddGameSelectionyEvents(inputPackage, true);
             SwitchGame(currentGame);
             Time.timeScale = 1.0f;
+        }
+
+        private void UpdateHealth(float value, LifeBarAction barAction)
+        {
+            lifeManager.UpdateLife(value, barAction);
         }
         #endregion
 

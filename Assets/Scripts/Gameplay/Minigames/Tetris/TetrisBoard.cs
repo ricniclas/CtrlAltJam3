@@ -26,6 +26,7 @@ namespace CtrlAltJam3
 
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
+        private MinigamesManager minigamesManager;
 
         private Vector2Int currentInput = Vector2Int.zero;
         public RectInt boardBounds
@@ -93,6 +94,7 @@ namespace CtrlAltJam3
             }
             else
             {
+                minigamesManager.healthUpdateEvent.Invoke(10, LifeBarAction.TAKE);
                 GameOver();
             }
         }
@@ -298,6 +300,15 @@ namespace CtrlAltJam3
         {
         }
 
+        void IMinigame.ApplyDamage()
+        {
+
+        }
+        void IMinigame.ApplyHeal()
+        {
+
+        }
+
         void IMinigame.ResetInputs()
         {
             currentInput = Vector2Int.zero; 
@@ -318,6 +329,10 @@ namespace CtrlAltJam3
         void IMinigame.Unselected()
         {
             selectedGameObject.SetActive(false);
+        }
+        void IMinigame.SetMinigameManager(MinigamesManager manager)
+        {
+            minigamesManager = manager;
         }
         #endregion
     }
