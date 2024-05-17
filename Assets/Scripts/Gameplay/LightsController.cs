@@ -11,16 +11,18 @@ namespace CtrlAltJam3
         [SerializeField] private Light2D globalLight;
         [SerializeField] private Light2D[] lights;
 
-        private void Start()
+
+
+        public void Initialize(int targetLight)
         {
             for (int i = 0; i < lights.Length; i++)
             {
                 lights[i].gameObject.SetActive(false);
             }
             DOTween.To(() => globalLight.intensity, x => globalLight.intensity = x, 0.3f, 1f)
-                .OnComplete(() => 
+                .OnComplete(() =>
                 {
-                    ActivateLight(0);
+                    ActivateLight(targetLight);
                 });
         }
 

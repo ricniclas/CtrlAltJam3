@@ -10,6 +10,7 @@ namespace CtrlAltJam3
         [SerializeField] private GameObject[] minigamesGameObject;
         [SerializeField] private OptionsMenu optionsMenu;
         [SerializeField] private LightsController lightsController;
+        [SerializeField] private int initialMinigame = 3;
         private List<IMinigame> minigames;
         private InputPackage inputPackage => new InputPackage(this);
         private int currentGame = 0;
@@ -25,9 +26,11 @@ namespace CtrlAltJam3
             {
                 minigames.Add(minigamesGameObject[i].GetComponent<IMinigame>());
             }
-            InputManager.instance.AddGameplayEvents(minigames[0].GetInputPackage(), true);
+            InputManager.instance.AddGameplayEvents(minigames[initialMinigame].GetInputPackage(), true);
             optionsMenu.gameObject.SetActive(false);
-            minigames[0].Selected();
+            minigames[initialMinigame].Selected();
+            lightsController.Initialize(initialMinigame);
+            currentGame = initialMinigame;
         }
 
         #endregion
