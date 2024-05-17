@@ -362,7 +362,6 @@ namespace CtrlAltJam3
             Vector2Int intDirection = Vector2Int.RoundToInt(direction);
             if (currentInput != intDirection)
             {
-                Debug.Log("Tetris Input: " + intDirection);
 
                 currentInput = intDirection;
                 currentInputHoldTime = 0;

@@ -45,7 +45,7 @@ namespace CtrlAltJam3
             }
             if (other.CompareTag("Player"))
             {
-                HealthManager.Instance.TakeDamage(15f);
+                //HealthManager.Instance.TakeDamage(15f);
             }
 
         }

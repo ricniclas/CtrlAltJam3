@@ -29,14 +29,14 @@ namespace CtrlAltJam3
         {
             if (CanMove(direction))
             {
-                transform.position += (Vector3)direction;
+                transform.localPosition += (Vector3)direction;
                 gameManager.CellType();
             }
         }
 
         private bool CanMove(Vector2 direction)
         {
-            Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction);
+            Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction * transform.parent.localScale.x);
             if (!tile.HasTile(gridPosition)/*||collisionTilemap.HasTile(gridPosition)*/)
             {
                 return false;

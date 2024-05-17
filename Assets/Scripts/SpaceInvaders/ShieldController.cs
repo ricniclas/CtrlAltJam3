@@ -29,11 +29,9 @@ namespace CtrlAltJam3
         }
 
 
-        void OnMove(InputValue value)
+        public void Move(Vector2 input)
         {
-           
-            moveInput = value.Get<Vector2>();
-
+            moveInput = input;
         }
 
      

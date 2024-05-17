@@ -36,7 +36,7 @@ public class ObjectPool : MonoBehaviour
 
     GameObject NewObjct()
     {
-        return Instantiate(normalShootprefab);
+        return Instantiate(normalShootprefab,transform);
     }
     public GameObject GetNormalShootPool()
     {

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -14,59 +15,26 @@ namespace CtrlAltJam3
         public float timer;
         public bool isMoving;
 
-        [SerializeField] private List<Transform> waypoints;
-        [SerializeField] private float moveSpeed = 5f;
+        private List<GameObject> waitPoints;
+        private GameObject deactivateWaitPoint;
+        private float moveSpeed = 5f;
         public int _currentWaypoint;
 
+        private bool isActive = false;
 
+        private SpriteRenderer spriteRenderer;
         // Start is called before the first frame update
+
+        private void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
         void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player");
-
-            //StartCoroutine(Fire(timer));
+            spriteRenderer.color = new Color(1, 1, 1, 0);
         }
-
-
-        // Update is called once per frame
-        void Update()
-        {
-            /*if (Input.GetButtonDown("Fire1"))
-            {
-                Shoot();
-            }*/
-            //float distance = Vector2.Distance(transform.position, player.transform.position);
-            //if(distance < 10)
-            //{
-
-            //timer += Time.deltaTime;
-
-               
-            /*if (!isMoving)
-            {
-                timer += Time.deltaTime;
-                if (timer > 2)
-                {
-                    timer = 0;
-
-
-                    //Shoot();
-                }
-
-            }*/
-
-
-            //}
-            ///Shoot();
-
-
-        }
-
-
-
         void Shoot()
         {
-            //Instantiate(shoot, shootPosition.position, Quaternion.identity);
             GameObject bullet = ObjectPool.instance.GetNormalShootPool();
             if (bullet != null)
             {
@@ -95,28 +63,47 @@ namespace CtrlAltJam3
         {
             if (isMoving)
             {
-               
-                transform.position = Vector3.MoveTowards(transform.position, waypoints[_currentWaypoint].transform.position,
-                (moveSpeed * Time.deltaTime));
-
-                if (Vector3.Distance(waypoints[_currentWaypoint].transform.position, transform.position) <= 0)
+                if (isActive)
                 {
+                    transform.position = Vector3.MoveTowards(transform.position, waitPoints[_currentWaypoint].transform.position,
+                    (moveSpeed * Time.deltaTime));
 
-                    //_currentWaypoint++;
-                    _currentWaypoint = Random.Range(0, waypoints.Count);
-                    StartCoroutine(Fire(timer));
+                    if (Vector3.Distance(waitPoints[_currentWaypoint].transform.position, transform.position) <= 0.1f)
+                    {
+                        _currentWaypoint = Random.Range(0, waitPoints.Count);
+                        StartCoroutine(Fire(timer));
+                    }
+                    if (_currentWaypoint != waitPoints.Count) return;
+                    waitPoints.Reverse();
+                    _currentWaypoint = 0;
                 }
-
-           
-                
-                if (_currentWaypoint != waypoints.Count) return;
-                waypoints.Reverse();
-                _currentWaypoint = 0;
-                
-
+                else
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, 
+                        deactivateWaitPoint.transform.position,(moveSpeed * Time.deltaTime));
+                }
             }
-            
         }
 
+        public void Initialize(GameObject player,List<GameObject> waitPoints, GameObject deactivateWaitPoint)
+        {
+            this.player = player;
+            this.waitPoints = waitPoints;
+            this.deactivateWaitPoint = deactivateWaitPoint;
+            _currentWaypoint = Random.Range(0, waitPoints.Count);
+
+        }
+
+        public void Activate()
+        {
+            isActive = true;
+            spriteRenderer.DOFade(1f, .8f);
+        }
+
+        public void Deactivate()
+        {
+            isActive = false;
+            spriteRenderer.DOFade(0f, .8f);
+        }
     }
 }
