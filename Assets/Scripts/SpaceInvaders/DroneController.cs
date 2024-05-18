@@ -17,7 +17,7 @@ namespace CtrlAltJam3
 
         private List<GameObject> waitPoints;
         private GameObject deactivateWaitPoint;
-        private float moveSpeed = 5f;
+        private float moveSpeed = 2f;
         public int _currentWaypoint;
 
         private bool isActive = false;

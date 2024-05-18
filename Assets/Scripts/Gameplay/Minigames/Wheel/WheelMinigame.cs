@@ -155,7 +155,7 @@ namespace CtrlAltJam3
             inputButtonSprite.AnimateClick();
         }
 
-        void IMinigame.ApplyDamage()
+        void IMinigame.SetAlertLevel(int alertLevel)
         {
 
         }

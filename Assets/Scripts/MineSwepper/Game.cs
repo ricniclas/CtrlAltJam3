@@ -431,7 +431,7 @@ namespace CtrlAltJam3
 
         }
 
-        void IMinigame.ApplyDamage()
+        void IMinigame.SetAlertLevel(int alertLevel)
         {
 
         }

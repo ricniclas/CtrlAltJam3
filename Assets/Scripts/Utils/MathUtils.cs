@@ -17,6 +17,18 @@ namespace CtrlAltJam3
             }
         }
 
+        public static int Limit(int input, int minInclusive, int maxInclusive)
+        {
+            if (input < minInclusive)
+            {
+                return minInclusive;
+            }
+            else if (input > maxInclusive)
+            {
+                return maxInclusive;
+            }
+            return input;
+        }
         public static float ConverterPorcentageToDegrees(float value)
         {
             float toConvertValue = 0f;

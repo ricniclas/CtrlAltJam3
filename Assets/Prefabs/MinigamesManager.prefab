@@ -44,7 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e40915ac93a274ab49a0950e706061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame1GameObject: {fileID: 0}
-  minigame2GameObject: {fileID: 0}
-  minigame3GameObject: {fileID: 0}
-  minigame4GameObject: {fileID: 0}
+  minigamesGameObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  optionsMenu: {fileID: 0}
+  lightsController: {fileID: 0}
+  lifeManager: {fileID: 0}
+  initialMinigame: 3
+  alertLevelSlider: {fileID: 0}
+  alertLevelSliderFill: {fileID: 0}
+  sliderColors:
+  - {r: 0.0058945417, g: 1, b: 0, a: 1}
+  - {r: 0.80852747, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.597088, b: 0, a: 1}
+  - {r: 0.9568628, g: 0.043137256, b: 0, a: 1}
+  alertLevel: 1
+  healthUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []

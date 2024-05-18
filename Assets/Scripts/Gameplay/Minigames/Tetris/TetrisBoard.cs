@@ -95,6 +95,7 @@ namespace CtrlAltJam3
             else
             {
                 minigamesManager.healthUpdateEvent.Invoke(10, LifeBarAction.TAKE);
+                minigamesManager.UpdateAlertLevel(1);
                 GameOver();
             }
         }
@@ -229,6 +230,25 @@ namespace CtrlAltJam3
             currentMaxHeight = 0;
         }
 
+        private void AlertLevelUpdated(int alertLevel)
+        {
+            switch (alertLevel)
+            {
+                case < 2:
+                    activePiece.SetSpeedMultiplier(1);
+                    break;
+                case 2:
+                    activePiece.SetSpeedMultiplier(.7f);
+                    break;
+                case 3:
+                    activePiece.SetSpeedMultiplier(.4f);
+                    break;
+                case > 3:
+                    activePiece.SetSpeedMultiplier(.3f);
+                    break;
+
+            }
+        }
         #endregion
 
         #region Input Receiver Interface
@@ -300,9 +320,9 @@ namespace CtrlAltJam3
         {
         }
 
-        void IMinigame.ApplyDamage()
+        void IMinigame.SetAlertLevel(int alertLevel)
         {
-
+            AlertLevelUpdated(alertLevel);
         }
         void IMinigame.ApplyHeal()
         {

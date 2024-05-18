@@ -1,8 +1,10 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace CtrlAltJam3
 {
@@ -13,6 +15,12 @@ namespace CtrlAltJam3
         [SerializeField] private LightsController lightsController;
         [SerializeField] private LifeCiclesManagers lifeManager;
         [SerializeField] private int initialMinigame = 3;
+        [SerializeField] private Slider alertLevelSlider;
+        [SerializeField] private Image alertLevelSliderFill;
+
+        [SerializeField] private Color[] sliderColors = new Color[4];
+
+        public int alertLevel = 1;
         private List<IMinigame> minigames;
         private InputPackage inputPackage => new InputPackage(this);
         private int currentGame = 0;
@@ -35,6 +43,7 @@ namespace CtrlAltJam3
             minigames[initialMinigame].Selected();
             lightsController.Initialize(initialMinigame);
             currentGame = initialMinigame;
+            SetAlertSlider(alertLevel);
         }
 
         private void OnEnable()
@@ -49,7 +58,18 @@ namespace CtrlAltJam3
 
         #endregion
 
-
+        #region Public Methods
+        public void UpdateAlertLevel(int change)
+        {
+            
+            alertLevel = MathUtils.Limit(change + alertLevel,1,4);
+            for(int i = 0;i < minigames.Count; i++)
+            {
+                minigames[i].SetAlertLevel(alertLevel);
+            }
+            SetAlertSlider(alertLevel);
+        }
+        #endregion
         #region Private Methods
 
         private void SwitchGame(int currentGame)
@@ -88,6 +108,13 @@ namespace CtrlAltJam3
         private void UpdateHealth(float value, LifeBarAction barAction)
         {
             lifeManager.UpdateLife(value, barAction);
+        }
+
+        private void SetAlertSlider(int value)
+        {
+            alertLevelSlider.DOValue(value,0.3f);
+            alertLevelSlider.gameObject.transform.DOPunchRotation(new Vector3(0, 0, 10), 0.5f, elasticity: 1);
+            alertLevelSliderFill.DOColor(sliderColors[value-1],0.3f);
         }
         #endregion
 

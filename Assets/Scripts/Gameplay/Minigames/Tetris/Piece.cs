@@ -17,6 +17,7 @@ namespace CtrlAltJam3
 
         private float stepTime;
         private float lockTime;
+        private float speedMultiplier = 1;
 
         private Queue<Vector2Int> directionInputs = new Queue<Vector2Int>();
         private Queue<int> rotationInputs = new Queue<int>();
@@ -58,7 +59,7 @@ namespace CtrlAltJam3
             this.position = position;
             this.data = data;
             rotationIndex = 0;
-            stepTime = Time.time + stepDelay;
+            stepTime = Time.time + (stepDelay * speedMultiplier);
             lockTime = 0f;
 
 
@@ -71,6 +72,11 @@ namespace CtrlAltJam3
             {
                 cells[i] = (Vector3Int)data.cells[i];
             }
+        }
+
+        public void SetSpeedMultiplier(float multiplier)
+        {
+            this.speedMultiplier = multiplier;
         }
 
         #endregion
@@ -90,7 +96,7 @@ namespace CtrlAltJam3
                 lockTime = 0f;
                 if(translation.y != 0)
                 {
-                    stepTime = Time.time + stepDelay;
+                    stepTime = Time.time + (stepDelay * speedMultiplier);
                 }
             }
             return valid;

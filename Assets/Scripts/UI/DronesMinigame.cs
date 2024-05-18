@@ -25,6 +25,7 @@ namespace CtrlAltJam3
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
         [SerializeField] private PlayerCollision playerCollision;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -42,7 +43,7 @@ namespace CtrlAltJam3
                 activeDrones[i] = Instantiate(dronePrefab, deactivateWaitpoint.transform);
                 activeDrones[i].Initialize(player.transform.parent.gameObject, waitPoints.ToList(), deactivateWaitpoint);
             }
-            AlertLevelUpdated(2);
+            AlertLevelUpdated(1);
         }
 
 
@@ -69,7 +70,7 @@ namespace CtrlAltJam3
         {
             switch (alertLevel)
             {
-                case 1:
+                case <2:
                     ActivateDrones(2);
                     break;
                 case 2:
@@ -78,8 +79,8 @@ namespace CtrlAltJam3
                 case 3:
                     ActivateDrones(6);
                     break;
-                default:
-                    ActivateDrones(1);
+                case >3:
+                    ActivateDrones(8);
                     break;
 
             }
@@ -110,9 +111,9 @@ namespace CtrlAltJam3
         {
         }
 
-        void IMinigame.ApplyDamage()
+        void IMinigame.SetAlertLevel(int alertLevel)
         {
-
+            AlertLevelUpdated(alertLevel);
         }
         void IMinigame.ApplyHeal()
         {

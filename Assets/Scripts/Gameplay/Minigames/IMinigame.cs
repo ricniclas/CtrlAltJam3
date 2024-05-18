@@ -10,7 +10,7 @@ namespace CtrlAltJam3
         void PauseGame();
         void InvokeConsequence();
         void ReceiveConsequence();
-        void ApplyDamage();
+        void SetAlertLevel(int alertLevel);
         void ApplyHeal();
         void ResetInputs();
         void Selected();
