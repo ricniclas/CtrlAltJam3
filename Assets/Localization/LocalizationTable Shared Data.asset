@@ -47,6 +47,26 @@ MonoBehaviour:
     m_Key: Language
     m_Metadata:
       m_Items: []
+  - m_Id: 1286851815788544
+    m_Key: Progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281246749249536
+    m_Key: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281412696887296
+    m_Key: Crewmates alive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1282704039202816
+    m_Key: Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1283954986176512
+    m_Key: Back to Menu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

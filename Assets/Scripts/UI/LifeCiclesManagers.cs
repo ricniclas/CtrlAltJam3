@@ -9,9 +9,13 @@ namespace CtrlAltJam3
         [SerializeField] LifeCircle[] lifeCircle;
         [SerializeField] private float unitMaxHealth;
         public float[] unitsHealth = new float[3];
+        private MinigamesManager minigamesManager;
 
 
-
+        public void Initialize(MinigamesManager minigamesManager)
+        {
+            this.minigamesManager = minigamesManager;
+        }
 
         private void Start()
         {
@@ -34,10 +38,14 @@ namespace CtrlAltJam3
                     {
                         unitsHealth[currentLife] -= value;
                         lifeCircle[currentLife].updateLifeBar(unitsHealth[currentLife] / unitMaxHealth * 100, barAction);
+                        if (GetMembersAlive() == 0)
+                        {
+                            minigamesManager.EndGame(false);
+                        }
                     }
                     else
                     {
-                        Debug.Log("Game Over");
+                        minigamesManager.EndGame(false);
                     }
                     break;
                 case LifeBarAction.ADD:
@@ -53,6 +61,17 @@ namespace CtrlAltJam3
                     }
                     break;
             }
+        }
+
+        public int GetMembersAlive()
+        {
+            int result = 0;
+            for(int i = 0; i < unitsHealth.Length; i++)
+            {
+                if (unitsHealth[i] > 0)
+                    result++;
+            }
+            return result;
         }
 
         private int CheckUnitWithHealth(LifeBarAction barAction)

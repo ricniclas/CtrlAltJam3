@@ -20,12 +20,14 @@ namespace CtrlAltJam3
 
         [SerializeField] private Color[] sliderColors = new Color[4];
 
+        [SerializeField] private EndGameScreen endGameScreen;
+
         public int alertLevel = 1;
         private List<IMinigame> minigames;
         private InputPackage inputPackage => new InputPackage(this);
         private int currentGame = 0;
 
-        public UnityEvent<float, LifeBarAction> healthUpdateEvent = new UnityEvent<float, LifeBarAction>();
+        [HideInInspector] public UnityEvent<float, LifeBarAction> healthUpdateEvent = new UnityEvent<float, LifeBarAction>();
 
         #region Monobehaviour Callbacks
 
@@ -42,6 +44,7 @@ namespace CtrlAltJam3
             optionsMenu.gameObject.SetActive(false);
             minigames[initialMinigame].Selected();
             lightsController.Initialize(initialMinigame);
+            lifeManager.Initialize(this);
             currentGame = initialMinigame;
             SetAlertSlider(alertLevel);
         }
@@ -68,6 +71,12 @@ namespace CtrlAltJam3
                 minigames[i].SetAlertLevel(alertLevel);
             }
             SetAlertSlider(alertLevel);
+        }
+
+        public void EndGame(bool win)
+        {
+            endGameScreen.gameObject.SetActive(true);
+            endGameScreen.Initialize(win, 50f, 50f, lifeManager.GetMembersAlive());
         }
         #endregion
         #region Private Methods

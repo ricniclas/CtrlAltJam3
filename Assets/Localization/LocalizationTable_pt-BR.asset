@@ -50,6 +50,26 @@ MonoBehaviour:
     m_Localized: Linguagem
     m_Metadata:
       m_Items: []
+  - m_Id: 1281246749249536
+    m_Localized: 'Tempo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281412696887296
+    m_Localized: 'Companheiros vivos:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1282704039202816
+    m_Localized: Tentar novamente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1283954986176512
+    m_Localized: Voltar ao menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1286851815788544
+    m_Localized: 'Progresso:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
