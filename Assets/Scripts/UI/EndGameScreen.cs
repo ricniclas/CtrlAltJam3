@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -39,31 +40,39 @@ namespace CtrlAltJam3
 
         public void Initialize(bool isVictory, float completion, float matchDuration, int remainingMates)
         {
+            retryButton.Select();
+            Time.timeScale = 0;
             this.isVictory = isVictory;
             loseTimeText.SetText(matchDuration.ToString());
             completionPercentageText.SetText(completion.ToString());
             winTimeText.SetText(matchDuration.ToString());
             remainingMatesText.SetText(remainingMates.ToString());
-            if(isVictory)
+
+            background.enabled = true;
+            transform.localScale = Vector3.zero;
+            transform.DOScale(1, 0.5f).SetUpdate(true);
+            if (isVictory)
             {
+                background.DOColor(winColor, 0.3f).SetUpdate(true);
                 loseGameObject.SetActive(false);
                 winGameObject.SetActive(true);
-                background.color = winColor;
             }
             else
             {
+                background.DOColor(loseColor, 0.3f).SetUpdate(true);
                 loseGameObject.SetActive(true);
                 winGameObject.SetActive(false);
-                background.color = loseColor;
             }
         }
         private void BackToMenu()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("MainMenu");
         }
 
         private void ReloadScene()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("Monitors");
         }
     }

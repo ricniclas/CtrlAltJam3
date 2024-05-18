@@ -67,6 +67,14 @@ MonoBehaviour:
     m_Key: Back to Menu
     m_Metadata:
       m_Items: []
+  - m_Id: 1385289114963968
+    m_Key: Defeat Message
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385398972174336
+    m_Key: Win Message
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

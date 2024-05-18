@@ -70,6 +70,14 @@ MonoBehaviour:
     m_Localized: 'Progreso:'
     m_Metadata:
       m_Items: []
+  - m_Id: 1385289114963968
+    m_Localized: "Tu tripulaci\xF3n fue derrotada"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385398972174336
+    m_Localized: "\xA1Misi\xF3n Cumplida!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

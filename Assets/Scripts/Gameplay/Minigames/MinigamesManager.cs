@@ -35,7 +35,7 @@ namespace CtrlAltJam3
         {
             InputManager.instance.AddGameSelectionyEvents(inputPackage, true);
             minigames = new List<IMinigame>();
-            for(int i = 0; i < minigamesGameObject.Length; i++)
+            for (int i = 0; i < minigamesGameObject.Length; i++)
             {
                 minigames.Add(minigamesGameObject[i].GetComponent<IMinigame>());
                 minigames[i].SetMinigameManager(this);
@@ -64,9 +64,9 @@ namespace CtrlAltJam3
         #region Public Methods
         public void UpdateAlertLevel(int change)
         {
-            
-            alertLevel = MathUtils.Limit(change + alertLevel,1,4);
-            for(int i = 0;i < minigames.Count; i++)
+
+            alertLevel = MathUtils.Limit(change + alertLevel, 1, 4);
+            for (int i = 0; i < minigames.Count; i++)
             {
                 minigames[i].SetAlertLevel(alertLevel);
             }
@@ -75,6 +75,7 @@ namespace CtrlAltJam3
 
         public void EndGame(bool win)
         {
+            InputManager.instance.ClearEvents(true, true);
             endGameScreen.gameObject.SetActive(true);
             endGameScreen.Initialize(win, 50f, 50f, lifeManager.GetMembersAlive());
         }
@@ -83,7 +84,7 @@ namespace CtrlAltJam3
 
         private void SwitchGame(int currentGame)
         {
-            if(this.currentGame != currentGame)
+            if (this.currentGame != currentGame)
             {
                 for (int i = 0; i < minigames.Count; i++)
                 {
@@ -110,7 +111,24 @@ namespace CtrlAltJam3
         private void ResumeGame()
         {
             InputManager.instance.AddGameSelectionyEvents(inputPackage, true);
-            SwitchGame(currentGame);
+            for (int i = 0; i < minigames.Count; i++)
+            {
+                if (i != currentGame)
+                {
+                    minigames[i].ResetInputs();
+                    minigames[i].Unselected();
+                }
+            }
+            try
+            {
+                InputManager.instance.AddGameplayEvents(minigames[currentGame].GetInputPackage(), true);
+                minigames[currentGame].Selected();
+                lightsController.ActivateLight(currentGame);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"No game assigned to index {currentGame}");
+            }
             Time.timeScale = 1.0f;
         }
 
