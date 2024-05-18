@@ -11,24 +11,25 @@ namespace CtrlAltJam3
         private Tilemap tile;
         [SerializeField]
         private Tilemap collisionTilemap;
-        public CursorMovement cursor;
+        public BotMove bot;
         public bool teste;
-
+        Cell cell;
         
 
 
         private void Start()
         {
-            cursor = GetComponentInParent<CursorMovement>();
+            bot = GetComponentInParent<BotMove>();
            
             //firstTry=true;  
         }
 
         private void Update()
         {
-            cursor.CellType(gameObject);
+            cell = bot.CellType(gameObject);
 
-            Debug.Log(cursor.CellType(gameObject));
+            Debug.Log(cell.type);
+            Debug.Log(cell.flagged);
         }
 
        

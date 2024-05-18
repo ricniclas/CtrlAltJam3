@@ -109,14 +109,12 @@ namespace CtrlAltJam3
                 }
             }
         }
-        public Cell.Type CellType(GameObject targetObject)
+        public Cell CellType(GameObject targetObject)
         {
             //Vector3 worldPosition = targetObject.transform.position;
             Vector3Int cellPosition = board.tilemap.WorldToCell(targetObject.transform.position);
             Cell cell = GetCell(cellPosition.x, cellPosition.y);
-
-            //Debug.Log(cell.type);
-            return cell.type;
+            return cell;
         }
         public void GenerateMines()
         {

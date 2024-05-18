@@ -34,12 +34,12 @@ namespace CtrlAltJam3
             }
         }
 
-        public Cell.Type CellType(GameObject targetObject)
+        /*public Cell CellType(GameObject targetObject)
         {
 
             return gameManager.CellType(targetObject);
 
-        }
+        }*/
 
         private bool CanMove(Vector2 direction)
         {
