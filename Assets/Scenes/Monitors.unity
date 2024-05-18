@@ -5238,7 +5238,7 @@ Transform:
   m_GameObject: {fileID: 1863095529}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.43, y: 2.5, z: -0.43}
+  m_LocalPosition: {x: 0.5, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5315,7 +5315,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   gameManager: {fileID: 0}
   isMoving: 0
-  start: 0
+  start: 1
+  finish: 0
 --- !u!114 &1875405607 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4281465450155745652, guid: fec66375ed6e3294e8088a1996d57351, type: 3}
