@@ -21,7 +21,7 @@ namespace CtrlAltJam3
         private void Start()
         {
             gameManager = GetComponentInParent<Game>();
-            //gameManager.CellType();
+           
             //firstTry=true;  
         }
 
@@ -30,8 +30,15 @@ namespace CtrlAltJam3
             if (CanMove(direction))
             {
                 transform.localPosition += (Vector3)direction;
-                gameManager.CellType();
+                //gameManager.CellType();
             }
+        }
+
+        public Cell.Type CellType(GameObject targetObject)
+        {
+
+            return gameManager.CellType(targetObject);
+
         }
 
         private bool CanMove(Vector2 direction)

@@ -69,7 +69,8 @@ namespace CtrlAltJam3
             GenerateCells();
             CursorPosition();
             firstTry = true;
-
+            FirstMove();
+            Reveal();
 
 
             board.Draw(state);
@@ -108,7 +109,7 @@ namespace CtrlAltJam3
                 }
             }
         }
-        public Cell.Type CellType()
+        public Cell.Type CellType(GameObject targetObject)
         {
             //Vector3 worldPosition = targetObject.transform.position;
             Vector3Int cellPosition = board.tilemap.WorldToCell(targetObject.transform.position);
