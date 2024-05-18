@@ -19,6 +19,7 @@ namespace CtrlAltJam3
 
         public bool isMoving;
         public bool start;
+        public bool finish;
         private void Start()
         {
             gameManager = GetComponentInParent<Game>();
@@ -28,9 +29,12 @@ namespace CtrlAltJam3
 
         public void Move()
         {
-           
-            if (CanMove(direction))
-            {
+           finish = CanMove(direction);
+
+           Debug.Log(finish);
+
+            if (start)
+            {   
                 direction.x = 1;
                 transform.localPosition += (Vector3)direction;
             }else if (!start)
@@ -52,7 +56,7 @@ namespace CtrlAltJam3
             Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction * transform.parent.localScale.x);
             if (!tile.HasTile(gridPosition))
             {
-                //start = false;
+                start = false;
                 return false;
             }
             return true;
@@ -61,6 +65,21 @@ namespace CtrlAltJam3
         void Update()
         {
             //StartCoroutine(Move(timer));
+
+            /*if(!start && !finish)
+            {
+                finish = true;
+            }else if(!start && finish)
+            {
+                finish = CanMove(direction);
+
+                if (!finish)
+                {
+                    direction.x = 0;
+                }
+            }*/
+
+          
         }
 
 

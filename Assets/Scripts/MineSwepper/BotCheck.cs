@@ -28,8 +28,8 @@ namespace CtrlAltJam3
         {
             cell = bot.CellType(gameObject);
 
-            Debug.Log(cell.type);
-            Debug.Log(cell.flagged);
+            //Debug.Log(cell.type);
+            //Debug.Log(cell.flagged);
         }
 
        
