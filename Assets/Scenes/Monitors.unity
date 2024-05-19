@@ -3732,6 +3732,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1148419392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2196101898876214151, guid: 54580822a07fd64438a282d655e410a9, type: 3}
+  m_PrefabInstance: {fileID: 412337027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4d140a0ca81234baec95ab5eb8d294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1196866735
 GameObject:
   m_ObjectHideFlags: 0
@@ -5673,6 +5684,10 @@ PrefabInstance:
       propertyPath: MineCount
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5594810623531925566, guid: aff4c54680ec3634ba58b84154f2119a, type: 3}
+      propertyPath: camsManager
+      value: 
+      objectReference: {fileID: 1148419392}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

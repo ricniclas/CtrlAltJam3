@@ -27,6 +27,8 @@ namespace CtrlAltJam3
         [SerializeField] private CursorMovement cursorMovement;
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
+        [SerializeField] private CamsManager camsManager;
+
         private MinigamesManager minigamesManager;
 
         private List<BotMove> bots;
@@ -38,7 +40,7 @@ namespace CtrlAltJam3
             board = GetComponentInChildren<Board>();
             Instance = this;
             cursorMovement.gameManager = this;
-
+            camsManager.Init();
         }
 
         void CheckBotsFinish()

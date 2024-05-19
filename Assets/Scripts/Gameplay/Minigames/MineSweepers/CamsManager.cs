@@ -13,7 +13,7 @@ namespace CtrlAltJam3
         [SerializeField] Tile enabledCam,disabledCam;
         [SerializeField] CamsGeneretor generetor;
 
-        void Start () 
+        public void Init() 
         {
             generetor.updateGenerator(camAmount, width);
             camBoards = new CamBoard[players.Length];
