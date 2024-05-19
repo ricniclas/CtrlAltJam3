@@ -39,9 +39,6 @@ namespace CtrlAltJam3
         public void checkCode(string code)
         {
             tilemap.ClearAllTiles();
-            string teste = "before: ";
-                
-
             for (int i = 0;i < camBoards.Length; i++)
             {
                 camBoards[i].checkCode(code);
@@ -51,7 +48,10 @@ namespace CtrlAltJam3
 
         public bool hasCamEnabled(int player, int position)
         {
-            return camBoards[player].hasCamEnabled(position);
+            if (player < camBoards.Length)
+            {
+                return camBoards[player].hasCamEnabled(position);
+            }else { return false; } 
         }
 
         public string getCamCode(int x, int y)

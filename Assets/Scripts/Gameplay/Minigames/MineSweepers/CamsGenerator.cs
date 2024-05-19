@@ -117,8 +117,6 @@ namespace CtrlAltJam3
                         break;
                 }
             }
-            Debug.Log("finalizou");
-
         }
 
         private void resetClass()

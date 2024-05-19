@@ -19,7 +19,13 @@ namespace CtrlAltJam3
 
         public bool hasCamEnabled(int x)
         {
-            return board[x].type == Cams.Type.ENABLED;
+            Debug.Log("posição: " + x);
+            if (board[x].type != Cams.Type.ENABLED){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
 
         private void updateBoard()

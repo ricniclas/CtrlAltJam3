@@ -149,6 +149,13 @@ namespace CtrlAltJam3
             Cell cell = GetCell(cellPosition.x, cellPosition.y);
             return cell;
         }
+
+        public Cell CellType(int x, int y)
+        {
+            Cell cell = GetCell(y, x);
+            return cell;
+        }
+
         public void GenerateMines()
         {
             //Vector3 worldPosition = targetObject.transform.position;

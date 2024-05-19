@@ -12,6 +12,8 @@ namespace CtrlAltJam3
         [SerializeField]
         private Tilemap collisionTilemap;
 
+        [SerializeField] int positionX, positionY;
+
         public float  timer;
         private float  decodTime;
         public float decodTimer;
@@ -52,15 +54,22 @@ namespace CtrlAltJam3
             {   
                 direction.x = 1;
                 transform.localPosition += (Vector3)direction;
-                //Debug.Log(cams.hasCamEnabled(gridPositions.x, gridPositions.y));
+                positionY++;
+                Debug.Log(cams.hasCamEnabled(positionY, positionX));
+                if(positionY >= 0)
+                {
+                    if (CellType(positionX, positionY).type == Cell.Type.Mine)
+                    {
+                        Debug.Log("Bomb");
+                    }
+                }
             }
             else if (!start)
             {
                 direction.x = -1;
                 transform.localPosition += (Vector3)direction;
+                positionY--;
             }
-
-          
 
             /*if (finish)
             {
@@ -77,9 +86,16 @@ namespace CtrlAltJam3
 
         }
 
-        public Cell CellType(GameObject targetObject)
+        public Cell CellType(int x, int y)
         {
            
+            return gameManager.CellType(x,y);
+
+        }
+
+        public Cell CellType(GameObject targetObject)
+        {
+
             return gameManager.CellType(targetObject);
 
         }
