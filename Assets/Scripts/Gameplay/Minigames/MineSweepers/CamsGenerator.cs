@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 namespace CtrlAltJam3
@@ -111,8 +110,6 @@ namespace CtrlAltJam3
                         break;
                 }
             }
-            Debug.Log("finalizou");
-
         }
 
         private void resetClass()
