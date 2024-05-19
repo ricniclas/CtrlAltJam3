@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -21,7 +22,12 @@ namespace CtrlAltJam3
 
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
+        [SerializeField] private Game minefieldManager;
         private MinigamesManager minigamesManager;
+
+        private string[] code1 = { "1", "2", "3" };
+        private string[] code2 = { "A", "B", "C" };
+        private string[] code3 = { "X", "Y", "Z" };
 
         #region MonoBehaviour Callbacks
         private void Start()
@@ -32,6 +38,7 @@ namespace CtrlAltJam3
                 wheelsTargetRotation[i] = wheelSprites[i].transform.eulerAngles.z;
                 rotationQueue[i] = new Queue<float>();
             }
+            minefieldManager.camsManager.checkCode(TranslateCode());
             selectedGameObject.SetActive(false);
 
         }
@@ -69,6 +76,17 @@ namespace CtrlAltJam3
             wheelPositions[currentWheelIndex] = MathUtils.Wrap(wheelPositions[currentWheelIndex] + change, 0, 3);
 
             RotateWheel(change);
+            minefieldManager.camsManager.checkCode(TranslateCode());
+
+        }
+
+        private string TranslateCode()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(code1[wheelPositions[0]]);
+            stringBuilder.Append(code2[wheelPositions[1]]);
+            stringBuilder.Append(code3[wheelPositions[2]]);
+            return stringBuilder.ToString();
 
         }
 

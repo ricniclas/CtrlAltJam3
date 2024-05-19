@@ -27,7 +27,7 @@ namespace CtrlAltJam3
         [SerializeField] private CursorMovement cursorMovement;
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
-        [SerializeField] private CamsManager camsManager;
+        public CamsManager camsManager;
 
         private MinigamesManager minigamesManager;
 
