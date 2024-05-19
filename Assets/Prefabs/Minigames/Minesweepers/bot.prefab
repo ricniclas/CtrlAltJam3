@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -21141324, guid: dfab3125a412bfe4eb65ccca9f573ca2, type: 3}
+  m_Sprite: {fileID: -597182903, guid: dfab3125a412bfe4eb65ccca9f573ca2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9375, y: 0.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 0}
   collisionTilemap: {fileID: 0}
-  timer: 1
-  decodTimer: 5
+  timer: 4
+  decodTimer: 6
   cams: {fileID: 0}
   direction: {x: 0, y: 0}
   gameManager: {fileID: 0}
