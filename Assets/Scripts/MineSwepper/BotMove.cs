@@ -16,7 +16,9 @@ namespace CtrlAltJam3
         private float  decodTime;
         public float decodTimer;
 
+        public static int totalBots = 3;
 
+        private bool hasFinished = false;
 
         public Vector2 direction;
         public Game gameManager;
@@ -43,9 +45,9 @@ namespace CtrlAltJam3
         {
 
             
-            Debug.Log(isIngrid);
+           //Debug.Log(isIngrid);
            
-            if (start || countToBegin <=0)
+            if (start )
             {   
                 direction.x = 1;
                 transform.localPosition += (Vector3)direction;
@@ -55,20 +57,21 @@ namespace CtrlAltJam3
                 transform.localPosition += (Vector3)direction;
             }
 
-            if (direction.x == -1)
-            {
-               
-                if (!Ingrid(direction))
-                {
-                    Debug.Log("pare agora");
-                    shouldMove = false;
-                }
-            }
+          
 
-            if (finish)
+            /*if (finish)
             {
                 gameManager.CleamBoard(gameObject);
+            }*/
+            
+
+            if (gameManager.botsFinished >= totalBots)
+            {
+                //shouldMove = true;
+                gameManager.CleamBoard(gameObject);
+                
             }
+
         }
 
         public Cell CellType(GameObject targetObject)
@@ -104,28 +107,31 @@ namespace CtrlAltJam3
             }
             cell = CellType(gameObject);
             TakeDamage();
+            DecodeBomb();
 
-            if (hasStartedDecoding)
-            {
-                
-                StartCoroutine(Decoding(decodTime));
-                hasStartedDecoding = false;
-            }
-            if (check.cell.flagged)
-            {
-                decodTime += Time.deltaTime;
 
-                shouldMove = false;
-                if (decodTime > decodTimer)
+
+            if (gameManager.botsFinished >= totalBots)
+            {
+                shouldMove = true;
+
+                if (gameManager.botsFinished == 3)
                 {
-                    decodTime = 0;
-                    shouldMove = true;
 
-                    //Shoot();
+                    if (!Ingrid(direction) && direction.x==-1)
+                    {
+                        Debug.Log("pare agora");
+                        shouldMove = false;
+                    }
                 }
 
             }
-
+            if (finish && !hasFinished)
+            {
+                hasFinished = true;
+                gameManager.botsFinished++;
+                shouldMove = false;
+            }
         }
 
 
@@ -148,33 +154,29 @@ namespace CtrlAltJam3
         }
         public void TakeDamage()
         {
-            Debug.Log(cell.type);
-            if (cell.type == Cell.Type.Mine)
+            //Debug.Log(cell.type);
+            if (cell.type == Cell.Type.Mine && !cell.flagged)
             {
                 gameManager.Reveal(gameObject);
-                Debug.Log("Damage");
+                //Debug.Log("Damage");
                
             }
         }
 
         public void DecodeBomb()
         {
-            StartCoroutine(Decoding(decodTime));
-           
-        }
-        private IEnumerator Decoding(float decodTime)
-        {
-
             if (check.cell.flagged)
             {
-                ///gameManager.Reveal(gameObject);
-                Debug.Log("Deocoding...");
-                hasStartedDecoding=true;
+                decodTime += Time.deltaTime;
+
                 shouldMove = false;
-                yield return new WaitForSeconds(timer);
-                shouldMove = true;
+                if (decodTime > decodTimer)
+                {
+                    decodTime = 0;
+                    shouldMove = true;
+                }
+
             }
-            
 
         }
            

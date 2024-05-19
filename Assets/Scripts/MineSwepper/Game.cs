@@ -29,6 +29,9 @@ namespace CtrlAltJam3
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
         private MinigamesManager minigamesManager;
 
+        private List<BotMove> bots;
+        public int botsFinished = 0;
+       
 
         private void Awake()
         {
@@ -36,6 +39,19 @@ namespace CtrlAltJam3
             Instance = this;
             cursorMovement.gameManager = this;
 
+        }
+
+        void CheckBotsFinish()
+        {
+            BotMove[] bots = GetComponentsInChildren<BotMove>();
+            foreach (BotMove bot in bots)
+            {
+                
+                if (bot.start)
+                {
+                   
+                }
+            }
         }
 
         private void Update()

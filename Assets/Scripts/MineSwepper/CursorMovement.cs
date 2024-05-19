@@ -25,6 +25,11 @@ namespace CtrlAltJam3
             //firstTry=true;  
         }
 
+        private void Update()
+        {
+               
+        }
+
         public void Move(Vector2 direction)
         {
             if (CanMove(direction))
@@ -34,12 +39,12 @@ namespace CtrlAltJam3
             }
         }
 
-        /*public Cell CellType(GameObject targetObject)
+        public Cell CellType(GameObject targetObject)
         {
 
             return gameManager.CellType(targetObject);
 
-        }*/
+        }
 
         private bool CanMove(Vector2 direction)
         {
