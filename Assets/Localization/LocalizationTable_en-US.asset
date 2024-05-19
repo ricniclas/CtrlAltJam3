@@ -50,6 +50,38 @@ MonoBehaviour:
     m_Localized: Language
     m_Metadata:
       m_Items: []
+  - m_Id: 1281246749249536
+    m_Localized: 'Time:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281412696887296
+    m_Localized: 'Teammates alive:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1282704039202816
+    m_Localized: Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1283954986176512
+    m_Localized: Back to menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1286851815788544
+    m_Localized: 'Progress:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385289114963968
+    m_Localized: Your crew was defeated
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1385398972174336
+    m_Localized: Mission Complete!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1428693542752256
+    m_Localized: ALERT
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

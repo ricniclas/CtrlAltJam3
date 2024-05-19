@@ -19,7 +19,7 @@ namespace CtrlAltJam3
         public static int totalBots = 3;
 
         private bool hasFinished = false;
-
+        [SerializeField] CamsManager cams;
         public Vector2 direction;
         public Game gameManager;
         public BotCheck check;
@@ -30,6 +30,7 @@ namespace CtrlAltJam3
         public bool isIngrid;
         public bool hasStartedDecoding;
         Cell cell;
+        Vector3Int gridPositions; 
         int countToBegin;
         private void Start()
         {
@@ -51,7 +52,9 @@ namespace CtrlAltJam3
             {   
                 direction.x = 1;
                 transform.localPosition += (Vector3)direction;
-            }else if (!start)
+                //Debug.Log(cams.hasCamEnabled(gridPositions.x, gridPositions.y));
+            }
+            else if (!start)
             {
                 direction.x = -1;
                 transform.localPosition += (Vector3)direction;
@@ -76,7 +79,7 @@ namespace CtrlAltJam3
 
         public Cell CellType(GameObject targetObject)
         {
-
+           
             return gameManager.CellType(targetObject);
 
         }
@@ -84,6 +87,7 @@ namespace CtrlAltJam3
         private bool Ingrid(Vector2 direction)
         {
             Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction * transform.parent.localScale.x);
+            gridPositions = gridPosition;
             if (!tile.HasTile(gridPosition))
             {
                

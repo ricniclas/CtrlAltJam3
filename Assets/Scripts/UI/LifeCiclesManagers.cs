@@ -8,10 +8,15 @@ namespace CtrlAltJam3
     {
         [SerializeField] LifeCircle[] lifeCircle;
         [SerializeField] private float unitMaxHealth;
+        [SerializeField] Animator[] crewmatesAnimators;
         public float[] unitsHealth = new float[3];
+        private MinigamesManager minigamesManager;
 
 
-
+        public void Initialize(MinigamesManager minigamesManager)
+        {
+            this.minigamesManager = minigamesManager;
+        }
 
         private void Start()
         {
@@ -34,25 +39,45 @@ namespace CtrlAltJam3
                     {
                         unitsHealth[currentLife] -= value;
                         lifeCircle[currentLife].updateLifeBar(unitsHealth[currentLife] / unitMaxHealth * 100, barAction);
+                        if (unitsHealth[currentLife] <= 0)
+                        {
+                            crewmatesAnimators[currentLife].SetTrigger("Death");
+                        }
+                        else
+                        {
+                            crewmatesAnimators[currentLife].SetTrigger("Hurt");
+                        }
+                        if (GetMembersAlive() == 0)
+                        {
+                            minigamesManager.EndGame(false);
+                        }
                     }
                     else
                     {
-                        Debug.Log("Game Over");
+                        minigamesManager.EndGame(false);
                     }
                     break;
                 case LifeBarAction.ADD:
                     currentLife = CheckUnitWithHealth(barAction);
                     if (currentLife != 999)
                     {
-                        unitsHealth[currentLife] += value;
+                        
+                        unitsHealth[currentLife] = MathUtils.Limit((int)(unitsHealth[currentLife] + value),0,100);
                         lifeCircle[currentLife].updateLifeBar(unitsHealth[currentLife] / unitMaxHealth * 100, barAction);
-                    }
-                    else
-                    {
-                        Debug.Log("Max Health");
                     }
                     break;
             }
+        }
+
+        public int GetMembersAlive()
+        {
+            int result = 0;
+            for(int i = 0; i < unitsHealth.Length; i++)
+            {
+                if (unitsHealth[i] > 0)
+                    result++;
+            }
+            return result;
         }
 
         private int CheckUnitWithHealth(LifeBarAction barAction)
@@ -69,7 +94,7 @@ namespace CtrlAltJam3
                 case LifeBarAction.ADD:
                     for(int i = 0; i < unitsHealth.Length; i++)
                     {
-                        if (unitsHealth[i] > unitMaxHealth)
+                        if (unitsHealth[i] < unitMaxHealth)
                             return i;
                     }
                     return 999;

@@ -239,7 +239,7 @@ namespace CtrlAltJam3
                     }
                 }
             }
-            Debug.Log("count:" + count);
+           
             return count;
         }
 
@@ -262,7 +262,6 @@ namespace CtrlAltJam3
         public void Reveal(GameObject targetObject)
         {
 
-            Debug.Log("foi?");
             Vector3 worldPosition = targetObject.transform.position;
             Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
             Cell cell = GetCell(cellPosition.x, cellPosition.y);
@@ -463,13 +462,13 @@ namespace CtrlAltJam3
 
         }
 
-        void IMinigame.SetAlertLevel(int alertLevel)
+        void IMinigame.UpdateAlertLevel(int alertLevel)
         {
 
         }
-        void IMinigame.ApplyHeal()
+        int IMinigame.GetInnerAlertLevel()
         {
-
+            return 0;
         }
 
         void IMinigame.ResetInputs()

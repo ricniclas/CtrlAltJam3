@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lider-idle_0
+      m_Hash: 211649963
+      m_Sprite: {fileID: -1611668907, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -959487915, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_1
+      m_Hash: 999994685
+      m_Sprite: {fileID: 160673476, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -260692775, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_2
+      m_Hash: 580117639
+      m_Sprite: {fileID: -2109659011, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -128857790, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_3
+      m_Hash: 362075153
+      m_Sprite: {fileID: 669277333, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 641827173, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_4
+      m_Hash: 200294834
+      m_Sprite: {fileID: 1629538034, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -967520820, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_5
+      m_Hash: 1022849316
+      m_Sprite: {fileID: 1204937602, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 769399290, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_6
+      m_Hash: 637411486
+      m_Sprite: {fileID: 560058507, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1877143233, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_7
+      m_Hash: 318312456
+      m_Sprite: {fileID: -509438598, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1145675267, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_8
+      m_Hash: 38145433
+      m_Sprite: {fileID: -1198048016, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1260295831, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_9
+      m_Hash: 893467919
+      m_Sprite: {fileID: -1002429988, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -392322731, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_10
+      m_Hash: 742918533
+      m_Sprite: {fileID: 1747142284, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 105541851, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_11
+      m_Hash: 458176787
+      m_Sprite: {fileID: 1723437100, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 103881045, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_12
+      m_Hash: 38168745
+      m_Sprite: {fileID: 1677569254, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -414937025, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_13
+      m_Hash: 893474879
+      m_Sprite: {fileID: -1875571853, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -862659232, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_14
+      m_Hash: 723897756
+      m_Sprite: {fileID: -387789116, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -15865648, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_15
+      m_Hash: 472055050
+      m_Sprite: {fileID: -1122973110, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1726797702, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_16
+      m_Hash: 86748336
+      m_Sprite: {fileID: -1214582200, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -323876893, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    - m_Name: Lider-idle_17
+      m_Hash: 841784358
+      m_Sprite: {fileID: 437649927, guid: 71329d6bad5783a4fb4d5d7fe9cd063e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -733993174, guid: 7d13603101e085b4b9928a28357bf24c, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 18
+  - m_Name: Hurt
+    m_Hash: 666872612
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lider-hurt-FX_0
+      m_Hash: 238336355
+      m_Sprite: {fileID: 686020254, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1541656029, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_1
+      m_Hash: 959678965
+      m_Sprite: {fileID: 167537265, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 295881779, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_2
+      m_Hash: 540727375
+      m_Sprite: {fileID: -1173139271, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1738393419, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_3
+      m_Hash: 389933273
+      m_Sprite: {fileID: -496381105, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -835590696, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_4
+      m_Hash: 156859770
+      m_Sprite: {fileID: -1767351281, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1997288430, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_5
+      m_Hash: 1046367724
+      m_Sprite: {fileID: -660472934, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 654604794, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_6
+      m_Hash: 660020310
+      m_Sprite: {fileID: -741525566, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1964285924, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_7
+      m_Hash: 273689792
+      m_Sprite: {fileID: 954766143, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2098879804, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_8
+      m_Hash: 15675729
+      m_Sprite: {fileID: 143196198, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 933565108, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_9
+      m_Hash: 937951687
+      m_Sprite: {fileID: -746050128, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 549130122, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_10
+      m_Hash: 964028987
+      m_Sprite: {fileID: -476735891, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2125645540, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    - m_Name: Lider-hurt-FX_11
+      m_Hash: 242408109
+      m_Sprite: {fileID: 341685460, guid: 705a4dd78161677459a47ff7b9e1a8ea, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 36584670, guid: c415f71356b01dc42b2345950dca13ba, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 12
+  - m_Name: Death
+    m_Hash: 646380074
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lider-death_0
+      m_Hash: 212662935
+      m_Sprite: {fileID: 1864950610, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1703636437, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_1
+      m_Hash: 1001114113
+      m_Sprite: {fileID: -1116062404, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1812526535, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_2
+      m_Hash: 581082043
+      m_Sprite: {fileID: -957227670, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -840014210, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_3
+      m_Hash: 363178797
+      m_Sprite: {fileID: 552474701, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 421610757, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_4
+      m_Hash: 197213838
+      m_Sprite: {fileID: -1158106364, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1959695248, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_5
+      m_Hash: 1019612696
+      m_Sprite: {fileID: -2140492641, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3171248, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_6
+      m_Hash: 634347426
+      m_Sprite: {fileID: 858209169, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -616689459, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_7
+      m_Hash: 315125556
+      m_Sprite: {fileID: 404125233, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1469369148, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_8
+      m_Hash: 41382565
+      m_Sprite: {fileID: 1442231093, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1406954939, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Lider-death_9
+      m_Hash: 896549427
+      m_Sprite: {fileID: 652254459, guid: 8208faa0c3a3846489c5687e81a80349, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 748995595, guid: b83b7bc47c5c1394889c76345d23b295, type: 3}
+    - m_Name: Explo-death_10
+      m_Hash: 581117500
+      m_Sprite: {fileID: 1240653403, guid: d063d452f936f7b4d8e2d369655e59d7, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1240653403, guid: d063d452f936f7b4d8e2d369655e59d7, type: 3}
+    - m_Name: Explo-death_11
+      m_Hash: 363075242
+      m_Sprite: {fileID: -1542207544, guid: d063d452f936f7b4d8e2d369655e59d7, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1542207544, guid: d063d452f936f7b4d8e2d369655e59d7, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 12
+  m_PrimaryLibraryGUID: dbafc6dd5c611fb418c010bf31ad987c
+  m_ModificationHash: 638516592851529948
+  m_Version: 1

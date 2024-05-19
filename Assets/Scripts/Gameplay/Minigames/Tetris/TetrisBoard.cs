@@ -23,6 +23,7 @@ namespace CtrlAltJam3
 
         [SerializeField] private float inputHoldTime;
         private float currentInputHoldTime;
+        private int innerAlertLevel;
 
         [SerializeField] private GameObject selectedGameObject;
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
@@ -55,6 +56,7 @@ namespace CtrlAltJam3
         {
             SpawnPiece();
             selectedGameObject.SetActive(false);
+            innerAlertLevel = 1;
         }
 
         private void Update()
@@ -94,8 +96,7 @@ namespace CtrlAltJam3
             }
             else
             {
-                minigamesManager.healthUpdateEvent.Invoke(10, LifeBarAction.TAKE);
-                minigamesManager.UpdateAlertLevel(1);
+                //minigamesManager.UpdateAlertLevel(1);
                 GameOver();
             }
         }
@@ -148,6 +149,7 @@ namespace CtrlAltJam3
             {
                 if (IsLineFull(row))
                 {
+                    minigamesManager.healthUpdateEvent.Invoke(4, LifeBarAction.ADD);
                     LineClear(row);
                 }
                 else
@@ -155,7 +157,8 @@ namespace CtrlAltJam3
                     row++;
                 }
             }
-            currentMaxHeight = CalculateMaxHeight();
+            CalculateMaxHeight();
+
         }
 
 
@@ -163,7 +166,7 @@ namespace CtrlAltJam3
 
         #region Private Methods
 
-        private int CalculateMaxHeight()
+        private void CalculateMaxHeight()
         {
             RectInt bounds = boardBounds;
             int maxHeightIndex = bounds.yMin;
@@ -182,7 +185,29 @@ namespace CtrlAltJam3
                     }
                 }
             }
-            return maxHeightIndex + (bounds.size.y/2) +1;
+            int calculateAlertLevel;
+            currentMaxHeight = maxHeightIndex + (bounds.size.y / 2) + 1;
+            switch (currentMaxHeight)
+            {
+                case < 5:
+                    calculateAlertLevel = 1;
+                    break;
+                case < 10:
+                    calculateAlertLevel = 2;
+                    break;
+                case < 15:
+                    calculateAlertLevel = 3;
+                    break;
+                default:
+                    calculateAlertLevel = 4;
+                    break;
+            }
+            if (calculateAlertLevel != innerAlertLevel)
+            {
+                innerAlertLevel = calculateAlertLevel;
+                minigamesManager.UpdateAlertLevel();
+            }
+             
         }
 
         private bool IsLineFull(int row)
@@ -226,8 +251,9 @@ namespace CtrlAltJam3
 
         private void GameOver()
         {
+            minigamesManager.healthUpdateEvent.Invoke(30, LifeBarAction.TAKE);
             tilemap.ClearAllTiles();
-            currentMaxHeight = 0;
+            CalculateMaxHeight();
         }
 
         private void AlertLevelUpdated(int alertLevel)
@@ -238,13 +264,16 @@ namespace CtrlAltJam3
                     activePiece.SetSpeedMultiplier(1);
                     break;
                 case 2:
-                    activePiece.SetSpeedMultiplier(.7f);
+                    activePiece.SetSpeedMultiplier(.75f);
                     break;
                 case 3:
-                    activePiece.SetSpeedMultiplier(.4f);
+                    activePiece.SetSpeedMultiplier(.5f);
                     break;
-                case > 3:
-                    activePiece.SetSpeedMultiplier(.3f);
+                case  4:
+                    activePiece.SetSpeedMultiplier(4.5f);
+                    break;
+                case > 5:
+                    activePiece.SetSpeedMultiplier(3f);
                     break;
 
             }
@@ -320,13 +349,13 @@ namespace CtrlAltJam3
         {
         }
 
-        void IMinigame.SetAlertLevel(int alertLevel)
+        void IMinigame.UpdateAlertLevel(int alertLevel)
         {
             AlertLevelUpdated(alertLevel);
         }
-        void IMinigame.ApplyHeal()
+        int IMinigame.GetInnerAlertLevel()
         {
-
+            return innerAlertLevel;
         }
 
         void IMinigame.ResetInputs()

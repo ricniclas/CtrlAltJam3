@@ -19,13 +19,14 @@ namespace CtrlAltJam3
         [SerializeField] private Image alertLevelSliderFill;
 
         [SerializeField] private Color[] sliderColors = new Color[4];
+        [SerializeField] private EndGameScreen endGameScreen;
 
         public int alertLevel = 1;
         private List<IMinigame> minigames;
         private InputPackage inputPackage => new InputPackage(this);
         private int currentGame = 0;
 
-        public UnityEvent<float, LifeBarAction> healthUpdateEvent = new UnityEvent<float, LifeBarAction>();
+        [HideInInspector] public UnityEvent<float, LifeBarAction> healthUpdateEvent = new UnityEvent<float, LifeBarAction>();
 
         #region Monobehaviour Callbacks
 
@@ -33,7 +34,7 @@ namespace CtrlAltJam3
         {
             InputManager.instance.AddGameSelectionyEvents(inputPackage, true);
             minigames = new List<IMinigame>();
-            for(int i = 0; i < minigamesGameObject.Length; i++)
+            for (int i = 0; i < minigamesGameObject.Length; i++)
             {
                 minigames.Add(minigamesGameObject[i].GetComponent<IMinigame>());
                 minigames[i].SetMinigameManager(this);
@@ -42,6 +43,7 @@ namespace CtrlAltJam3
             optionsMenu.gameObject.SetActive(false);
             minigames[initialMinigame].Selected();
             lightsController.Initialize(initialMinigame);
+            lifeManager.Initialize(this);
             currentGame = initialMinigame;
             SetAlertSlider(alertLevel);
         }
@@ -59,22 +61,32 @@ namespace CtrlAltJam3
         #endregion
 
         #region Public Methods
-        public void UpdateAlertLevel(int change)
+        public void UpdateAlertLevel()
         {
-            
-            alertLevel = MathUtils.Limit(change + alertLevel,1,4);
-            for(int i = 0;i < minigames.Count; i++)
+            int alertLevel = 0;
+            for (int i = 0; i < minigames.Count; i++)
             {
-                minigames[i].SetAlertLevel(alertLevel);
+                alertLevel += minigames[i].GetInnerAlertLevel();
             }
             SetAlertSlider(alertLevel);
+            for(int i = 0; i < minigames.Count; i++)
+            {
+                minigames[i].UpdateAlertLevel(alertLevel);
+            }
+        }
+
+        public void EndGame(bool win)
+        {
+            InputManager.instance.ClearEvents(true, true);
+            endGameScreen.gameObject.SetActive(true);
+            endGameScreen.Initialize(win, 50f, 50f, lifeManager.GetMembersAlive());
         }
         #endregion
         #region Private Methods
 
         private void SwitchGame(int currentGame)
         {
-            if(this.currentGame != currentGame)
+            if (this.currentGame != currentGame)
             {
                 for (int i = 0; i < minigames.Count; i++)
                 {
@@ -101,7 +113,24 @@ namespace CtrlAltJam3
         private void ResumeGame()
         {
             InputManager.instance.AddGameSelectionyEvents(inputPackage, true);
-            SwitchGame(currentGame);
+            for (int i = 0; i < minigames.Count; i++)
+            {
+                if (i != currentGame)
+                {
+                    minigames[i].ResetInputs();
+                    minigames[i].Unselected();
+                }
+            }
+            try
+            {
+                InputManager.instance.AddGameplayEvents(minigames[currentGame].GetInputPackage(), true);
+                minigames[currentGame].Selected();
+                lightsController.ActivateLight(currentGame);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"No game assigned to index {currentGame}");
+            }
             Time.timeScale = 1.0f;
         }
 
