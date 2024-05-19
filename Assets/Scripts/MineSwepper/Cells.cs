@@ -12,6 +12,7 @@ namespace CtrlAltJam3
             Empty,
             Mine,
             Number,
+            Flag
         }
 
         public Vector3Int position;

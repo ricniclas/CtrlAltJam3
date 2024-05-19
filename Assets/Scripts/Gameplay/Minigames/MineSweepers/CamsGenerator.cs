@@ -78,7 +78,7 @@ namespace CtrlAltJam3
                                     {
                                         Cams cam = new Cams();
                                         cam.position = initialPosition;
-                                        cam.type = Cams.Type.DISABLED;
+                                        cam.type = Cams.Type.ENABLED;
                                         camBoard[initialPosition+i] = cam;
                                         group[i] = cam;;
                                     }

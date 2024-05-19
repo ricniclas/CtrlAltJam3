@@ -29,6 +29,9 @@ namespace CtrlAltJam3
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
         private MinigamesManager minigamesManager;
 
+        private List<BotMove> bots;
+        public int botsFinished = 0;
+       
 
         private void Awake()
         {
@@ -36,6 +39,19 @@ namespace CtrlAltJam3
             Instance = this;
             cursorMovement.gameManager = this;
 
+        }
+
+        void CheckBotsFinish()
+        {
+            BotMove[] bots = GetComponentsInChildren<BotMove>();
+            foreach (BotMove bot in bots)
+            {
+                
+                if (bot.start)
+                {
+                   
+                }
+            }
         }
 
         private void Update()
@@ -63,15 +79,31 @@ namespace CtrlAltJam3
 
         }
 
-        private void NewGame()
+        public void NewGame()
         {
+
+            Debug.Log("onde?");
             state = new Cell[width, height];
             GenerateCells();
             CursorPosition();
             firstTry = true;
+            FirstMove();
+            Reveal(targetObject);
 
 
+            board.Draw(state);
+        }
 
+
+        public void CleamBoard(GameObject targetObject)
+        {
+            state = new Cell[width, height];
+            GenerateCells();
+            CursorPosition();
+           
+            Reveal(targetObject);
+
+       
             board.Draw(state);
         }
 
@@ -108,14 +140,12 @@ namespace CtrlAltJam3
                 }
             }
         }
-        public Cell.Type CellType()
+        public Cell CellType(GameObject targetObject)
         {
             //Vector3 worldPosition = targetObject.transform.position;
             Vector3Int cellPosition = board.tilemap.WorldToCell(targetObject.transform.position);
             Cell cell = GetCell(cellPosition.x, cellPosition.y);
-
-            //Debug.Log(cell.type);
-            return cell.type;
+            return cell;
         }
         public void GenerateMines()
         {
@@ -209,7 +239,7 @@ namespace CtrlAltJam3
                     }
                 }
             }
-            Debug.Log("count:" + count);
+           
             return count;
         }
 
@@ -229,15 +259,16 @@ namespace CtrlAltJam3
             board.Draw(state);
         }
 
-        public void Reveal()
+        public void Reveal(GameObject targetObject)
         {
+
             Vector3 worldPosition = targetObject.transform.position;
             Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
             Cell cell = GetCell(cellPosition.x, cellPosition.y);
 
 
 
-            if (cell.type == Cell.Type.Invalid || cell.revealed || cell.flagged)
+            if (cell.type == Cell.Type.Invalid || cell.revealed /*|| cell.flagged*/)
             {
 
                 return;
@@ -330,7 +361,7 @@ namespace CtrlAltJam3
 
                     if (cell.type == Cell.Type.Mine)
                     {
-                        cell.revealed = true;
+                        //cell.revealed = true;
                         state[x, y] = cell;
                     }
 
