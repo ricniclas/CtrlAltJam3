@@ -149,6 +149,7 @@ namespace CtrlAltJam3
                 if (IsLineFull(row))
                 {
                     LineClear(row);
+                    minigamesManager.EndGame(true);
                 }
                 else
                 {

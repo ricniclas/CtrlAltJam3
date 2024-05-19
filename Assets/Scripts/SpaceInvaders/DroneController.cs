@@ -65,6 +65,7 @@ namespace CtrlAltJam3
             {
                 if (isActive)
                 {
+                    spriteRenderer.flipX = transform.position.x > player.transform.position.x ? true : false;
                     transform.position = Vector3.MoveTowards(transform.position, waitPoints[_currentWaypoint].transform.position,
                     (moveSpeed * Time.deltaTime));
 

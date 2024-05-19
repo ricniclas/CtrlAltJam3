@@ -12,6 +12,7 @@ namespace CtrlAltJam3
 
         [SerializeField] private ShieldController player; 
         [SerializeField] private int maxDrones;
+        [SerializeField] private int damagePerBullet = 10;
         [SerializeField] private DroneController dronePrefab;
         private DroneController[] activeDrones;
 
@@ -50,7 +51,7 @@ namespace CtrlAltJam3
         public void TakeDamage()
         {
             //ActivateNextDrone();
-            minigamesManager.healthUpdateEvent.Invoke(10, LifeBarAction.TAKE);
+            minigamesManager.healthUpdateEvent.Invoke(damagePerBullet, LifeBarAction.TAKE);
         }
 
 

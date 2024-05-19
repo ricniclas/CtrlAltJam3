@@ -24,7 +24,6 @@ namespace CtrlAltJam3
         {
             float rotationAmount = -moveInput.x * rotationSpeed * Time.deltaTime;
 
-            //Debug.Log(rotationAmount);
             transform.Rotate(0, 0, rotationAmount);
         }
 
