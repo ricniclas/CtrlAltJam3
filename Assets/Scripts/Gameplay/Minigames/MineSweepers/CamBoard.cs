@@ -11,15 +11,26 @@ namespace CtrlAltJam3
 
         public void checkCode(string code)
         {
-            foreach (var cam in cams)
-            {
-                cam.checkCode(code);
+            for (int i = 0; i < cams.Length; i++) {
+                cams[i].checkCode(code);
             }
+            updateBoard();
         }
 
         public bool hasCamEnabled(int x)
         {
             return board[x].type == Cams.Type.ENABLED;
+        }
+
+        private void updateBoard()
+        {
+            for ( int j = 0; j < cams.Length; j++)
+            {
+                for(int i = 0;i < cams[j].cams.Length;i++)
+                {
+                    board[cams[j].cams[i].position] = cams[j].cams[i];
+                }
+            }
         }
     }
 }

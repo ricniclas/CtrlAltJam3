@@ -29,7 +29,6 @@ namespace CtrlAltJam3
             for (int col = 0; col < width; col++)
             {
                 Cams.Type type = camBoards[player].board[col].type;
-                Debug.Log("Position: " + col + " - Type: " + type);
                 if ( type != Cams.Type.EMPTY)
                 {
                     tilemap.SetTile(new Vector3Int(col, players[player], 0), getCamTile(type));
@@ -39,9 +38,14 @@ namespace CtrlAltJam3
 
         public void checkCode(string code)
         {
-            foreach (var board in camBoards)
+            tilemap.ClearAllTiles();
+            string teste = "before: ";
+                
+
+            for (int i = 0;i < camBoards.Length; i++)
             {
-                board.checkCode(code);
+                camBoards[i].checkCode(code);
+                drawnBoard(i);
             }
         }
 
