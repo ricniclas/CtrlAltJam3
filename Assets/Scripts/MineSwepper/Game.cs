@@ -63,7 +63,7 @@ namespace CtrlAltJam3
 
         }
 
-        private void NewGame()
+        public void NewGame()
         {
             state = new Cell[width, height];
             GenerateCells();
@@ -73,6 +73,19 @@ namespace CtrlAltJam3
             Reveal();
 
 
+            board.Draw(state);
+        }
+
+
+        public void CleamBoard()
+        {
+            state = new Cell[width, height];
+            GenerateCells();
+            CursorPosition();
+            firstTry = true;
+            Reveal();
+
+            Debug.Log("Foi caralho");
             board.Draw(state);
         }
 
@@ -230,6 +243,8 @@ namespace CtrlAltJam3
 
         public void Reveal()
         {
+
+            Debug.Log("foi?");
             Vector3 worldPosition = targetObject.transform.position;
             Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
             Cell cell = GetCell(cellPosition.x, cellPosition.y);
@@ -329,7 +344,7 @@ namespace CtrlAltJam3
 
                     if (cell.type == Cell.Type.Mine)
                     {
-                        cell.revealed = true;
+                        //cell.revealed = true;
                         state[x, y] = cell;
                     }
 

@@ -17,21 +17,26 @@ namespace CtrlAltJam3
         public Vector2 direction;
         public Game gameManager;
 
+        public bool shouldMove;
+        public bool finish;
         public bool isMoving;
         public bool start;
-        public bool finish;
+        public bool isIngrid;
+        Cell cell;
         private void Start()
         {
             gameManager = GetComponentInParent<Game>();
+            shouldMove = true;
             StartCoroutine(Move(timer));
             start = true;
+           
         }
 
         public void Move()
         {
-           finish = CanMove(direction);
 
-           Debug.Log(finish);
+            cell = CellType(gameObject);
+            Debug.Log(isIngrid);
 
             if (start)
             {   
@@ -41,6 +46,21 @@ namespace CtrlAltJam3
             {
                 direction.x = -1;
                 transform.localPosition += (Vector3)direction;
+            }
+
+            if (direction.x == -1)
+            {
+               
+                if (!CanMove(direction))
+                {
+                    Debug.Log("pare agora");
+                    shouldMove = false;
+                }
+            }
+
+            if (finish)
+            {
+                gameManager.CleamBoard();
             }
         }
 
@@ -56,6 +76,7 @@ namespace CtrlAltJam3
             Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction * transform.parent.localScale.x);
             if (!tile.HasTile(gridPosition))
             {
+               
                 start = false;
                 return false;
             }
@@ -64,6 +85,19 @@ namespace CtrlAltJam3
 
         void Update()
         {
+            isIngrid = CanMove(direction);
+
+            if(!isIngrid && direction.x == 1)
+            {
+               
+                   finish = true;
+            }
+            else{
+                finish = false;
+            }
+
+            TakeDamage();
+            //gameManager.Reveal();
             //StartCoroutine(Move(timer));
 
             /*if(!start && !finish)
@@ -79,13 +113,13 @@ namespace CtrlAltJam3
                 }
             }*/
 
-          
+
         }
 
 
         private IEnumerator Move(float timer)
         {
-            while (true) // Loop infinito
+            while (shouldMove) // Loop infinito
             {
                 isMoving = false;
                 Move();
@@ -93,6 +127,14 @@ namespace CtrlAltJam3
                 isMoving = true;
             }
         }
-
+        public void TakeDamage()
+        {
+            Debug.Log(cell.type);
+            if (cell.type == Cell.Type.Mine)
+            {
+                Debug.Log("Damage");
+                //gameManager.Reveal();
+            }
+        }
     }
 }
