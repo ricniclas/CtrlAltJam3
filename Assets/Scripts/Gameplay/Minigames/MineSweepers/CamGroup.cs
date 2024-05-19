@@ -16,7 +16,7 @@ namespace CtrlAltJam3
         {
             if (code == _code)
             {
-                this.setEnable(Cams.Type.ENABLED);
+                this.setEnable(Cams.Type.DISABLED);
             }else
             {
                 this.setEnable(Cams.Type.ENABLED);

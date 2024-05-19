@@ -77,7 +77,7 @@ namespace CtrlAltJam3
                                     for (int i = 0;i < size; i++)
                                     {
                                         Cams cam = new Cams();
-                                        cam.position = initialPosition;
+                                        cam.position = initialPosition+i;
                                         cam.type = Cams.Type.ENABLED;
                                         camBoard[initialPosition+i] = cam;
                                         group[i] = cam;;
@@ -106,7 +106,7 @@ namespace CtrlAltJam3
                         {
                             Cams cam = new Cams();
                             cam.position = initialPosition;
-                            cam.type = Cams.Type.DISABLED;
+                            cam.type = Cams.Type.ENABLED;
                             camBoard[initialPosition] = cam;
                             cams[camGroupPosition].cams = new Cams[] { cam };
                             cams[camGroupPosition].code = GeneratedCode();
@@ -149,7 +149,6 @@ namespace CtrlAltJam3
             result = result + codes[0].ToCharArray()[a];
             result = result + codes[1].ToCharArray()[b];
             result = result + codes[2].ToCharArray()[c];
-            Debug.Log(result);
             return result;
         }
 
