@@ -75,6 +75,10 @@ MonoBehaviour:
     m_Key: Win Message
     m_Metadata:
       m_Items: []
+  - m_Id: 1428693542752256
+    m_Key: Alert
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

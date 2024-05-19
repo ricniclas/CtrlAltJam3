@@ -8,6 +8,7 @@ namespace CtrlAltJam3
     {
         [SerializeField] LifeCircle[] lifeCircle;
         [SerializeField] private float unitMaxHealth;
+        [SerializeField] Animator[] crewmatesAnimators;
         public float[] unitsHealth = new float[3];
         private MinigamesManager minigamesManager;
 
@@ -38,6 +39,14 @@ namespace CtrlAltJam3
                     {
                         unitsHealth[currentLife] -= value;
                         lifeCircle[currentLife].updateLifeBar(unitsHealth[currentLife] / unitMaxHealth * 100, barAction);
+                        if (unitsHealth[currentLife] <= 0)
+                        {
+                            crewmatesAnimators[currentLife].SetTrigger("Death");
+                        }
+                        else
+                        {
+                            crewmatesAnimators[currentLife].SetTrigger("Hurt");
+                        }
                         if (GetMembersAlive() == 0)
                         {
                             minigamesManager.EndGame(false);

@@ -78,6 +78,10 @@ MonoBehaviour:
     m_Localized: "Miss\xE3o Cumprida!"
     m_Metadata:
       m_Items: []
+  - m_Id: 1428693542752256
+    m_Localized: ALERTA
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

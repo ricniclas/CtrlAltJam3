@@ -78,6 +78,10 @@ MonoBehaviour:
     m_Localized: Mission Complete!
     m_Metadata:
       m_Items: []
+  - m_Id: 1428693542752256
+    m_Localized: ALERT
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
