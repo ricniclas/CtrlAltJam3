@@ -72,16 +72,19 @@ namespace CtrlAltJam3
             switch (alertLevel)
             {
                 case <2:
-                    ActivateDrones(2);
+                    ActivateDrones(1);
                     break;
                 case 2:
-                    ActivateDrones(4);
+                    ActivateDrones(3);
                     break;
                 case 3:
-                    ActivateDrones(6);
+                    ActivateDrones(5);
                     break;
-                case >3:
-                    ActivateDrones(8);
+                case 4:
+                    ActivateDrones(7);
+                    break;
+                case > 4:
+                    ActivateDrones(10);
                     break;
 
             }
@@ -112,13 +115,13 @@ namespace CtrlAltJam3
         {
         }
 
-        void IMinigame.SetAlertLevel(int alertLevel)
+        void IMinigame.UpdateAlertLevel(int alertLevel)
         {
             AlertLevelUpdated(alertLevel);
         }
-        void IMinigame.ApplyHeal()
+        int IMinigame.GetInnerAlertLevel()
         {
-
+            return 0;
         }
 
         void IMinigame.ResetInputs()

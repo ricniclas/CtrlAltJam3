@@ -61,12 +61,9 @@ namespace CtrlAltJam3
                     currentLife = CheckUnitWithHealth(barAction);
                     if (currentLife != 999)
                     {
-                        unitsHealth[currentLife] += value;
+                        
+                        unitsHealth[currentLife] = MathUtils.Limit((int)(unitsHealth[currentLife] + value),0,100);
                         lifeCircle[currentLife].updateLifeBar(unitsHealth[currentLife] / unitMaxHealth * 100, barAction);
-                    }
-                    else
-                    {
-                        Debug.Log("Max Health");
                     }
                     break;
             }
@@ -97,7 +94,7 @@ namespace CtrlAltJam3
                 case LifeBarAction.ADD:
                     for(int i = 0; i < unitsHealth.Length; i++)
                     {
-                        if (unitsHealth[i] > unitMaxHealth)
+                        if (unitsHealth[i] < unitMaxHealth)
                             return i;
                     }
                     return 999;

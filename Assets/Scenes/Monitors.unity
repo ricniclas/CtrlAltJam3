@@ -1010,6 +1010,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5541403546920086677, guid: da09b974e43931849a2f6103fb16a348, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541403546920086677, guid: da09b974e43931849a2f6103fb16a348, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6746580290799935169, guid: da09b974e43931849a2f6103fb16a348, type: 3}
       propertyPath: m_Name
       value: SpaceInvadersMinigame
@@ -3431,7 +3439,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 713208555}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -5108,6 +5116,42 @@ PrefabInstance:
       propertyPath: alertLevelSliderFill
       value: 
       objectReference: {fileID: 1491411256}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[2].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[2].g
+      value: 0.77312505
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[2].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[3].g
+      value: 0.3074495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[3].r
+      value: 0.95686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[4].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[4].g
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
+      propertyPath: sliderColors.Array.data[4].r
+      value: 0.9568628
+      objectReference: {fileID: 0}
     - target: {fileID: 6324679027081552361, guid: b8adde0416d97d24e9b937e9e5e5dc48, type: 3}
       propertyPath: minigamesGameObject.Array.data[0]
       value: 

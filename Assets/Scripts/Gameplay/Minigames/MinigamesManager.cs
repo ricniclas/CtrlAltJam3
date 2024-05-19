@@ -19,7 +19,6 @@ namespace CtrlAltJam3
         [SerializeField] private Image alertLevelSliderFill;
 
         [SerializeField] private Color[] sliderColors = new Color[4];
-
         [SerializeField] private EndGameScreen endGameScreen;
 
         public int alertLevel = 1;
@@ -62,15 +61,18 @@ namespace CtrlAltJam3
         #endregion
 
         #region Public Methods
-        public void UpdateAlertLevel(int change)
+        public void UpdateAlertLevel()
         {
-
-            alertLevel = MathUtils.Limit(change + alertLevel, 1, 4);
+            int alertLevel = 0;
             for (int i = 0; i < minigames.Count; i++)
             {
-                minigames[i].SetAlertLevel(alertLevel);
+                alertLevel += minigames[i].GetInnerAlertLevel();
             }
             SetAlertSlider(alertLevel);
+            for(int i = 0; i < minigames.Count; i++)
+            {
+                minigames[i].UpdateAlertLevel(alertLevel);
+            }
         }
 
         public void EndGame(bool win)
