@@ -1,10 +1,4 @@
-using System.CodeDom.Compiler;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
+
 using UnityEngine;
 
 namespace CtrlAltJam3

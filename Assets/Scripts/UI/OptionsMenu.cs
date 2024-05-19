@@ -1,13 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
-using static UnityEditor.PlayerSettings.Switch;
 
 namespace CtrlAltJam3
 {

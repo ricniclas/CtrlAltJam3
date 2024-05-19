@@ -28,6 +28,21 @@ namespace CtrlAltJam3
         #endregion
 
         #region SFX Events
+        public static string FMOD_EVENT_SFX_ALERT_DECREASE = "event:/SFX/GAMEPLAY/ALERT_DECREASE";
+        public static string FMOD_EVENT_SFX_ALERT_RAISE = "event:/SFX/GAMEPLAY/ALERT_RAISE";
+        public static string FMOD_EVENT_SFX_BOMB_EXPLODE = "event:/SFX/GAMEPLAY/BOMB_EXPLODE";
+        public static string FMOD_EVENT_SFX_DRONE_SHOT = "event:/SFX/GAMEPLAY/DRONE_SHOT";
+        public static string FMOD_EVENT_SFX_HURT = "event:/SFX/GAMEPLAY/HURT";
+        public static string FMOD_EVENT_SFX_LINE_CLEAR = "event:/SFX/GAMEPLAY/LINE_CLEAR";
+        public static string FMOD_EVENT_SFX_LOSE = "event:/SFX/GAMEPLAY/LOSE";
+        public static string FMOD_EVENT_SFX_MOVE_BLOCK = "event:/SFX/GAMEPLAY/MOVE_BLOCK";
+        public static string FMOD_EVENT_SFX_SET_BLOCK = "event:/SFX/GAMEPLAY/SET_BLOCK";
+        public static string FMOD_EVENT_SFX_SPIN_WHEEL = "event:/SFX/GAMEPLAY/SPIN_WHEEL";
+        public static string FMOD_EVENT_SFX_SWITCH_GAME = "event:/SFX/GAMEPLAY/SWITCH_GAME";
+        public static string FMOD_EVENT_SFX_WIN = "event:/SFX/GAMEPLAY/WIN";
+
+        public static string FMOD_EVENT_SFX_CLICK = "event:/SFX/GAMEPLAY/CLICK";
+        public static string FMOD_EVENT_SFX_CANCEL = "event:/SFX/GAMEPLAY/CANCEL";
         #endregion
 
         #region Player Prefs

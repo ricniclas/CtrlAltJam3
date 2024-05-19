@@ -1,10 +1,13 @@
 using DG.Tweening;
+using FMOD.Studio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using FMOD.Studio;
+using FMODUnity;
 
 namespace CtrlAltJam3
 {
@@ -27,6 +30,10 @@ namespace CtrlAltJam3
         private int currentGame = 0;
 
         [HideInInspector] public UnityEvent<float, LifeBarAction> healthUpdateEvent = new UnityEvent<float, LifeBarAction>();
+
+
+        private EventInstance eventInstance;
+
 
         #region Monobehaviour Callbacks
 
@@ -102,6 +109,7 @@ namespace CtrlAltJam3
                     this.currentGame = currentGame;
                     minigames[currentGame].Selected();
                     lightsController.ActivateLight(currentGame);
+                    PlayEventInstance(Constants.FMOD_EVENT_SFX_SWITCH_GAME);
                 }
                 catch (Exception e)
                 {
@@ -144,6 +152,12 @@ namespace CtrlAltJam3
             alertLevelSlider.DOValue(value,0.3f);
             alertLevelSlider.gameObject.transform.DOPunchRotation(new Vector3(0, 0, 10), 0.5f, elasticity: 1);
             alertLevelSliderFill.DOColor(sliderColors[value-1],0.3f);
+        }
+
+        public void PlayEventInstance(string eventInstance)
+        {
+            this.eventInstance = RuntimeManager.CreateInstance(eventInstance);
+            this.eventInstance.start();
         }
         #endregion
 

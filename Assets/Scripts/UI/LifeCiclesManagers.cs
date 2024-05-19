@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace CtrlAltJam3
         [SerializeField] Animator[] crewmatesAnimators;
         public float[] unitsHealth = new float[3];
         private MinigamesManager minigamesManager;
-
+        private EventInstance eventInstance;
 
         public void Initialize(MinigamesManager minigamesManager)
         {
