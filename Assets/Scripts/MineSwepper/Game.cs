@@ -431,13 +431,13 @@ namespace CtrlAltJam3
 
         }
 
-        void IMinigame.SetAlertLevel(int alertLevel)
+        void IMinigame.UpdateAlertLevel(int alertLevel)
         {
 
         }
-        void IMinigame.ApplyHeal()
+        int IMinigame.GetInnerAlertLevel()
         {
-
+            return 0;
         }
 
         void IMinigame.ResetInputs()

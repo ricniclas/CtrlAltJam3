@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,13 +31,18 @@ namespace CtrlAltJam3
                     setArcOne(MathUtils.ConverterPorcentageToDegrees(Mathf.Abs(value - 100)));
                     break;
                 case LifeBarAction.ADD:
+                    setArcOne(MathUtils.ConverterPorcentageToDegrees(Mathf.Abs(value - 100)));
                     break;
             }
         }
 
         private void setArcOne(float value)
         {
-            material.SetFloat("_Arc1", value);
+            //material.SetFloat("_Arc1", value);
+
+            DOVirtual.Float(material.GetFloat("_Arc1"), value, .5f, (float value) => {
+                material.SetFloat("_Arc1", value);
+            });
         }
 
 

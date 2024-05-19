@@ -133,7 +133,7 @@ MonoBehaviour:
   shoot: {fileID: 1105181454835218943, guid: 5d853bf9b58b8d941aeb939c277b23af, type: 3}
   player: {fileID: 0}
   shootPosition: {fileID: 4090130358131108068}
-  timer: 5
+  timer: 8
   isMoving: 1
   _currentWaypoint: 0
 --- !u!95 &1607794302471020467

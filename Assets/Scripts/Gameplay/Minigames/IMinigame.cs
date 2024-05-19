@@ -10,8 +10,8 @@ namespace CtrlAltJam3
         void PauseGame();
         void InvokeConsequence();
         void ReceiveConsequence();
-        void SetAlertLevel(int alertLevel);
-        void ApplyHeal();
+        void UpdateAlertLevel(int alertLevel);
+        int GetInnerAlertLevel();
         void ResetInputs();
         void Selected();
         void Unselected();
