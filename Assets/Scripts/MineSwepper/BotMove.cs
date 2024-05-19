@@ -35,7 +35,7 @@ namespace CtrlAltJam3
         public void Move()
         {
 
-            cell = CellType(gameObject);
+            
             Debug.Log(isIngrid);
 
             if (start)
@@ -60,7 +60,7 @@ namespace CtrlAltJam3
 
             if (finish)
             {
-                gameManager.CleamBoard();
+                gameManager.CleamBoard(gameObject);
             }
         }
 
@@ -95,7 +95,7 @@ namespace CtrlAltJam3
             else{
                 finish = false;
             }
-
+            cell = CellType(gameObject);
             TakeDamage();
             //gameManager.Reveal();
             //StartCoroutine(Move(timer));
@@ -112,7 +112,7 @@ namespace CtrlAltJam3
                     direction.x = 0;
                 }
             }*/
-
+           
 
         }
 
@@ -132,8 +132,9 @@ namespace CtrlAltJam3
             Debug.Log(cell.type);
             if (cell.type == Cell.Type.Mine)
             {
+                gameManager.Reveal(gameObject);
                 Debug.Log("Damage");
-                //gameManager.Reveal();
+               
             }
         }
     }

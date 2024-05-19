@@ -70,22 +70,22 @@ namespace CtrlAltJam3
             CursorPosition();
             firstTry = true;
             FirstMove();
-            Reveal();
+            Reveal(gameObject);
 
 
             board.Draw(state);
         }
 
 
-        public void CleamBoard()
+        public void CleamBoard(GameObject targetObject)
         {
             state = new Cell[width, height];
             GenerateCells();
             CursorPosition();
-            firstTry = true;
-            Reveal();
+           
+            Reveal(targetObject);
 
-            Debug.Log("Foi caralho");
+       
             board.Draw(state);
         }
 
@@ -241,7 +241,7 @@ namespace CtrlAltJam3
             board.Draw(state);
         }
 
-        public void Reveal()
+        public void Reveal(GameObject targetObject)
         {
 
             Debug.Log("foi?");

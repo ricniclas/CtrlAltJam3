@@ -65,7 +65,7 @@ namespace CtrlAltJam3
                 gameManager.FirstMove();
                 //gameManager.firstTry = false;
             }
-            gameManager.Reveal();
+            gameManager.Reveal(gameObject);
 
 
             //gameManager.GenerateMines();
