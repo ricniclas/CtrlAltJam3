@@ -5312,11 +5312,16 @@ MonoBehaviour:
   tile: {fileID: 821302873}
   collisionTilemap: {fileID: 0}
   timer: 1
+  decodTimer: 5
   direction: {x: 0, y: 0}
   gameManager: {fileID: 0}
+  check: {fileID: 0}
+  shouldMove: 0
+  finish: 0
   isMoving: 0
   start: 1
-  finish: 0
+  isIngrid: 0
+  hasStartedDecoding: 0
 --- !u!114 &1875405607 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4281465450155745652, guid: fec66375ed6e3294e8088a1996d57351, type: 3}

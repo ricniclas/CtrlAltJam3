@@ -13,23 +13,30 @@ namespace CtrlAltJam3
         private Tilemap collisionTilemap;
 
         public float  timer;
+        private float  decodTime;
+        public float decodTimer;
+
+
 
         public Vector2 direction;
         public Game gameManager;
-
+        public BotCheck check;
         public bool shouldMove;
         public bool finish;
         public bool isMoving;
         public bool start;
         public bool isIngrid;
+        public bool hasStartedDecoding;
         Cell cell;
+        int countToBegin;
         private void Start()
         {
             gameManager = GetComponentInParent<Game>();
+            check = GetComponentInChildren<BotCheck>();
             shouldMove = true;
             StartCoroutine(Move(timer));
             start = true;
-           
+            countToBegin = 2;
         }
 
         public void Move()
@@ -37,8 +44,8 @@ namespace CtrlAltJam3
 
             
             Debug.Log(isIngrid);
-
-            if (start)
+           
+            if (start || countToBegin <=0)
             {   
                 direction.x = 1;
                 transform.localPosition += (Vector3)direction;
@@ -51,7 +58,7 @@ namespace CtrlAltJam3
             if (direction.x == -1)
             {
                
-                if (!CanMove(direction))
+                if (!Ingrid(direction))
                 {
                     Debug.Log("pare agora");
                     shouldMove = false;
@@ -71,7 +78,7 @@ namespace CtrlAltJam3
 
         }
 
-        private bool CanMove(Vector2 direction)
+        private bool Ingrid(Vector2 direction)
         {
             Vector3Int gridPosition = tile.WorldToCell(transform.position + (Vector3)direction * transform.parent.localScale.x);
             if (!tile.HasTile(gridPosition))
@@ -85,7 +92,7 @@ namespace CtrlAltJam3
 
         void Update()
         {
-            isIngrid = CanMove(direction);
+            isIngrid = Ingrid(direction);
 
             if(!isIngrid && direction.x == 1)
             {
@@ -97,34 +104,46 @@ namespace CtrlAltJam3
             }
             cell = CellType(gameObject);
             TakeDamage();
-            //gameManager.Reveal();
-            //StartCoroutine(Move(timer));
 
-            /*if(!start && !finish)
+            if (hasStartedDecoding)
             {
-                finish = true;
-            }else if(!start && finish)
+                
+                StartCoroutine(Decoding(decodTime));
+                hasStartedDecoding = false;
+            }
+            if (check.cell.flagged)
             {
-                finish = CanMove(direction);
+                decodTime += Time.deltaTime;
 
-                if (!finish)
+                shouldMove = false;
+                if (decodTime > decodTimer)
                 {
-                    direction.x = 0;
+                    decodTime = 0;
+                    shouldMove = true;
+
+                    //Shoot();
                 }
-            }*/
-           
+
+            }
 
         }
 
 
         private IEnumerator Move(float timer)
         {
-            while (shouldMove) // Loop infinito
+            while (true) 
             {
-                isMoving = false;
-                Move();
-                yield return new WaitForSeconds(timer);
-                isMoving = true;
+                if (shouldMove)
+                {
+                    isMoving = false;
+                    Move();
+                    yield return new WaitForSeconds(timer);
+                    isMoving = true;
+                }
+                else
+                {
+                    yield return null;
+                }
             }
         }
         public void TakeDamage()
@@ -137,5 +156,27 @@ namespace CtrlAltJam3
                
             }
         }
-    }
+
+        public void DecodeBomb()
+        {
+            StartCoroutine(Decoding(decodTime));
+           
+        }
+        private IEnumerator Decoding(float decodTime)
+        {
+
+            if (check.cell.flagged)
+            {
+                ///gameManager.Reveal(gameObject);
+                Debug.Log("Deocoding...");
+                hasStartedDecoding=true;
+                shouldMove = false;
+                yield return new WaitForSeconds(timer);
+                shouldMove = true;
+            }
+            
+
+        }
+           
+}
 }

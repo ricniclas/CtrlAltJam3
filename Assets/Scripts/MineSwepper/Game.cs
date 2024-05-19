@@ -65,12 +65,14 @@ namespace CtrlAltJam3
 
         public void NewGame()
         {
+
+            Debug.Log("onde?");
             state = new Cell[width, height];
             GenerateCells();
             CursorPosition();
             firstTry = true;
             FirstMove();
-            Reveal(gameObject);
+            Reveal(targetObject);
 
 
             board.Draw(state);
@@ -251,7 +253,7 @@ namespace CtrlAltJam3
 
 
 
-            if (cell.type == Cell.Type.Invalid || cell.revealed || cell.flagged)
+            if (cell.type == Cell.Type.Invalid || cell.revealed /*|| cell.flagged*/)
             {
 
                 return;

@@ -13,7 +13,7 @@ namespace CtrlAltJam3
         private Tilemap collisionTilemap;
         public BotMove bot;
         public bool teste;
-        Cell cell;
+        public Cell cell;
         
 
 
