@@ -156,9 +156,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 11c55923f89ddc046af0436aebe8ed44, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1330851321, guid: dfab3125a412bfe4eb65ccca9f573ca2, type: 3}
+  m_Color: {r: 0.12126203, g: 0.18278223, b: 0.23584908, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -279,7 +279,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -314,7 +314,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4410081369999577512}
@@ -569,7 +569,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -700,7 +700,7 @@ Transform:
   m_GameObject: {fileID: 8449005338383002660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10.47, y: -12.75, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -801,21 +801,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1480960274947687521}
     m_Modifications:
+    - target: {fileID: 2607799033633848586, guid: 841341eabfa7b6142b6069ad9250c587, type: 3}
+      propertyPath: buttonType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6276918747802989136, guid: 841341eabfa7b6142b6069ad9250c587, type: 3}
       propertyPath: m_Name
       value: DeviceSpecificButton
       objectReference: {fileID: 0}
     - target: {fileID: 6654709080611707035, guid: 841341eabfa7b6142b6069ad9250c587, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 6654709080611707035, guid: 841341eabfa7b6142b6069ad9250c587, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 6654709080611707035, guid: 841341eabfa7b6142b6069ad9250c587, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.000000088475645
       objectReference: {fileID: 0}
     - target: {fileID: 6654709080611707035, guid: 841341eabfa7b6142b6069ad9250c587, type: 3}
       propertyPath: m_LocalRotation.w
@@ -845,6 +849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7746252973229921638, guid: 841341eabfa7b6142b6069ad9250c587, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8c10a8c43836dc04e8bee3822fe1edfa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
