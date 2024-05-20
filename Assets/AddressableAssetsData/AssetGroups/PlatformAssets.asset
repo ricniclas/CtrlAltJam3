@@ -17,89 +17,89 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 41b261e1b50778c469714989433f1943
   m_SerializeEntries:
-  - m_GUID: 6746cda3ca261a74daccefdc852c5576
-    m_Address: Assets/Sprites/Platforms/PC/PC_1.png
+  - m_GUID: 3f5ce2438cf6e4c49a855664a1706310
+    m_Address: Assets/Sprites/Platforms/PS/V2/PS_Confirm.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PS
+    - Platform
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23700c27c3a50b7449cf6e55bfceef22
+    m_Address: Assets/Sprites/Platforms/PS/V2/PS_Cancel.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PS
+    - Platform
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0dbdea91b14a29548a11a0fc33fc2269
+    m_Address: Assets/Sprites/Platforms/PS/V2/PS_4.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PS
+    - Platform
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3db98e93170b2244ac061c57d0b40c5
+    m_Address: Assets/Sprites/Platforms/PS/V2/PS_3.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PS
+    - Platform
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f0f723bf73d6584cb743baea298e2a5
+    m_Address: Assets/Sprites/Platforms/PS/V2/PS_2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PS
+    - Platform
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95957d16648a793488546c2209df037b
+    m_Address: Assets/Sprites/Platforms/PS/V2/PS_1.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PS
+    - Platform
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f352018555cd7cd4aa0b72ef90da01fd
+    m_Address: Assets/Sprites/Platforms/PC/V2/PC_1.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - Platform
     - PC
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 339c598d8d933e34bad5eda10091729b
-    m_Address: Assets/Sprites/Platforms/PC/PC_2.png
+  - m_GUID: 110693648334d634682ddf1178e48388
+    m_Address: Assets/Sprites/Platforms/PC/V2/PC_2.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - Platform
     - PC
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 106ab51840fbda64babf2e4aaabcf0f9
-    m_Address: Assets/Sprites/Platforms/PC/PC_3.png
+  - m_GUID: 103e9fc022983cc4aa34d135fe402de3
+    m_Address: Assets/Sprites/Platforms/PC/V2/PC_3.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - Platform
     - PC
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8c10a8c43836dc04e8bee3822fe1edfa
-    m_Address: Assets/Sprites/Platforms/PC/PC_4.png
+  - m_GUID: 138ec2bd2109edf4ead0ae3315c31f2a
+    m_Address: Assets/Sprites/Platforms/PC/V2/PC_4.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - Platform
     - PC
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0c14fa9b2ef777b48aba139951d2bc41
-    m_Address: Assets/Sprites/Platforms/PC/PC_Esc.png
+  - m_GUID: 96d06425a7d83ac4aab0d0a4ddde3337
+    m_Address: Assets/Sprites/Platforms/PC/V2/PC_Cancel.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - Platform
     - PC
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 43efc2f8ad310824bae65b79d6409569
-    m_Address: Assets/Sprites/Platforms/PC/PC_Space.png
+  - m_GUID: 648859eecbe2f0848b717c814061cac0
+    m_Address: Assets/Sprites/Platforms/PC/V2/PC_Confirm.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - Platform
     - PC
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 81487d05c48216f459a524fd6f174c40
-    m_Address: Assets/Sprites/Platforms/PS/PS_Circle.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Platform
-    - PS
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 66ff0a4f4fcaa3d44b92e47f1ab724f3
-    m_Address: Assets/Sprites/Platforms/PS/PS_L1.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Platform
-    - PS
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 895658f1fdc4f5b47a330bfc79cd8a64
-    m_Address: Assets/Sprites/Platforms/PS/PS_L2.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Platform
-    - PS
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 048a34e40c263d549a4c2b38bc5df33d
-    m_Address: Assets/Sprites/Platforms/PS/PS_R1.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Platform
-    - PS
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 003b00dd8b0c0734d923a5037beb360e
-    m_Address: Assets/Sprites/Platforms/PS/PS_R2.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Platform
-    - PS
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b35c0410d842a284590c9ec09b624951
-    m_Address: Assets/Sprites/Platforms/PS/PS_X.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Platform
-    - PS
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ee67e0990f60751429f2eea0631950b6, type: 2}

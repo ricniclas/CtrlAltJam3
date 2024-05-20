@@ -1,4 +1,6 @@
 using DG.Tweening;
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +26,9 @@ namespace CtrlAltJam3
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
         [SerializeField] private Game minefieldManager;
         private MinigamesManager minigamesManager;
+
+        private EventInstance eventInstance;
+
 
         private string[] code1 = { "1", "2", "3" };
         private string[] code2 = { "A", "B", "C" };
@@ -69,6 +74,7 @@ namespace CtrlAltJam3
         private void ChangeWheelIndex(int change)
         {
             currentWheelIndex = MathUtils.Wrap(currentWheelIndex + change, 0, 3);
+            PlayEventInstance(Constants.FMOD_EVENT_SFX_SPIN_WHEEL);
             SelectWheelAnimation(currentWheelIndex);
         }
         private void ChangeWheelValue(int change)
@@ -76,6 +82,7 @@ namespace CtrlAltJam3
             wheelPositions[currentWheelIndex] = MathUtils.Wrap(wheelPositions[currentWheelIndex] + change, 0, 3);
 
             RotateWheel(change);
+            PlayEventInstance(Constants.FMOD_EVENT_SFX_SPIN_WHEEL);
             minefieldManager.camsManager.checkCode(TranslateCode());
 
         }
@@ -88,6 +95,12 @@ namespace CtrlAltJam3
             stringBuilder.Append(code3[wheelPositions[2]]);
             return stringBuilder.ToString();
 
+        }
+
+        private void PlayEventInstance(string eventInstance)
+        {
+            this.eventInstance = RuntimeManager.CreateInstance(eventInstance);
+            this.eventInstance.start();
         }
 
         private void RotateWheel(int change)

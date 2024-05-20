@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ namespace CtrlAltJam3
 
         [SerializeField] private GameObject loseGameObject;
         [SerializeField] private GameObject winGameObject;
-        private bool isVictory;
+        private bool activateInputs;
 
 
         private void OnEnable()
@@ -40,9 +41,9 @@ namespace CtrlAltJam3
 
         public void Initialize(bool isVictory, float completion, float matchDuration, int remainingMates)
         {
+            activateInputs = false;
             retryButton.Select();
             Time.timeScale = 0;
-            this.isVictory = isVictory;
             loseTimeText.SetText(matchDuration.ToString());
             completionPercentageText.SetText(completion.ToString());
             winTimeText.SetText(matchDuration.ToString());
@@ -50,7 +51,7 @@ namespace CtrlAltJam3
 
             background.enabled = true;
             transform.localScale = Vector3.zero;
-            transform.DOScale(1, 0.5f).SetUpdate(true);
+            transform.DOScale(1, 0.5f).SetUpdate(true).OnComplete(() => activateInputs = true);
             if (isVictory)
             {
                 background.DOColor(winColor, 0.3f).SetUpdate(true);
@@ -66,14 +67,20 @@ namespace CtrlAltJam3
         }
         private void BackToMenu()
         {
-            Time.timeScale = 1;
-            SceneManager.LoadScene("MainMenu");
+            if (activateInputs)
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
         private void ReloadScene()
         {
-            Time.timeScale = 1;
-            SceneManager.LoadScene("Monitors");
+            if (activateInputs)
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene("Monitors");
+            }
         }
     }
 

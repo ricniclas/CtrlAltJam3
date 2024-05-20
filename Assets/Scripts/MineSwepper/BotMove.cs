@@ -29,9 +29,13 @@ namespace CtrlAltJam3
         public bool start;
         public bool isIngrid;
         public bool hasStartedDecoding;
+
+        public int explosionDamage = 20;
         Cell cell;
         Vector3Int gridPositions; 
         int countToBegin;
+        private int damageOnFrame = 1;
+
         private void Start()
         {
             gameManager = GetComponentInParent<Game>();
@@ -44,7 +48,7 @@ namespace CtrlAltJam3
 
         public void Move()
         {
-
+            damageOnFrame = 1;
             
            //Debug.Log(isIngrid);
            
@@ -92,6 +96,7 @@ namespace CtrlAltJam3
             {
                
                 start = false;
+                GetComponent<SpriteRenderer>().flipX = true;
                 return false;
             }
             return true;
@@ -124,8 +129,10 @@ namespace CtrlAltJam3
 
                     if (!Ingrid(direction) && direction.x==-1)
                     {
-                        Debug.Log("pare agora");
+                        gameManager.GameOver();
+
                         shouldMove = false;
+                        return;
                     }
                 }
 
@@ -147,7 +154,14 @@ namespace CtrlAltJam3
                 {
                     isMoving = false;
                     Move();
-                    yield return new WaitForSeconds(timer);
+                    if(start)
+                    {
+                        yield return new WaitForSeconds(timer);
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(timer/3);
+                    }
                     isMoving = true;
                 }
                 else
@@ -161,9 +175,20 @@ namespace CtrlAltJam3
             //Debug.Log(cell.type);
             if (cell.type == Cell.Type.Mine && !cell.flagged)
             {
-                gameManager.Reveal(gameObject);
-                //Debug.Log("Damage");
-               
+                if(damageOnFrame > 0)
+                {
+                    gameManager.Reveal(gameObject);
+                    gameManager.UpdateHealth(explosionDamage, LifeBarAction.TAKE);
+                    damageOnFrame = 0;
+                }
+            }
+            if(cell.type == Cell.Type.Mine && cell.flagged)
+            {
+                if (damageOnFrame > 0)
+                {
+                    gameManager.UpdateHealth(10, LifeBarAction.ADD);
+                    damageOnFrame = 0;
+                }
             }
         }
 
