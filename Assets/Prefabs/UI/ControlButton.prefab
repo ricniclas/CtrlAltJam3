@@ -37,12 +37,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1696923093995616425, guid: 0897f6be49039a74ba5bebd8c229a9e2, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.2830189
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696923093995616425, guid: 0897f6be49039a74ba5bebd8c229a9e2, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.006674973
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696923093995616425, guid: 0897f6be49039a74ba5bebd8c229a9e2, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.009911533
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696923093995616425, guid: 0897f6be49039a74ba5bebd8c229a9e2, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4765821486570289030, guid: 0897f6be49039a74ba5bebd8c229a9e2, type: 3}
       propertyPath: m_Name
-      value: Control Variant
+      value: ControlButton
       objectReference: {fileID: 0}
     - target: {fileID: 8812393440198765562, guid: 0897f6be49039a74ba5bebd8c229a9e2, type: 3}
       propertyPath: m_Pivot.x

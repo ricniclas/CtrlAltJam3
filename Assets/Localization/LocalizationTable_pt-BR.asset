@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 251790086144
-    m_Localized: Tutorial
+    m_Localized: "Op\xE7\xF5es"
     m_Metadata:
       m_Items: []
   - m_Id: 558330793984
@@ -80,6 +80,64 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1428693542752256
     m_Localized: ALERTA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1819827620270080
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821101736579072
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821374613803008
+    m_Localized: Regras
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821458780901376
+    m_Localized: "N\xEDvel de Alerta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821589349584896
+    m_Localized: Campo Minado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821709436702720
+    m_Localized: Rodas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822558795845632
+    m_Localized: "Teclado: \r\n\r\nMovimenta\xE7\xE3o: direcionais/ WASD\r\nConfirmar:
+      espa\xE7o\r\nCancelar: Shift esquerdo\r\nTroca de mini game: Teclas numericas\r\n\r\nControle\r\n\r\nMovimenta\xE7\xE3o:
+      Direcionais / Analogico esquerdo\r\nConfirmar: X\r\nCancelar: O\r\nTroca de
+      mini game: R1/R2/L1/L2"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822832902000640
+    m_Localized: "Condi\xE7\xF5es de Vit\xF3ria:\r\n\r\nManter toda a equipe viva
+      ao longo de todo o mapa at\xE9 o final e retornar para escapar.\r\n\r\nCondi\xE7\xF5es
+      de Derrota:\r\n\r\nToda a equipe desmaia."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822950690639872
+    m_Localized: "Nivel de alerta: \r\n\r\nO n\xEDvel de alerta \xE9 a regra que
+      comanda a tropa de seguran\xE7a da empresa. Caso voc\xEA cometa erros nos outros
+      quebra-cabe\xE7as, o n\xEDvel de alerta aumentar\xE1, e cada novo n\xEDvel
+      trar\xE1 mais e mais drones."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1823987405148160
+    m_Localized: "Campo Minado:\r\n\r\nVoc\xEA precisa descobrir as bombas no caminho
+      do jogador para que ele possa desarm\xE1-las, abrindo assim o caminho at\xE9
+      os dados. Tome cuidado: caso marque o local errado, sua equipe perder\xE1 muito
+      tempo tentando encontrar a bomba."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1824267232333824
+    m_Localized: "Roleta:\r\n\r\nO jogo das roletas consiste em voc\xEA colocar a
+      combina\xE7\xE3o correta para que as c\xE2meras no campo minado sejam desativadas.
+      Passando o cursor sobre elas no minesweeper, voc\xEA poder\xE1 ver qual \xE9
+      o seu c\xF3digo."
     m_Metadata:
       m_Items: []
   references:

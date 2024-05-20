@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 251790086144
-    m_Localized: Tutorial
+    m_Localized: Options
     m_Metadata:
       m_Items: []
   - m_Id: 558330793984
@@ -80,6 +80,92 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1428693542752256
     m_Localized: ALERT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1819827620270080
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821101736579072
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821374613803008
+    m_Localized: Rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821458780901376
+    m_Localized: Alert Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821589349584896
+    m_Localized: Mine Sweeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821709436702720
+    m_Localized: Wheels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822558795845632
+    m_Localized: 'Keyboard
+
+
+      Moviment: directionals / WASD
+
+      Confirm:
+      Space
+
+      Cancel: Left Shift
+
+      Mine Game Change: Numbers keys
+
+
+      GamePad
+
+
+      Moviment:
+      Directionals / Left analog stick
+
+      Confirm: X
+
+      Cancel: O
+
+      Mine
+      Game Change: R1/R2/L1/L2'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822832902000640
+    m_Localized: "Victory and defeat rules\n\n\n\nVictory conditions:\n is to keep
+      all the crew alive throght the entire map to the finish and going back to escape\n\nDefeat
+      conditions: \nAll the crew faints"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822950690639872
+    m_Localized: 'Alert level:
+
+
+      The alert level is the rule that commands
+      the company''s security forces. If you make mistakes in other puzzles, the
+      alert level will increase, and each new level will bring more and more drones.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1823987405148160
+    m_Localized: 'Mine Sweeper:
+
+
+      You need to identify the bombs along the
+      player''s path so they can be disarmed, thereby clearing the way to the dice.
+      Be careful: if you mark the wrong spot, your team will waste a lot of time
+      trying to find the bomb.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1824267232333824
+    m_Localized: 'Wheels:
+
+
+      The roulette game involves entering the correct
+      combination to deactivate the cameras in the minefield. By hovering your cursor
+      over them in Minesweeper, you can see their codes.'
     m_Metadata:
       m_Items: []
   references:

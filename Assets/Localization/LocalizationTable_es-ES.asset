@@ -82,6 +82,74 @@ MonoBehaviour:
     m_Localized: ALERTA
     m_Metadata:
       m_Items: []
+  - m_Id: 1819827620270080
+    m_Localized: Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821101736579072
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821374613803008
+    m_Localized: Normas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821458780901376
+    m_Localized: Nivel de Alerta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821589349584896
+    m_Localized: Campo Minado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1821709436702720
+    m_Localized: Ruedas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822558795845632
+    m_Localized: "Teclado:\r\n\r\nMovimiento: flechas / WASD\r\nConfirmar: espacio\r\nCancelar:
+      May\xFAsculas izquierda\r\nCambio de mini juego: Teclas num\xE9ricas\r\n\r\nControl:\r\n\r\nMovimiento:
+      Flechas / Stick anal\xF3gico izquierdo\r\nConfirmar: X\r\nCancelar: O\r\nCambio
+      de mini juego: R1/R2/L1/L2\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822832902000640
+    m_Localized: 'Condiciones de Victoria:
+
+
+
+      Mantener a todo el equipo con
+      vida a lo largo de todo el mapa hasta el final y regresar para escapar.
+
+
+      Condiciones
+      de Derrota:
+
+      
+
+      Todo el equipo se desmaya.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1822950690639872
+    m_Localized: "Nivel de alerta:\r\n\r\nEl nivel de alerta es la regla que dirige
+      la tropa de seguridad de la empresa. Si cometes errores en otros rompecabezas,
+      el nivel de alerta aumentar\xE1, y cada nuevo nivel traer\xE1 m\xE1s y m\xE1s
+      drones."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1823987405148160
+    m_Localized: "Campo Minado:\r\n\r\nNecesitas descubrir las bombas en el camino
+      del jugador para que pueda desactivarlas, abriendo as\xED el camino hacia los
+      datos. Ten cuidado: si marcas el lugar incorrecto, tu equipo perder\xE1 mucho
+      tiempo intentando encontrar la bomba."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1824267232333824
+    m_Localized: "Ruleta:\r\n\r\nEl juego de la ruleta consiste en ingresar la combinaci\xF3n
+      correcta para desactivar las c\xE1maras en el campo minado. Al pasar el cursor
+      sobre ellas en el buscaminas, podr\xE1s ver cu\xE1l es su c\xF3digo."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

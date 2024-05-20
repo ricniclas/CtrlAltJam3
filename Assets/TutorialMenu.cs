@@ -1,24 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace CtrlAltJam3
 {
-    public class TutorialMenu : MonoBehaviour
+    public class TutorialMenu : MonoBehaviour, IInputReceiver
     {
         [SerializeField] private Button controlsButton, rulesButton, alertButton, mineButton, wheelsButton, backButton;
         [SerializeField] private GameObject controlsTutorial, rulesTutorial, alertTutorial, mineTutorial, wheelsTutorial;
 
         [SerializeField] private GameObject mainMenu;
-        [SerializeField] private GameObject tutorialMenu;  
+        [SerializeField] private GameObject tutorialMenu;
 
         private GameObject lastObject;
+        private InputPackage inputPackage => new InputPackage(this);
         private void Start()
         {
-            controlsButton.Select();
             lastObject = controlsTutorial;
+        }
+
+        private void Clean()
+        {
+            controlsTutorial.SetActive(false);
+            rulesTutorial.SetActive(false);
+            alertTutorial.SetActive(false);
+            mineTutorial.SetActive(false);
+            wheelsTutorial.SetActive(false);
         }
 
         private void OnEnable()
@@ -29,6 +39,7 @@ namespace CtrlAltJam3
             mineButton.onClick.AddListener(MineScreen);
             wheelsButton.onClick.AddListener(WheelsScreen);
             backButton.onClick.AddListener(BackAction);
+            Clean();
             controlsButton.Select();
             lastObject = controlsTutorial;
         }
@@ -81,5 +92,49 @@ namespace CtrlAltJam3
             lastObject = screen;
         }
 
+        void IInputReceiver.Directions(Vector2 direction)
+        {
+
+        }
+
+        void IInputReceiver.Game1()
+        {
+
+        }
+
+        void IInputReceiver.Game2()
+        {
+
+        }
+
+        void IInputReceiver.Game3()
+        {
+
+        }
+
+        void IInputReceiver.Game4()
+        {
+
+        }
+
+        void IInputReceiver.Confirm()
+        {
+
+        }
+
+        void IInputReceiver.Cancel()
+        {
+            BackAction();
+        }
+
+        void IInputReceiver.Pause()
+        {
+            BackAction();
+        }
+
+        InputPackage IInputReceiver.GetInputPackage()
+        {
+            return inputPackage;
+        }
     }
 }
