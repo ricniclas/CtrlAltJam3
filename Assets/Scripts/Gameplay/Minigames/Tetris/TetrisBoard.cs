@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +32,7 @@ namespace CtrlAltJam3
         private MinigamesManager minigamesManager;
 
         private Vector2Int currentInput = Vector2Int.zero;
+        private EventInstance eventInstance;
         public RectInt boardBounds
         {
             get
@@ -151,6 +154,7 @@ namespace CtrlAltJam3
                 {
                     minigamesManager.healthUpdateEvent.Invoke(4, LifeBarAction.ADD);
                     LineClear(row);
+                    PlayEventInstance(Constants.FMOD_EVENT_SFX_LINE_CLEAR);
                 }
                 else
                 {
@@ -165,6 +169,12 @@ namespace CtrlAltJam3
         #endregion
 
         #region Private Methods
+
+        private void PlayEventInstance(string eventInstance)
+        {
+            this.eventInstance = RuntimeManager.CreateInstance(eventInstance);
+            this.eventInstance.start();
+        }
 
         private void CalculateMaxHeight()
         {

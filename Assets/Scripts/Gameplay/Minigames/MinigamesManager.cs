@@ -39,6 +39,7 @@ namespace CtrlAltJam3
 
         private void Start()
         {
+            Time.timeScale = 1;
             InputManager.instance.AddGameSelectionyEvents(inputPackage, true);
             minigames = new List<IMinigame>();
             for (int i = 0; i < minigamesGameObject.Length; i++)
@@ -70,16 +71,30 @@ namespace CtrlAltJam3
         #region Public Methods
         public void UpdateAlertLevel()
         {
+
             int alertLevel = 0;
+
+
             for (int i = 0; i < minigames.Count; i++)
             {
                 alertLevel += minigames[i].GetInnerAlertLevel();
             }
+
+            if (alertLevel < this.alertLevel)
+            {
+                PlayEventInstance(Constants.FMOD_EVENT_SFX_ALERT_DECREASE);
+            }
+            else if (alertLevel > this.alertLevel)
+            {
+                PlayEventInstance(Constants.FMOD_EVENT_SFX_ALERT_RAISE);
+            }
+
             SetAlertSlider(alertLevel);
             for(int i = 0; i < minigames.Count; i++)
             {
                 minigames[i].UpdateAlertLevel(alertLevel);
             }
+            this.alertLevel = alertLevel;
         }
 
         public void EndGame(bool win)
@@ -150,7 +165,8 @@ namespace CtrlAltJam3
         private void SetAlertSlider(int value)
         {
             alertLevelSlider.DOValue(value,0.3f);
-            alertLevelSlider.gameObject.transform.DOPunchRotation(new Vector3(0, 0, 10), 0.5f, elasticity: 1);
+            alertLevelSlider.gameObject.transform.DOPunchRotation(new Vector3(0, 0, 10), 0.5f, elasticity: 1)
+                .OnComplete(() => alertLevelSlider.gameObject.transform.rotation.SetEulerAngles(new Vector3(0, 0, 0)));
             alertLevelSliderFill.DOColor(sliderColors[value-1],0.3f);
         }
 

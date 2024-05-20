@@ -1,4 +1,6 @@
 using DG.Tweening;
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -21,6 +23,7 @@ namespace CtrlAltJam3
         public int _currentWaypoint;
 
         private bool isActive = false;
+        private EventInstance eventInstance;
 
         private SpriteRenderer spriteRenderer;
         // Start is called before the first frame update
@@ -48,11 +51,17 @@ namespace CtrlAltJam3
         {
             isMoving = false;
             Shoot();
+            PlayEventInstance(Constants.FMOD_EVENT_SFX_DRONE_SHOT);
             yield return new WaitForSeconds(spawnR);
             isMoving = true;
 
         }
 
+        private void PlayEventInstance(string eventInstance)
+        {
+            this.eventInstance = RuntimeManager.CreateInstance(eventInstance);
+            this.eventInstance.start();
+        }
 
         private void FixedUpdate()
         {

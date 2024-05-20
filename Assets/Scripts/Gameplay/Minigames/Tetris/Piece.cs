@@ -1,3 +1,6 @@
+using FMOD.Studio;
+using FMODUnity;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
@@ -12,7 +15,7 @@ namespace CtrlAltJam3
         public Vector3Int position { get; private set; }
         public int rotationIndex { get; private set; }
 
-        public float stepDelay = 1f;
+        public float stepDelay = 2f;
         public float lockDelay = 0.5f;
 
         private float stepTime;
@@ -21,7 +24,7 @@ namespace CtrlAltJam3
 
         private Queue<Vector2Int> directionInputs = new Queue<Vector2Int>();
         private Queue<int> rotationInputs = new Queue<int>();
-
+        private EventInstance eventInstance;
 
         #region MonoBehaviour Callbacks
 
@@ -83,6 +86,12 @@ namespace CtrlAltJam3
 
         #region Private Methods
 
+        private void PlayEventInstance(string eventInstance)
+        {
+            this.eventInstance = RuntimeManager.CreateInstance(eventInstance);
+            this.eventInstance.start();
+        }
+
         private bool Move(Vector2Int translation)
         {
             Vector3Int newPosition = position;
@@ -92,6 +101,7 @@ namespace CtrlAltJam3
             bool valid = tetrisBoard.IsValidPosition(this, newPosition);
             if (valid)
             {
+                PlayEventInstance(Constants.FMOD_EVENT_SFX_MOVE_BLOCK);
                 position = newPosition;
                 lockTime = 0f;
                 if(translation.y != 0)
@@ -188,6 +198,7 @@ namespace CtrlAltJam3
 
         private void Lock()
         {
+            PlayEventInstance(Constants.FMOD_EVENT_SFX_SET_BLOCK);
             tetrisBoard.Set(this);
             tetrisBoard.ClearLines();
             tetrisBoard.SpawnPiece();

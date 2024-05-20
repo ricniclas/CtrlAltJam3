@@ -29,10 +29,12 @@ namespace CtrlAltJam3
         [SerializeField] private SpriteButtonAnimation inputButtonSprite;
         public CamsManager camsManager;
 
-        private MinigamesManager minigamesManager;
+        public MinigamesManager minigamesManager;
 
         private List<BotMove> bots;
         public int botsFinished = 0;
+        int gameOvers = 1;
+        public int stepOnBomb = 20;
        
 
         private void Awake()
@@ -245,6 +247,20 @@ namespace CtrlAltJam3
             return count;
         }
 
+        public void UpdateHealth(float value, LifeBarAction action)
+        {
+            minigamesManager.healthUpdateEvent.Invoke(value, action);
+        }
+
+
+        public void GameOver()
+        {
+            if(gameOvers > 0)
+            {
+                gameOvers = 0;
+                minigamesManager.EndGame(true);
+            }
+        }
         public void Flag()
         {
             Vector3 worldPosition = targetObject.transform.position;
@@ -279,6 +295,7 @@ namespace CtrlAltJam3
             {
                 case Cell.Type.Mine:
                     Explode(cell);
+                    minigamesManager.healthUpdateEvent.Invoke(stepOnBomb, LifeBarAction.TAKE);
                     break;
                 case Cell.Type.Empty:
                     Flood(cell);
@@ -308,8 +325,6 @@ namespace CtrlAltJam3
 
 
             }
-
-            Debug.Log("Winner!");
             gameover = true;
 
             for (int x = 0; x < width; x++)
@@ -347,7 +362,6 @@ namespace CtrlAltJam3
 
         private void Explode(Cell cell)
         {
-            Debug.Log("Game Over!");
             gameover = true;
 
             cell.revealed = true;

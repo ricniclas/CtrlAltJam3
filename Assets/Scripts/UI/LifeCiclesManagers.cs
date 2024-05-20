@@ -1,4 +1,5 @@
 using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,10 +44,12 @@ namespace CtrlAltJam3
                         if (unitsHealth[currentLife] <= 0)
                         {
                             crewmatesAnimators[currentLife].SetTrigger("Death");
+                            PlayEventInstance(Constants.FMOD_EVENT_SFX_HURT);
                         }
                         else
                         {
                             crewmatesAnimators[currentLife].SetTrigger("Hurt");
+                            PlayEventInstance(Constants.FMOD_EVENT_SFX_HURT);
                         }
                         if (GetMembersAlive() == 0)
                         {
@@ -103,6 +106,12 @@ namespace CtrlAltJam3
                     return 999;
             }
 
+        }
+
+        private void PlayEventInstance(string eventInstance)
+        {
+            this.eventInstance = RuntimeManager.CreateInstance(eventInstance);
+            this.eventInstance.start();
         }
 
     }
