@@ -10,10 +10,12 @@ namespace CtrlAltJam3
     {
         [SerializeField] private Button startGameButton;
         [SerializeField] private Button optionsButton;
+        [SerializeField] private Button tutorialButton;
         [SerializeField] private Button exitButton;
 
         [SerializeField] private OptionsMenu optionsGameObject;
-
+        [SerializeField] private GameObject tutorialMenu;
+        [SerializeField] private GameObject mainMenu;
 
         private void Start()
         {
@@ -25,7 +27,9 @@ namespace CtrlAltJam3
         {
             startGameButton.onClick.AddListener(StartGame);
             optionsButton.onClick.AddListener(OpenOptions);
+            tutorialButton.onClick.AddListener(TutorialScreen);
             exitButton.onClick.AddListener(CloseGame);
+            startGameButton.Select();
         }
 
         private void OnDisable()
@@ -44,6 +48,12 @@ namespace CtrlAltJam3
         private void StartGame()
         {
             SceneManager.LoadScene("Monitors");
+        }
+
+        private void TutorialScreen()
+        {
+            tutorialMenu.SetActive(true);
+            mainMenu.SetActive(false);
         }
 
         private void CloseGame()
